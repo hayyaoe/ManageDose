@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Home: View {
     var body: some View {
+        ScrollView(.vertical, showsIndicators: false){
         VStack{
             HStack{
                 VStack(
@@ -126,7 +127,7 @@ struct Home: View {
             .padding(.horizontal)
             
         }
-        .padding(EdgeInsets(top: 20, leading: 0, bottom: 30, trailing: 0))
+        .padding(EdgeInsets(top: 80, leading: 0, bottom: 30, trailing: 0))
         .frame(maxWidth: .infinity)
         .background{
             Color(red:0.8627450980392157 ,green:0.8352941176470589 ,blue:1 )
@@ -149,42 +150,31 @@ struct Home: View {
                         BudgetingCard()
                         BudgetingCard()
                     }
-                    .padding(EdgeInsets(top:0, leading:20, bottom: 0, trailing: 0))
+                    .padding(EdgeInsets(top:0, leading:20, bottom: 0, trailing: 20))
                 }
             }
             .frame(height: 200)
         
-        VStack{
-            HStack{
-                Text("Latest Transaction")
-                    .fontWeight(.semibold)
-                    .font(.title3)
-                Spacer()
-            }.padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
-            
-            ScrollView(.vertical, showsIndicators: false){
+            VStack{
+                HStack{
+                    Text("Latest Transaction")
+                        .fontWeight(.semibold)
+                        .font(.title3)
+                    Spacer()
+                }.padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+                
                 LazyVStack{
-                    
                     TransactionItem()
-                    Rectangle()
-                         .frame(height: 1) // Thickness of the separator
-                         .foregroundColor(Color.gray)
-                         .opacity(0.4)
+                    SeparatorBar()
                     TransactionItem()
-                    Rectangle()
-                         .frame(height: 1) // Thickness of the separator
-                         .foregroundColor(Color.gray)
-                         .opacity(0.4)
+                    SeparatorBar()
                     TransactionItem()
-                    Rectangle()
-                         .frame(height: 1) // Thickness of the separator
-                         .foregroundColor(Color.gray)
-                         .opacity(0.4)
+                    SeparatorBar()
                     TransactionItem()
 
                 }.padding(.horizontal)
-            }
-        }
+            }.padding(EdgeInsets(top: 0, leading: 0, bottom: 80, trailing: 0))
+        }.ignoresSafeArea(.all)
     }
 }
 
