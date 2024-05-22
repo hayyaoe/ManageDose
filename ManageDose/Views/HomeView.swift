@@ -6,9 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct Home: View {
+    
+    @Query( sort: \TransactionData.date ) var transactions: [TransactionData]
+    @Query( sort: \BudgetingData.name) var budgets: [BudgetingData]
+    
     var body: some View {
+         
         ScrollView(.vertical, showsIndicators: false){
         VStack{
             HStack{
@@ -140,17 +146,31 @@ struct Home: View {
                         .fontWeight(.semibold)
                         .font(.title3)
                     Spacer()
-                }.padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
+                }
+                .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
                 
                 ScrollView(.horizontal, showsIndicators: false){
                     LazyHStack(
                         spacing: 16
                     ){
-                        BudgetingCard()
-                        BudgetingCard()
-                        BudgetingCard()
+                        ForEach(budgets){ budget in
+                            BudgetingCard()
+                        }
                     }
                     .padding(EdgeInsets(top:0, leading:20, bottom: 0, trailing: 20))
+                }
+                .overlay {
+                    if transactions.isEmpty {
+                        VStack{
+                            Image(systemName: "list.bullet.rectangle")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 50)
+                                .foregroundStyle(.gray)
+                            Text("Create Budgeting to see budgeting")
+                        }
+                        
+                    }
                 }
             }
             .frame(height: 200)
@@ -164,16 +184,26 @@ struct Home: View {
                 }.padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
                 
                 LazyVStack{
-                    TransactionItem()
-                    SeparatorBar()
-                    TransactionItem()
-                    SeparatorBar()
-                    TransactionItem()
-                    SeparatorBar()
-                    TransactionItem()
+                    ForEach(transactions) { transaction in
+                        TransactionItem()
+                    }
 
                 }.padding(.horizontal)
-            }.padding(EdgeInsets(top: 0, leading: 0, bottom: 80, trailing: 0))
+            }
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 100, trailing: 0))
+            .overlay(alignment: .bottom) {
+                if transactions.isEmpty {
+                    VStack{
+                        Image(systemName: "list.bullet.rectangle")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 50)
+                            .foregroundStyle(.gray)
+                        Text("Add Transactions to see list")
+                    }
+                    
+                }
+            }
         }.ignoresSafeArea(.all)
     }
 }
