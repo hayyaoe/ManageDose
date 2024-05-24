@@ -154,7 +154,7 @@ struct Home: View {
                         spacing: 16
                     ){
                         ForEach(budgets){ budget in
-                            BudgetingCard()
+                            BudgetingCard(/*budgetingData: BudgetingData(id: "Budget A", name: Budget.dailyneeds.rawValue, percentage: 0.7, budget: .dailyneeds)*/)
                         }
                     }
                     .padding(EdgeInsets(top:0, leading:20, bottom: 0, trailing: 20))
@@ -185,7 +185,7 @@ struct Home: View {
                 
                 LazyVStack{
                     ForEach(transactions) { transaction in
-                        TransactionItem()
+                        TransactionItem(transactionData: TransactionData(id: "Strong", name: "McDonald's", date: Date(), amount: 109000, cashFlow: .expense, budget: .dailyneeds))
                     }
 
                 }.padding(.horizontal)
