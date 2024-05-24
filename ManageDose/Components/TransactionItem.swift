@@ -24,7 +24,7 @@ struct TransactionItem: View {
                 Text(transactionData.name)
                     .fontWeight(.bold)
                     .font(.headline)
-                Text(/*transactionData.type*/"")
+                Text(transactionData.budget.rawValue)
                     .font(.subheadline)
           
             }
@@ -34,10 +34,18 @@ struct TransactionItem: View {
             VStack(
                 alignment: .trailing
             ){
-                Text(String(format: "- Rp. %.2f", transactionData.amount))
-                    .fontWeight(.bold)
-                    .font(.headline)
-                    .foregroundStyle(.red)
+                if transactionData.cashFlow == .expense {
+                    Text(String(format: "- Rp. %.2f", transactionData.amount))
+                        .fontWeight(.bold)
+                        .font(.headline)
+                        .foregroundStyle(.red)
+                }else{
+                    Text(String(format: "+ Rp. %.2f", transactionData.amount))
+                        .fontWeight(.bold)
+                        .font(.headline)
+                        .foregroundStyle(.green)
+                }
+
                 Text(transactionData.date, style: .date)
                     .font(.subheadline)
             }
@@ -48,7 +56,7 @@ struct TransactionItem: View {
 
 struct TransactionItem_Preview: PreviewProvider {
     static var previews: some View {
-        let transaction = TransactionData(id: "Nice", name: "ChiFry", date: Date(), amount: 69420, type: .expense, budget: .dailyneeds)
+        let transaction = TransactionData(id: "Nice", name: "ChiFry", date: Date(), amount: 69420, cashFlow: .income, budget: .dailyneeds)
         TransactionItem(transactionData: transaction)
     }
 }

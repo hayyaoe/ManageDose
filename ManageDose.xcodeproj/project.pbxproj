@@ -54,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				7E0EDBB22BF6F66E00C384B8 /* ManageDose */,
+				7E4215742BFC640500B0AFDB /* Models */,
 				7E0EDBB12BF6F66E00C384B8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,7 +77,6 @@
 				7E9506CE2BFB3EA200BDF341 /* Views */,
 				7EB947E52BFB59F300A7C723 /* ViewModels */,
 				7E9506CD2BFB3E7E00BDF341 /* Components */,
-				7E4215742BFC640500B0AFDB /* Models */,
 			);
 			path = ManageDose;
 			sourceTree = "<group>";

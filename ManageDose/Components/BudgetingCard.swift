@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct BudgetingCard: View {
+    
+//    var budgetingData: BudgetingData
+    
     var body: some View {
         VStack(
             alignment: .leading,
@@ -19,11 +22,11 @@ struct BudgetingCard: View {
                 .frame(height:60)
                 .foregroundStyle(.blue)
                 .padding(EdgeInsets(top:0, leading:0, bottom: 10, trailing: 0))
-            Text("Basic Needs")
+            Text("")
                 .font(.subheadline)
                 .fontWeight(.medium)
                 .foregroundStyle(.gray)
-            Text("Rp. 3.343.000")
+            Text("")
                 .fontWeight(.bold)
                 .font(.subheadline)
                 .truncationMode(.tail)
@@ -38,6 +41,14 @@ struct BudgetingCard: View {
     }
 }
 
-#Preview {
+//struct BudgetingCard_Preview: PreviewProvider {
+//    static var previews: some View {
+//        let budgetingData = BudgetingData(id: "Budget A", name: Budget.dailyneeds.rawValue, percentage: 0.7, budget: .dailyneeds)
+//        BudgetingCard(budgetingData: budgetingData)
+//    }
+//}
+
+#Preview{
     BudgetingCard()
 }
+
