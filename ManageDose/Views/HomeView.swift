@@ -185,7 +185,7 @@ struct Home: View {
                 
                 LazyVStack{
                     ForEach(transactions) { transaction in
-                        TransactionItem()
+                        TransactionItem(transactionData: TransactionData(id: "Strong", name: "McDonald's", date: Date(), amount: 109000, type: .expense, budget: .dailyneeds))
                     }
 
                 }.padding(.horizontal)

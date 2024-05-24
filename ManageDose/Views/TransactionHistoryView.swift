@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TransactionHistoryView: View {
+    
+    @Query(sort: \TransactionData.date) var transactions: [TransactionData]
+    
     var body: some View {
         VStack{
             HStack{
@@ -24,28 +28,23 @@ struct TransactionHistoryView: View {
             }.padding()
             ScrollView(.vertical, showsIndicators: false){
                 LazyVStack{
-                    TransactionItem()
-                    SeparatorBar()
-                    TransactionItem()
-                    SeparatorBar()
-                    TransactionItem()
-                    SeparatorBar()
-                    TransactionItem()
-                    SeparatorBar()
-                    TransactionItem()
-                    SeparatorBar()
-                    TransactionItem()
-                    SeparatorBar()
-                    TransactionItem()
-                    SeparatorBar()
-                    TransactionItem()
-                    SeparatorBar()
-                    TransactionItem()
-                    SeparatorBar()
-                    TransactionItem()
-                    SeparatorBar()
-                    TransactionItem()
+                    ForEach(transactions){ transaction in
+                        TransactionItem(transactionData: TransactionData(id: "Strong", name: "McDonald's", date: Date(), amount: 109000, type: .expense, budget: .dailyneeds))
+                        SeparatorBar()
+                    }
                 }.padding(.horizontal)
+            }.overlay{
+                if transactions.isEmpty {
+                    VStack{
+                        Image(systemName: "list.bullet.rectangle")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 50)
+                            .foregroundStyle(.gray)
+                        Text("Add Transactions to see list")
+                    }
+                    
+                }
             }
         }
     }
