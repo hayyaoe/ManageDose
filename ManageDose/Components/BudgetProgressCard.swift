@@ -75,10 +75,10 @@ struct BudgetProgressCard: View {
                 ZStack(alignment: .leading){
                     Capsule()
                         .frame(width: UIScreen.main.bounds.width-80)
-                        .foregroundColor(Color(hex: "#E2E2E2"))
+                        .foregroundColor(Color("#E2E2E2"))
                     Capsule()
                         .frame(width: CGFloat(progressPercentage) * (UIScreen.main.bounds.width - 80))
-                                        .foregroundColor(Color(hex: "#1FCA9D"))
+                        .foregroundColor(Color("#1FCA9D"))
                 }
                 .frame(height: 6)
                 .padding(.top, 8)
@@ -102,7 +102,7 @@ struct BudgetProgressCard: View {
             .frame(height: 110)
             .padding(15)
             .padding(.top, 45)
-            .background(Color(hex: "#F6F6F6"))
+            .background(Color("#F6F6F6"))
             .cornerRadius(10)
             
             //reminder
@@ -119,7 +119,7 @@ struct BudgetProgressCard: View {
             }
             .frame(maxWidth: 400, alignment: .leading)
             .padding(15)
-            .background(Color(hex: "\(colorAlert)"))
+            .background(Color("\(colorAlert)"))
             .clipShape(TopCornersRoundedShape(radius: 10))
         }
         
