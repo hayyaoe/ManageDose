@@ -31,7 +31,7 @@
 		7EBEDBBF2C02FA6000DC4035 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBB92C02FA6000DC4035 /* Button.swift */; };
 		7EBEDBC32C02FA7200DC4035 /* BudgetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBC02C02FA7100DC4035 /* BudgetingView.swift */; };
 		7EBEDBC42C02FA7200DC4035 /* DetailBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBC12C02FA7100DC4035 /* DetailBudget.swift */; };
-		7EBEDBC52C02FA7200DC4035 /* IncomeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBC22C02FA7100DC4035 /* IncomeDetail.swift */; };
+		7EBEDBC52C02FA7200DC4035 /* IncomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBC22C02FA7100DC4035 /* IncomeDetailView.swift */; };
 		7EBEDBC92C02FB2E00DC4035 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EBEDBC82C02FB2E00DC4035 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -61,7 +61,7 @@
 		7EBEDBB92C02FA6000DC4035 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = ManageDose/Components/Button.swift; sourceTree = SOURCE_ROOT; };
 		7EBEDBC02C02FA7100DC4035 /* BudgetingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetingView.swift; sourceTree = "<group>"; };
 		7EBEDBC12C02FA7100DC4035 /* DetailBudget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBudget.swift; sourceTree = "<group>"; };
-		7EBEDBC22C02FA7100DC4035 /* IncomeDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeDetail.swift; sourceTree = "<group>"; };
+		7EBEDBC22C02FA7100DC4035 /* IncomeDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeDetailView.swift; sourceTree = "<group>"; };
 		7EBEDBC82C02FB2E00DC4035 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,7 +128,6 @@
 		7E9506CD2BFB3E7E00BDF341 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				7EBEDBC22C02FA7100DC4035 /* IncomeDetail.swift */,
 				7EBEDBB42C02FA6000DC4035 /* AddButton.swift */,
 				7EBEDBB72C02FA6000DC4035 /* BudgetProgressCard.swift */,
 				7EBEDBB92C02FA6000DC4035 /* Button.swift */,
@@ -151,6 +150,7 @@
 				7EBEDBC02C02FA7100DC4035 /* BudgetingView.swift */,
 				7E9506C92BFB35C200BDF341 /* TransactionHistoryView.swift */,
 				7E71FC382BFAEC2500F58890 /* HomeView.swift */,
+				7EBEDBC22C02FA7100DC4035 /* IncomeDetailView.swift */,
 				3F76959B2C0037EF00FEE52D /* AddNewExpenseView.swift */,
 			);
 			path = Views;
@@ -262,7 +262,7 @@
 				7EB947E42BFB59EB00A7C723 /* TransactionHistoryViewModel.swift in Sources */,
 				7EBEDBBC2C02FA6000DC4035 /* IncomeCard.swift in Sources */,
 				3F76959C2C0037EF00FEE52D /* AddNewExpenseView.swift in Sources */,
-				7EBEDBC52C02FA7200DC4035 /* IncomeDetail.swift in Sources */,
+				7EBEDBC52C02FA7200DC4035 /* IncomeDetailView.swift in Sources */,
 				7E9506CA2BFB35C200BDF341 /* TransactionHistoryView.swift in Sources */,
 				7E0EDBB42BF6F66E00C384B8 /* ManageDoseApp.swift in Sources */,
 				3F7695982C00238600FEE52D /* AddNewExpenseCard.swift in Sources */,
