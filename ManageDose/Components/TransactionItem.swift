@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TransactionItem: View {
+    var transactionData: TransactionData
+    
     var body: some View {
         HStack{
             Image(systemName: "tag.square")
@@ -19,10 +21,10 @@ struct TransactionItem: View {
             VStack(
                 alignment: .leading
             ){
-                Text("McDonad's")
+                Text(transactionData.name)
                     .fontWeight(.bold)
                     .font(.headline)
-                Text("Basic Needs")
+                Text(transactionData.budget.rawValue)
                     .font(.subheadline)
           
             }
@@ -32,11 +34,19 @@ struct TransactionItem: View {
             VStack(
                 alignment: .trailing
             ){
-                Text("- Rp. 69.420")
-                    .fontWeight(.bold)
-                    .font(.headline)
-                    .foregroundStyle(.red)
-                Text("19 Mei 2024")
+                if transactionData.cashFlow == .expense {
+                    Text(String(format: "- Rp. %.2f", transactionData.amount))
+                        .fontWeight(.bold)
+                        .font(.headline)
+                        .foregroundStyle(.red)
+                }else{
+                    Text(String(format: "+ Rp. %.2f", transactionData.amount))
+                        .fontWeight(.bold)
+                        .font(.headline)
+                        .foregroundStyle(.green)
+                }
+
+                Text(transactionData.date, style: .date)
                     .font(.subheadline)
             }
         }
@@ -44,6 +54,9 @@ struct TransactionItem: View {
     }
 }
 
-#Preview {
-    TransactionItem()
+struct TransactionItem_Preview: PreviewProvider {
+    static var previews: some View {
+        let transaction = TransactionData(id: "Nice", name: "ChiFry", date: Date(), amount: 69420, cashFlow: .income, budget: .dailyneeds)
+        TransactionItem(transactionData: transaction)
+    }
 }
