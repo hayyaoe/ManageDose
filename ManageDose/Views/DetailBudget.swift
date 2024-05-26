@@ -10,7 +10,7 @@ import SwiftUI
 struct DetailBudget: View {
     var body: some View {
         VStack{
-            BudgetProgressCard(colorAlert: "#1FCA9D")
+            BudgetProgressCard(colorAlert: Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1))
                 .padding(.top, 10)
             Rectangle()
                 .fill(Color(red: 220/255, green: 213/255, blue: 255/255, opacity: 1))

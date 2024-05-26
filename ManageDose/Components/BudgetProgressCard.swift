@@ -43,7 +43,7 @@ struct TopCornersRoundedShape: Shape {
 
 struct BudgetProgressCard: View {
     let progressPercentage: Double = 0.7
-    let colorAlert: String
+    let colorAlert: Color
     var body: some View {
         ZStack(alignment: .topLeading){
             //logo and progress
@@ -75,10 +75,11 @@ struct BudgetProgressCard: View {
                 ZStack(alignment: .leading){
                     Capsule()
                         .frame(width: UIScreen.main.bounds.width-80)
-                        .foregroundColor(Color(hex: "#E2E2E2"))
+                        .foregroundColor(Color(red: 226 / 255, green: 226 / 255, blue: 226 / 255, opacity: 1))
                     Capsule()
                         .frame(width: CGFloat(progressPercentage) * (UIScreen.main.bounds.width - 80))
-                                        .foregroundColor(Color(hex: "#1FCA9D"))
+                        .foregroundColor(Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1))
+                        
                 }
                 .frame(height: 6)
                 .padding(.top, 8)
@@ -102,7 +103,7 @@ struct BudgetProgressCard: View {
             .frame(height: 110)
             .padding(15)
             .padding(.top, 45)
-            .background(Color(hex: "#F6F6F6"))
+            .background(Color(red: 246 / 255, green: 246 / 255, blue: 246 / 255, opacity: 1))
             .cornerRadius(10)
             
             //reminder
@@ -119,7 +120,7 @@ struct BudgetProgressCard: View {
             }
             .frame(maxWidth: 400, alignment: .leading)
             .padding(15)
-            .background(Color(hex: "\(colorAlert)"))
+            .background(colorAlert)
             .clipShape(TopCornersRoundedShape(radius: 10))
         }
         
@@ -127,5 +128,5 @@ struct BudgetProgressCard: View {
 }
 
 #Preview {
-    BudgetProgressCard(colorAlert: "#E93700")
+    BudgetProgressCard(colorAlert: Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1))
 }
