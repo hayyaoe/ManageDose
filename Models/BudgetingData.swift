@@ -8,14 +8,15 @@
 import Foundation
 import SwiftData
 
-enum Budget: Codable {
-    case saving
-    case dailyneeds
-    case wants
+enum Budget: String, Codable{
+    
+    case saving = "Savings"
+    case dailyneeds = "Daily Needs"
+    case wants = "Wants"
 }
 
 @Model
-class BudgetingData{
+class BudgetingData: Identifiable{
     @Attribute(.unique) var id: String
     var name: String
     var percentage: Double
