@@ -10,10 +10,13 @@
 		3F7695982C00238600FEE52D /* AddNewExpenseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7695972C00238600FEE52D /* AddNewExpenseCard.swift */; };
 		3F76959A2C00252400FEE52D /* PopUpBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7695992C00252400FEE52D /* PopUpBar.swift */; };
 		3F76959C2C0037EF00FEE52D /* AddNewExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76959B2C0037EF00FEE52D /* AddNewExpenseView.swift */; };
+		7E073D3D2C0370B100933456 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E073D382C0370B100933456 /* Slider.swift */; };
+		7E073D3E2C0370B100933456 /* SettingBudgetItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E073D392C0370B100933456 /* SettingBudgetItem.swift */; };
+		7E073D3F2C0370B100933456 /* SettingBudgetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E073D3A2C0370B100933456 /* SettingBudgetRow.swift */; };
+		7E073D402C0370B100933456 /* SettingBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E073D3B2C0370B100933456 /* SettingBudgetView.swift */; };
 		7E0EDBB42BF6F66E00C384B8 /* ManageDoseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0EDBB32BF6F66E00C384B8 /* ManageDoseApp.swift */; };
 		7E0EDBB62BF6F66E00C384B8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0EDBB52BF6F66E00C384B8 /* ContentView.swift */; };
 		7E0EDBB82BF6F66F00C384B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E0EDBB72BF6F66F00C384B8 /* Assets.xcassets */; };
-		7E0EDBBB2BF6F66F00C384B8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E0EDBBA2BF6F66F00C384B8 /* Preview Assets.xcassets */; };
 		7E4215782BFC8F7100B0AFDB /* TransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4215772BFC8F7100B0AFDB /* TransactionData.swift */; };
 		7E42157A2BFC9F5E00B0AFDB /* BudgetingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4215792BFC9F5E00B0AFDB /* BudgetingData.swift */; };
 		7E71FC392BFAEC2500F58890 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71FC382BFAEC2500F58890 /* HomeView.swift */; };
@@ -23,17 +26,31 @@
 		7E9506CC2BFB3C1400BDF341 /* SeparatorBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9506CB2BFB3C1400BDF341 /* SeparatorBar.swift */; };
 		7EB947E22BFB59BE00A7C723 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB947E12BFB59BE00A7C723 /* HomeViewModel.swift */; };
 		7EB947E42BFB59EB00A7C723 /* TransactionHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB947E32BFB59EB00A7C723 /* TransactionHistoryViewModel.swift */; };
+		7EBEDBB32C02FA3D00DC4035 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBB12C02FA3D00DC4035 /* ColorExtension.swift */; };
+		7EBEDBBA2C02FA6000DC4035 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBB42C02FA6000DC4035 /* AddButton.swift */; };
+		7EBEDBBB2C02FA6000DC4035 /* ExpenseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBB52C02FA6000DC4035 /* ExpenseCard.swift */; };
+		7EBEDBBC2C02FA6000DC4035 /* IncomeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBB62C02FA6000DC4035 /* IncomeCard.swift */; };
+		7EBEDBBD2C02FA6000DC4035 /* BudgetProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBB72C02FA6000DC4035 /* BudgetProgressCard.swift */; };
+		7EBEDBBE2C02FA6000DC4035 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBB82C02FA6000DC4035 /* PieChart.swift */; };
+		7EBEDBBF2C02FA6000DC4035 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBB92C02FA6000DC4035 /* Button.swift */; };
+		7EBEDBC32C02FA7200DC4035 /* BudgetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBC02C02FA7100DC4035 /* BudgetingView.swift */; };
+		7EBEDBC42C02FA7200DC4035 /* DetailBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBC12C02FA7100DC4035 /* DetailBudget.swift */; };
+		7EBEDBC52C02FA7200DC4035 /* IncomeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBC22C02FA7100DC4035 /* IncomeDetail.swift */; };
+		7EBEDBC92C02FB2E00DC4035 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EBEDBC82C02FB2E00DC4035 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3F7695972C00238600FEE52D /* AddNewExpenseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewExpenseCard.swift; sourceTree = "<group>"; };
 		3F7695992C00252400FEE52D /* PopUpBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpBar.swift; sourceTree = "<group>"; };
 		3F76959B2C0037EF00FEE52D /* AddNewExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewExpenseView.swift; sourceTree = "<group>"; };
+		7E073D382C0370B100933456 /* Slider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
+		7E073D392C0370B100933456 /* SettingBudgetItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingBudgetItem.swift; sourceTree = "<group>"; };
+		7E073D3A2C0370B100933456 /* SettingBudgetRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingBudgetRow.swift; sourceTree = "<group>"; };
+		7E073D3B2C0370B100933456 /* SettingBudgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingBudgetView.swift; sourceTree = "<group>"; };
 		7E0EDBB02BF6F66E00C384B8 /* ManageDose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManageDose.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E0EDBB32BF6F66E00C384B8 /* ManageDoseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDoseApp.swift; sourceTree = "<group>"; };
 		7E0EDBB52BF6F66E00C384B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7E0EDBB72BF6F66F00C384B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7E0EDBBA2BF6F66F00C384B8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7E4215772BFC8F7100B0AFDB /* TransactionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionData.swift; sourceTree = "<group>"; };
 		7E4215792BFC9F5E00B0AFDB /* BudgetingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetingData.swift; sourceTree = "<group>"; };
 		7E71FC382BFAEC2500F58890 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -43,6 +60,17 @@
 		7E9506CB2BFB3C1400BDF341 /* SeparatorBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorBar.swift; sourceTree = "<group>"; };
 		7EB947E12BFB59BE00A7C723 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		7EB947E32BFB59EB00A7C723 /* TransactionHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryViewModel.swift; sourceTree = "<group>"; };
+		7EBEDBB12C02FA3D00DC4035 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		7EBEDBB42C02FA6000DC4035 /* AddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddButton.swift; path = ManageDose/Components/AddButton.swift; sourceTree = SOURCE_ROOT; };
+		7EBEDBB52C02FA6000DC4035 /* ExpenseCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpenseCard.swift; path = ManageDose/Components/ExpenseCard.swift; sourceTree = SOURCE_ROOT; };
+		7EBEDBB62C02FA6000DC4035 /* IncomeCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IncomeCard.swift; path = ManageDose/Components/IncomeCard.swift; sourceTree = SOURCE_ROOT; };
+		7EBEDBB72C02FA6000DC4035 /* BudgetProgressCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BudgetProgressCard.swift; path = ManageDose/Components/BudgetProgressCard.swift; sourceTree = SOURCE_ROOT; };
+		7EBEDBB82C02FA6000DC4035 /* PieChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PieChart.swift; path = ManageDose/Components/PieChart.swift; sourceTree = SOURCE_ROOT; };
+		7EBEDBB92C02FA6000DC4035 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Button.swift; path = ManageDose/Components/Button.swift; sourceTree = SOURCE_ROOT; };
+		7EBEDBC02C02FA7100DC4035 /* BudgetingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetingView.swift; sourceTree = "<group>"; };
+		7EBEDBC12C02FA7100DC4035 /* DetailBudget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBudget.swift; sourceTree = "<group>"; };
+		7EBEDBC22C02FA7100DC4035 /* IncomeDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeDetail.swift; sourceTree = "<group>"; };
+		7EBEDBC82C02FB2E00DC4035 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +106,12 @@
 				7E0EDBB32BF6F66E00C384B8 /* ManageDoseApp.swift */,
 				7E0EDBB52BF6F66E00C384B8 /* ContentView.swift */,
 				7E0EDBB72BF6F66F00C384B8 /* Assets.xcassets */,
+				7E4215742BFC640500B0AFDB /* Models */,
+				7EBEDBB22C02FA3D00DC4035 /* Extension */,
 				7E0EDBB92BF6F66F00C384B8 /* Preview Content */,
 				7E9506CE2BFB3EA200BDF341 /* Views */,
 				7EB947E52BFB59F300A7C723 /* ViewModels */,
 				7E9506CD2BFB3E7E00BDF341 /* Components */,
-				7E4215742BFC640500B0AFDB /* Models */,
 			);
 			path = ManageDose;
 			sourceTree = "<group>";
@@ -90,7 +119,7 @@
 		7E0EDBB92BF6F66F00C384B8 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				7E0EDBBA2BF6F66F00C384B8 /* Preview Assets.xcassets */,
+				7EBEDBC82C02FB2E00DC4035 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -107,6 +136,16 @@
 		7E9506CD2BFB3E7E00BDF341 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				7E073D392C0370B100933456 /* SettingBudgetItem.swift */,
+				7E073D3A2C0370B100933456 /* SettingBudgetRow.swift */,
+				7E073D382C0370B100933456 /* Slider.swift */,
+				7EBEDBC22C02FA7100DC4035 /* IncomeDetail.swift */,
+				7EBEDBB42C02FA6000DC4035 /* AddButton.swift */,
+				7EBEDBB72C02FA6000DC4035 /* BudgetProgressCard.swift */,
+				7EBEDBB92C02FA6000DC4035 /* Button.swift */,
+				7EBEDBB52C02FA6000DC4035 /* ExpenseCard.swift */,
+				7EBEDBB62C02FA6000DC4035 /* IncomeCard.swift */,
+				7EBEDBB82C02FA6000DC4035 /* PieChart.swift */,
 				7E71FC3A2BFB193200F58890 /* TransactionItem.swift */,
 				7E71FC3C2BFB1E3500F58890 /* BudgetingCard.swift */,
 				7E9506CB2BFB3C1400BDF341 /* SeparatorBar.swift */,
@@ -119,6 +158,9 @@
 		7E9506CE2BFB3EA200BDF341 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7E073D3B2C0370B100933456 /* SettingBudgetView.swift */,
+				7EBEDBC12C02FA7100DC4035 /* DetailBudget.swift */,
+				7EBEDBC02C02FA7100DC4035 /* BudgetingView.swift */,
 				7E9506C92BFB35C200BDF341 /* TransactionHistoryView.swift */,
 				7E71FC382BFAEC2500F58890 /* HomeView.swift */,
 				3F76959B2C0037EF00FEE52D /* AddNewExpenseView.swift */,
@@ -133,6 +175,14 @@
 				7EB947E32BFB59EB00A7C723 /* TransactionHistoryViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		7EBEDBB22C02FA3D00DC4035 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				7EBEDBB12C02FA3D00DC4035 /* ColorExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,7 +243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E0EDBBB2BF6F66F00C384B8 /* Preview Assets.xcassets in Resources */,
+				7EBEDBC92C02FB2E00DC4035 /* Preview Assets.xcassets in Resources */,
 				7E0EDBB82BF6F66F00C384B8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,19 +256,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F76959A2C00252400FEE52D /* PopUpBar.swift in Sources */,
+				7EBEDBC42C02FA7200DC4035 /* DetailBudget.swift in Sources */,
 				7E42157A2BFC9F5E00B0AFDB /* BudgetingData.swift in Sources */,
+				7EBEDBC32C02FA7200DC4035 /* BudgetingView.swift in Sources */,
+				7E073D3E2C0370B100933456 /* SettingBudgetItem.swift in Sources */,
 				7E0EDBB62BF6F66E00C384B8 /* ContentView.swift in Sources */,
 				7E71FC3D2BFB1E3500F58890 /* BudgetingCard.swift in Sources */,
 				7E9506CC2BFB3C1400BDF341 /* SeparatorBar.swift in Sources */,
 				7EB947E22BFB59BE00A7C723 /* HomeViewModel.swift in Sources */,
 				7E71FC392BFAEC2500F58890 /* HomeView.swift in Sources */,
+				7E073D402C0370B100933456 /* SettingBudgetView.swift in Sources */,
+				7EBEDBBF2C02FA6000DC4035 /* Button.swift in Sources */,
 				7E71FC3E2BFB1E7000F58890 /* TransactionItem.swift in Sources */,
+				7EBEDBBD2C02FA6000DC4035 /* BudgetProgressCard.swift in Sources */,
+				7EBEDBBE2C02FA6000DC4035 /* PieChart.swift in Sources */,
+				7EBEDBBB2C02FA6000DC4035 /* ExpenseCard.swift in Sources */,
+				7E073D3D2C0370B100933456 /* Slider.swift in Sources */,
 				7E4215782BFC8F7100B0AFDB /* TransactionData.swift in Sources */,
+				7EBEDBB32C02FA3D00DC4035 /* ColorExtension.swift in Sources */,
 				7EB947E42BFB59EB00A7C723 /* TransactionHistoryViewModel.swift in Sources */,
+				7EBEDBBC2C02FA6000DC4035 /* IncomeCard.swift in Sources */,
 				3F76959C2C0037EF00FEE52D /* AddNewExpenseView.swift in Sources */,
+				7EBEDBC52C02FA7200DC4035 /* IncomeDetail.swift in Sources */,
 				7E9506CA2BFB35C200BDF341 /* TransactionHistoryView.swift in Sources */,
+				7E073D3F2C0370B100933456 /* SettingBudgetRow.swift in Sources */,
 				7E0EDBB42BF6F66E00C384B8 /* ManageDoseApp.swift in Sources */,
 				3F7695982C00238600FEE52D /* AddNewExpenseCard.swift in Sources */,
+				7EBEDBBA2C02FA6000DC4035 /* AddButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +341,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -334,7 +398,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -360,6 +424,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -389,6 +454,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
