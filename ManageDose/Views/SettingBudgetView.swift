@@ -18,7 +18,7 @@ struct SettingBudget: View {
         let wantsPercentage = ((width1 - width) / totalWidth) * 100
         let savingsPercentage = ((totalWidth - width1) / totalWidth) * 100
         VStack (alignment: .leading){
-            Text("Spending Budget")
+            Text("Spending Budget rici")
                 .font(.title3)
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
             Text("Enter your spending budget in one month.")
