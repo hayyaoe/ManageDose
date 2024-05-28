@@ -37,6 +37,7 @@
 		7EBEDBC42C02FA7200DC4035 /* DetailBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBC12C02FA7100DC4035 /* DetailBudget.swift */; };
 		7EBEDBC52C02FA7200DC4035 /* IncomeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBC22C02FA7100DC4035 /* IncomeDetail.swift */; };
 		7EBEDBC92C02FB2E00DC4035 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EBEDBC82C02FB2E00DC4035 /* Preview Assets.xcassets */; };
+		7EE673FE2C05B278001777E4 /* IncomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE673FD2C05B278001777E4 /* IncomeDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		7EBEDBC12C02FA7100DC4035 /* DetailBudget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailBudget.swift; sourceTree = "<group>"; };
 		7EBEDBC22C02FA7100DC4035 /* IncomeDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncomeDetail.swift; sourceTree = "<group>"; };
 		7EBEDBC82C02FB2E00DC4035 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7EE673FD2C05B278001777E4 /* IncomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 				7E9506C92BFB35C200BDF341 /* TransactionHistoryView.swift */,
 				7E71FC382BFAEC2500F58890 /* HomeView.swift */,
 				3F76959B2C0037EF00FEE52D /* AddNewExpenseView.swift */,
+				7EE673FD2C05B278001777E4 /* IncomeDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				7EBEDBBC2C02FA6000DC4035 /* IncomeCard.swift in Sources */,
 				3F76959C2C0037EF00FEE52D /* AddNewExpenseView.swift in Sources */,
 				7EBEDBC52C02FA7200DC4035 /* IncomeDetail.swift in Sources */,
+				7EE673FE2C05B278001777E4 /* IncomeDetailView.swift in Sources */,
 				7E9506CA2BFB35C200BDF341 /* TransactionHistoryView.swift in Sources */,
 				7E073D3F2C0370B100933456 /* SettingBudgetRow.swift in Sources */,
 				7E0EDBB42BF6F66E00C384B8 /* ManageDoseApp.swift in Sources */,
