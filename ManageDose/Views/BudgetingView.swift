@@ -40,10 +40,10 @@ struct BudgetingView: View {
                     }
                     .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 20))
                     NavigationLink(destination: DetailBudget()) {
-                        BudgetProgressCard(colorAlert: "#1FCA9D")
+                        BudgetProgressCard(colorAlert: Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1))
                     }
-                    BudgetProgressCard(colorAlert: "#5339EE")
-                    BudgetProgressCard(colorAlert: "#E93700")
+                    BudgetProgressCard(colorAlert: Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1))
+                    BudgetProgressCard(colorAlert: Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1))
                 }
                 .padding(.horizontal)
             }
