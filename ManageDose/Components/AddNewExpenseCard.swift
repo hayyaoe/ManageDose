@@ -12,7 +12,7 @@ struct AddNewExpenseCard: View {
     
     @State private var expenseCategory: String = ""
     @State private var expenseName: String = ""
-    @State private var expenseAmount: Double = 50.000
+    @State private var expenseAmount: Double = 50000.0
     @State private var expenseDate: Date = Date()
     
     private var numberFormatter: NumberFormatter {
@@ -74,6 +74,7 @@ struct AddNewExpenseCard: View {
                 TextField("Rp 0", value: $expenseAmount, formatter: numberFormatter)
                     .font(.caption)
                     .foregroundStyle(.gray)
+                    .keyboardType(.numberPad)
                 SeparatorBar()
                     .padding(.bottom, 8)
                 
@@ -86,7 +87,19 @@ struct AddNewExpenseCard: View {
                         .font(.caption)
                     Spacer()
                 }
-                
+                Button(action: {
+
+                }) {
+                    Text("Add Expense")
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(allFieldsFilled ? Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1) : Color.gray)
+                        .cornerRadius(24)
+                    
+                }
+                .padding(12)
+                .disabled(!allFieldsFilled)
             }
             .onChange(of: expenseName) { checkAllFields() }
             .onChange(of: expenseAmount) { checkAllFields() }
