@@ -14,7 +14,7 @@ struct AddNewExpenseView: View {
     var body: some View {
         
         VStack{
-            BudgetProgressCard(colorAlert: "#1FCA9D")
+            BudgetProgressCard(colorAlert: Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1))
                 .padding(.horizontal)
             Button(action: {
 
@@ -49,24 +49,12 @@ struct AddNewExpenseView: View {
                 }
             }
             .padding(36)
-            Button(action: {
-
-            }) {
-                Text("Add Expense")
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(allFieldsFilled ? Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1) : Color.gray)
-                    .cornerRadius(24)
-                
-            }
-            .padding(12)
-            .disabled(!allFieldsFilled)
+            
             
         }
         .sheet(isPresented: $showSheet, content: {
             AddNewExpenseCard(allFieldsFilled: $allFieldsFilled)
-                .presentationDetents([.height(360)])
+                .presentationDetents([.height(420)])
             
         })
         
