@@ -12,6 +12,8 @@ struct SettingBudget: View {
     @State private var width1: CGFloat = (UIScreen.main.bounds.width - 60) * 0.8
     @State private var budget = 2000000
     
+    @Environment(\.modelContext) var modelContext
+    
     var body: some View {
         let totalWidth = UIScreen.main.bounds.width - 60
         let basicNeedsPercentage = (width / totalWidth) * 100
@@ -33,9 +35,9 @@ struct SettingBudget: View {
             }
         }
         
-        Divider()
+        Rectangle()
             .frame(height: 10)
-            .background(Color.purple.opacity(0.20))
+            .foregroundColor(Color(hex: "DCD5FF"))
         
         Spacer()
         
@@ -46,16 +48,15 @@ struct SettingBudget: View {
                 Image(systemName:"line.3.horizontal.decrease.circle")
                     .font(.title3)
                 Text("Tip: You can adjust your budget by sliding the slider.")
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
             }
             .frame(maxWidth: .infinity)
             .padding(10)
-            .background(Color.yellow.opacity(0.10))
-            .foregroundColor(Color.yellow)
+            .background(Color(hex: "FEF2E0"))
+            .foregroundColor(Color(hex: "DF9723"))
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(.yellow, lineWidth: 2)
+                    .stroke(Color(hex: "DF9723"), lineWidth: 2)
             )
             
             Spacer().frame(height: 20)
@@ -67,18 +68,21 @@ struct SettingBudget: View {
         }
         .padding(20)
         
-        Button(action: {
-            
-        }) {
-            Text("Save Budget")
-                .frame(maxWidth: .infinity)
-                .padding()
-                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                .foregroundColor(.white)
-                .background(Color.purple)
-                .cornerRadius(20)
-        }
-        .padding(20)
+        CustomButton()
+            .padding(20)
+        
+//        Button(action: {
+//            
+//        }) {
+//            Text("Save Budget")
+//                .frame(maxWidth: .infinity)
+//                .padding()
+//                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+//                .foregroundColor(.white)
+//                .background(Color.purple)
+//                .cornerRadius(20)
+//        }
+//        .padding(20)
         
         Spacer()
     }
