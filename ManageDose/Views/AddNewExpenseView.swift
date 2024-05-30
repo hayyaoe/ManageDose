@@ -16,17 +16,17 @@ struct AddNewExpenseView: View {
         VStack{
             BudgetProgressCard(colorAlert: Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1))
                 .padding(.horizontal)
-            Button(action: {
-
-            }) {
-                Text("Add New Transaction")
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
-                    .cornerRadius(24)
-                
-            }
+//            Button(action: {
+//
+//            }) {
+//                Text("Add New Transaction")
+//                    .foregroundColor(.white)
+//                    .padding()
+//                    .frame(maxWidth: .infinity)
+//                    .background(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
+//                    .cornerRadius(24)
+//                
+//            }
             .padding()
             Rectangle()
                 .fill(Color(red: 220/255, green: 213/255, blue: 255/255, opacity: 1))
