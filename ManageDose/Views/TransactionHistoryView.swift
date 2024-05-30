@@ -39,9 +39,11 @@ struct TransactionHistoryView: View {
                         Image(systemName: "list.bullet.rectangle")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(height: 50)
+                            .frame(height: 40)
                             .foregroundStyle(.gray)
+                            .padding(4)
                         Text("Add Transactions to see list")
+                            .foregroundStyle(.gray)
                     }
                     
                 }
