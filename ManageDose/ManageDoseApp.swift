@@ -11,17 +11,16 @@ import SwiftData
 @main
 struct ManageDoseApp: App {
 
-    let container: ModelContainer = {
-        let schema = Schema([TransactionData.self])
-        let container = try! ModelContainer(for: schema, configurations: [])
-        return container
-    }()
+    let transactionContainer = try! ModelContainer(for: TransactionData.self)
+    let budgetContainer = try! ModelContainer(for: BudgetingData.self)
 
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(container)
+        .modelContainer(transactionContainer)
+        .modelContainer(budgetContainer)
         .modelContainer(for: [TransactionData.self])
+        .modelContainer(for: [BudgetingData.self])
     }
 }
