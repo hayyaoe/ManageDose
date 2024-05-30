@@ -56,7 +56,7 @@ struct TransactionItem: View {
 
 struct TransactionItem_Preview: PreviewProvider {
     static var previews: some View {
-        let transaction = TransactionData(id: "Nice", name: "ChiFry", date: Date(), amount: 69420, cashFlow: .income, budget: .dailyneeds)
+        let transaction = TransactionData(id: "Nice", name: "ChiFry", date: Date(), amount: 69420, cashFlow: .income, budget: .dailyneeds, category: .food)
         TransactionItem(transactionData: transaction)
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BudgetingCard: View {
     
-//    var budgetingData: BudgetingData
+    var budgetingData: BudgetingData
     
     var body: some View {
         VStack(
@@ -41,14 +41,14 @@ struct BudgetingCard: View {
     }
 }
 
-//struct BudgetingCard_Preview: PreviewProvider {
-//    static var previews: some View {
-//        let budgetingData = BudgetingData(id: "Budget A", name: Budget.dailyneeds.rawValue, percentage: 0.7, budget: .dailyneeds)
-//        BudgetingCard(budgetingData: budgetingData)
-//    }
-//}
-
-#Preview{
-    BudgetingCard()
+struct BudgetingCard_Preview: PreviewProvider {
+    static var previews: some View {
+        let budgetingData = BudgetingData(id: "Budget A", name: Budget.dailyneeds.rawValue, percentage: 0.7, budget: .dailyneeds )
+        BudgetingCard(budgetingData: budgetingData)
+    }
 }
+
+//#Preview{
+//    BudgetingCard()
+//}
 

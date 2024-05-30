@@ -29,7 +29,7 @@ struct TransactionHistoryView: View {
             ScrollView(.vertical, showsIndicators: false){
                 LazyVStack{
                     ForEach(transactions){ transaction in
-                        TransactionItem(transactionData: TransactionData(id: "Strong", name: "McDonald's", date: Date(), amount: 109000, cashFlow: .expense, budget: .dailyneeds))
+                        TransactionItem(transactionData: TransactionData(id: "Strong", name: "McDonald's", date: Date(), amount: 109000, cashFlow: .expense, budget: .dailyneeds, category: .food))
                         SeparatorBar()
                     }
                 }.padding(.horizontal)
