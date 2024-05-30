@@ -15,12 +15,16 @@ struct SettingBudgetRow: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            HStack (spacing: 10){
+            HStack (spacing: 15){
                 SettingBudgetItem(percentage: Int(basicNeedsPercentage), name: "Basic Needs", amount: budget*Int(basicNeedsPercentage)/100)
-                SettingBudgetItem(percentage: Int(wantsPercentage), name: "Wants", amount: budget*Int(wantsPercentage)/100)
+                SettingBudgetItem(percentage: Int(savingsPercentage), name: "Savings", amount: budget*Int(savingsPercentage)/100)
             }
             .frame(width: .infinity)
-            SettingBudgetItem(percentage: Int(savingsPercentage), name: "Savings", amount: budget*Int(savingsPercentage)/100)
+            
+            Spacer().frame(height: 14)
+            
+            
+            SettingBudgetItem(percentage: Int(wantsPercentage), name: "Wants", amount: budget*Int(wantsPercentage)/100)
         }
     }
 }

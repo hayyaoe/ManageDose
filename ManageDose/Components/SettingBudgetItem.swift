@@ -13,7 +13,7 @@ struct SettingBudgetItem: View {
     let amount: Int
     
     var body: some View {
-        if (name == "Savings"){
+        if (name == "Wants"){
             HStack {
                 HStack {
                     Text("\(percentage)%")
@@ -22,19 +22,20 @@ struct SettingBudgetItem: View {
                         .padding(.horizontal, 10)
                         .padding(.vertical, 20)
                         .foregroundColor(.white)
-                        .background(Color.blue)
+                        .background(Color(hex: "2E66363"))
                         .cornerRadius(8)
                     Text("\(name)")
                         .font(.subheadline)
+                        .padding(.horizontal, 5)
                 }
                 Spacer()
+                
                 Text("Rp. \(amount)")
                     .font(.system(size: 18))
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    
             }
             .padding(20)
-            .background(Color.white)
+            .background(Color(hex: "FCC5C5"))
             .cornerRadius(15)
             .shadow(radius: 1)
         } else {
@@ -48,11 +49,11 @@ struct SettingBudgetItem: View {
                     .background {
                         switch name {
                         case "Basic Needs":
-                            return Color.yellow
-                        case "Wants":
-                            return Color.red
+                            return Color(hex: "FEAC28")
+                        case "Savings":
+                            return Color(hex: "2244A0")
                         default:
-                            return Color.yellow
+                            return Color(hex: "FEAC28")
                         }
                     }
                     .cornerRadius(8)
@@ -63,18 +64,27 @@ struct SettingBudgetItem: View {
                     Text("Rp. \(amount)")
                         .font(.system(size: 18))
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                }.padding(.vertical, 2)
-                
+                }
+                .padding(.vertical, 2)
             }
             .padding(.vertical, 20)
-            .padding(.horizontal, 28)
-            .background(Color.white)
-            .cornerRadius(15)
+            .padding(.horizontal, 24)
+            .background {
+                switch name {
+                case "Basic Needs":
+                    return Color(hex: "FEF2E0")
+                case "Savings":
+                    return Color(hex: "BFD0FF")
+                default:
+                    return Color(hex: "FEF2E0")
+                }
+            }
+            .cornerRadius(20)
             .shadow(radius: 1)
         }
     }
 }
 
 #Preview {
-    SettingBudgetItem(percentage: 50, name: "Wants", amount: 3130000)
+    SettingBudgetItem(percentage: 50, name: "Savings", amount: 3130000)
 }
