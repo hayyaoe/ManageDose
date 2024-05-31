@@ -18,10 +18,8 @@ enum Budget: String, Codable{
 
 
 enum Category: String, Codable {
-    
     case food = "Food"
     case electricity = "Electric Bill"
-    
 }
 
 @Model
@@ -34,13 +32,11 @@ class BudgetingData: Identifiable{
     var category: Category
     
     init(id: String, name: String, percentage: Double, budget: Budget, category: Category) {
-        
         self.id = id
         self.name = name
         self.percentage = percentage
         self.budget = budget
         self.category = category
-        
     }
     
 }

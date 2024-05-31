@@ -8,36 +8,36 @@
 import SwiftUI
 
 struct ExpenseCard: View {
+    let expenseName: String
+    let expenseCategory: String
+    let expenseAmount: Double
+    let expenseDate: Date
+
     var body: some View {
-        HStack{
-            HStack{
+        HStack {
+            HStack {
                 Image(systemName: "tag.square")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundStyle(.yellow)
                     .frame(height: 50)
                 
-                VStack(
-                    alignment: .leading
-                ){
-                    Text("McDonad's")
+                VStack(alignment: .leading) {
+                    Text(expenseName)
                         .fontWeight(.bold)
                         .font(.headline)
-                    Text("Basic Needs")
+                    Text(expenseCategory)
                         .font(.subheadline)
-              
                 }
                 
                 Spacer()
                 
-                VStack(
-                    alignment: .trailing
-                ){
-                    Text("- Rp. 69.420")
+                VStack(alignment: .trailing) {
+                    Text("- Rp. \(String(format: "%.2f", expenseAmount))")
                         .fontWeight(.bold)
                         .font(.headline)
                         .foregroundStyle(.red)
-                    Text("19 Mei 2024")
+                    Text(expenseDate, style: .date)
                         .font(.subheadline)
                 }
             }
@@ -54,5 +54,6 @@ struct ExpenseCard: View {
 }
 
 #Preview {
-    ExpenseCard()
+    ExpenseCard(expenseName: "McDonad's", expenseCategory: "Basic Needs", expenseAmount: 69.42, expenseDate: Date())
 }
+
