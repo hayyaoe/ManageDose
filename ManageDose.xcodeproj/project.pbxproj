@@ -56,7 +56,7 @@
 		7E073D3A2C0370B100933456 /* SettingBudgetRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingBudgetRow.swift; sourceTree = "<group>"; };
 		7E073D3B2C0370B100933456 /* SettingBudgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingBudgetView.swift; sourceTree = "<group>"; };
 		7E0A45962C086D6800818A13 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
-		7E0EDBB02BF6F66E00C384B8 /* ManageDose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManageDose.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E0EDBB02BF6F66E00C384B8 /* ManageDose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ManageDose.app; path = "/Users/mac/Documents/ManageDose/build/Debug-iphoneos/ManageDose.app"; sourceTree = "<absolute>"; };
 		7E0EDBB32BF6F66E00C384B8 /* ManageDoseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDoseApp.swift; sourceTree = "<group>"; };
 		7E0EDBB52BF6F66E00C384B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7E0EDBB72BF6F66F00C384B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -104,16 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				7E0EDBB22BF6F66E00C384B8 /* ManageDose */,
-				7E0EDBB12BF6F66E00C384B8 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		7E0EDBB12BF6F66E00C384B8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7E0EDBB02BF6F66E00C384B8 /* ManageDose.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		7E0EDBB22BF6F66E00C384B8 /* ManageDose */ = {
@@ -245,7 +236,7 @@
 				Base,
 			);
 			mainGroup = 7E0EDBA72BF6F66E00C384B8;
-			productRefGroup = 7E0EDBB12BF6F66E00C384B8 /* Products */;
+			productRefGroup = 7E0EDBA72BF6F66E00C384B8;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (

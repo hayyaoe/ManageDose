@@ -16,8 +16,6 @@ enum Budget: String, Codable, CaseIterable{
     
 }
 
-
-
 @Model
 class BudgetingData: Identifiable{
     
@@ -25,8 +23,8 @@ class BudgetingData: Identifiable{
     var name: String
     var percentage: Double
     var budget: Budget
+
     init(id: String, name: String, percentage: Double, budget: Budget) {
-        
         self.id = id
         self.name = name
         self.percentage = percentage

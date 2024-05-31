@@ -6,8 +6,16 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct IncomeDetailView: View {
+    @Environment(\.modelContext) private var context
+    @Query private var transactions : [TransactionData]
+    @State private var showSheet = false
+    @State private var allFieldsFilled = false
+    var totalIncome: Double {
+            transactions.filter { $0.cashFlow == .income }.reduce(0) { $0 + $1.amount }
+        }
     var body: some View {
         VStack{
             VStack(alignment: .leading){
@@ -27,32 +35,31 @@ struct IncomeDetailView: View {
                 .offset(y: 8)
             ScrollView(.vertical, showsIndicators: false){
                 LazyVStack(){
-                    ExpenseCard()
-                    ExpenseCard()
-                    ExpenseCard()
-                    ExpenseCard()
-                    ExpenseCard()
-                    ExpenseCard()
-                    ExpenseCard()
-                    ExpenseCard()
-
-                }
-
-            }
-            .overlay(
-                HStack{
-                    Spacer()
-                    ZStack {
-                        Circle()
-                            .fill(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
-                            .frame(width: 60, height: 60)
-                        Image(systemName: "plus")
-                            .font(.title)
-                            .foregroundColor(.white)
+                    let incomeTransactions = transactions.filter { $0.cashFlow == .income }
+                    ForEach(incomeTransactions){ transaction in
+                        IncomeCard(incomeName: transaction.name, incomeCategory: transaction.category, incomeAmount: transaction.amount, incomeDate: transaction.date)
                     }
                 }
-                    .offset(x: -10, y: 230)
+            }
+            .overlay(
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        showSheet.toggle()
+                    }) {
+                        ZStack {
+                            Circle()
+                                .fill(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
+                                .frame(width: 60, height: 60)
+                            Image(systemName: "plus")
+                                .font(.title)
+                                .foregroundColor(.white)
+                        }
+                    }
+                }
+                .offset(x: -10, y: 230)
             )
+
 
             Divider()
                 .background(Color.gray)
@@ -67,7 +74,7 @@ struct IncomeDetailView: View {
                     .foregroundStyle(.gray)
 
                 Spacer()
-                Text("Rp. 23.112.999")
+                Text("Rp. \(totalIncome, specifier: "%.2f")")
                     .font(.title3)
                     .fontWeight(.semibold)
             }
@@ -79,6 +86,11 @@ struct IncomeDetailView: View {
             .font(.title3)
             .fontWeight(.semibold)
         , displayMode: .inline)
+        .sheet(isPresented: $showSheet, content: {
+            AddNewExpenseCard(allFieldsFilled: $allFieldsFilled, isIncome: true)
+                .presentationDetents([.height(420)])
+            
+        })
 
     }
 }
