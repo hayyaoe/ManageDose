@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExpenseCard: View {
     let expenseName: String
-    let expenseCategory: String
+    let expenseCategory: CategoryTransaction
     let expenseAmount: Double
     let expenseDate: Date
 
@@ -26,7 +26,7 @@ struct ExpenseCard: View {
                     Text(expenseName)
                         .fontWeight(.bold)
                         .font(.headline)
-                    Text(expenseCategory)
+                    Text(expenseCategory.rawValue)
                         .font(.subheadline)
                 }
                 
@@ -54,6 +54,6 @@ struct ExpenseCard: View {
 }
 
 #Preview {
-    ExpenseCard(expenseName: "McDonad's", expenseCategory: "Basic Needs", expenseAmount: 69.42, expenseDate: Date())
+    ExpenseCard(expenseName: "McDonad's", expenseCategory: .electricity, expenseAmount: 69.42, expenseDate: Date())
 }
 
