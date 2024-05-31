@@ -8,10 +8,11 @@
 import Foundation
 import SwiftData
 
-enum CashFlow: String, Codable {
+enum CashFlow: String, Codable, CaseIterable{
     case income = "Income"
     case expense = "Expense"
 }
+
 
 @Model
 class TransactionData{
