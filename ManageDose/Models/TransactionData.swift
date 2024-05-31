@@ -15,19 +15,21 @@ enum CashFlow: String, Codable {
 
 @Model
 class TransactionData{
-    @Attribute(.unique) var id: String
+    var id: String
     var name: String
     var date: Date
     var amount: Double
     var cashFlow: CashFlow
     var budget: Budget
+    var category: String
     
-    init(id: String, name: String, date: Date, amount: Double, cashFlow: CashFlow, budget: Budget) {
-        self.id = id
+    init(id: String, name: String, date: Date, amount: Double, cashFlow: CashFlow, budget: Budget, category: String) {
+        self.id = UUID().uuidString
         self.name = name
         self.date = date
         self.amount = amount
         self.cashFlow = cashFlow
         self.budget = budget
+        self.category = category
     }
 }
