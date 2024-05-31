@@ -16,9 +16,9 @@ struct SettingBudget: View {
     
     var body: some View {
         let totalWidth = UIScreen.main.bounds.width - 60
-        let basicNeedsPercentage = (width / totalWidth) * 100
-        let wantsPercentage = ((width1 - width) / totalWidth) * 100
-        let savingsPercentage = ((totalWidth - width1) / totalWidth) * 100
+        let basicNeedsPercentage = ((width / totalWidth) * 100).rounded()
+        let savingsPercentage = (((width1 - width) / totalWidth) * 100).rounded()
+        let wantsPercentage = (((totalWidth - width1) / totalWidth) * 100).rounded()
         VStack (alignment: .leading){
             Text("Spending Budget")
                 .font(.title3)
