@@ -10,7 +10,7 @@ import SwiftData
 
 struct DetailBudget: View {
     @Environment(\.modelContext) private var context
-    @Query private var transactions : [TransactionData]
+    @Query private var expenses : [ExpenseData]
     @State private var showSheet = false
     @State private var allFieldsFilled = false
     var body: some View {
@@ -23,9 +23,8 @@ struct DetailBudget: View {
                 .padding(10)
             ScrollView(.vertical, showsIndicators: false){
                 LazyVStack(){
-                    let expenseTransactions = transactions.filter { $0.cashFlow == .expense }
-                    ForEach(expenseTransactions){ transaction in
-                        ExpenseCard(expenseName: transaction.name, expenseCategory: transaction.category, expenseAmount: transaction.amount, expenseDate: transaction.date)
+                    ForEach(expenses){ expense in
+                        ExpenseCard(expenseName: expense.name, expenseCategory: expense.categoryTransaction, expenseAmount: expense.amount, expenseDate: expense.date)
                     }
                 }
             }

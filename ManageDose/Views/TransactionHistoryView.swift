@@ -47,7 +47,7 @@ struct TransactionHistoryView: View {
                         Text("Add Transactions to see list")
                             .foregroundStyle(.gray)
                         Button(action: {
-                            addTransactionSample()
+//                            addTransactionSample()
                         }, label: {
                             Text("Add Transaction Sample")
                         })
@@ -58,16 +58,16 @@ struct TransactionHistoryView: View {
         }
     }
     
-    func addTransactionSample (){
-        
-        let data4 = TransactionData(id: "BUDI", name: "XX1", date: Date(), amount: 20000, cashFlow: .expense, budget: .dailyneeds, category: .electricity)
-        let data5 = TransactionData(id: "GAMING", name: "XX2", date: Date(), amount: 20000, cashFlow: .income, budget: .wants, category: .food)
-        let data6 = TransactionData(id: "YEE", name: "XX3", date: Date(), amount: 20000, cashFlow: .expense, budget: .saving, category: .electricity)
-        
-        modelContext.insert(data4)
-        modelContext.insert(data5)
-        modelContext.insert(data6)
-    }
+//    func addTransactionSample (){
+//        
+//        let data4 = TransactionData(id: "BUDI", name: "XX1", date: Date(), amount: 20000, cashFlow: .expense, budget: .dailyneeds, categoryTransaction: .electricity)
+//        let data5 = TransactionData(id: "GAMING", name: "XX2", date: Date(), amount: 20000, cashFlow: .income, budget: .wants, categoryTransaction: .food)
+//        let data6 = TransactionData(id: "YEE", name: "XX3", date: Date(), amount: 20000, cashFlow: .expense, budget: .saving, categoryTransaction: .electricity)
+//        
+//        modelContext.insert(data4)
+//        modelContext.insert(data5)
+//        modelContext.insert(data6)
+//    }
 }
 
 #Preview {

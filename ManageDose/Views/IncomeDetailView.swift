@@ -10,12 +10,12 @@ import SwiftData
 
 struct IncomeDetailView: View {
     @Environment(\.modelContext) private var context
-    @Query private var transactions : [TransactionData]
+    @Query private var incomes : [IncomeData]
     @State private var showSheet = false
     @State private var allFieldsFilled = false
     var totalIncome: Double {
-            transactions.filter { $0.cashFlow == .income }.reduce(0) { $0 + $1.amount }
-        }
+        incomes.reduce(0) { $0 + $1.amount }
+    }
     var body: some View {
         VStack{
             VStack(alignment: .leading){
@@ -35,9 +35,8 @@ struct IncomeDetailView: View {
                 .offset(y: 8)
             ScrollView(.vertical, showsIndicators: false){
                 LazyVStack(){
-                    let incomeTransactions = transactions.filter { $0.cashFlow == .income }
-                    ForEach(incomeTransactions){ transaction in
-                        IncomeCard(incomeName: transaction.name, incomeCategory: transaction.category, incomeAmount: transaction.amount, incomeDate: transaction.date)
+                    ForEach(incomes){ income in
+                        IncomeCard(incomeName: income.name, incomeCategory: income.categoryTransaction, incomeAmount: income.amount, incomeDate: income.date)
                     }
                 }
             }

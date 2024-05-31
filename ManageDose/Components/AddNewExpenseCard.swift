@@ -15,10 +15,10 @@ struct AddNewExpenseCard: View {
     
     @State private var selectedOption = "Option 1"
         
-    var incomeCategoryOptions = ["Salary", "Other Income"]
-    var expenseCategoryOptions = ["Food", "Rent", "Electricity"]
+    let incomeCategoryOptions: [CategoryTransaction] = [.salary, .otherIncome]
+    let expenseCategoryOptions: [CategoryTransaction] = [.electricity, .food]
         
-    var options: [String] {
+    var options: [CategoryTransaction] {
         return isIncome ? incomeCategoryOptions : expenseCategoryOptions
     }
 
@@ -73,9 +73,9 @@ struct AddNewExpenseCard: View {
                     .fontWeight(.medium)
                     .padding(.bottom, 4)
                 Picker("Please choose an option", selection: $selectedOption) {
-                                    ForEach(options, id: \.self) {
-                                        Text($0)
-                                    }
+                    ForEach(options, id: \.self) { option in
+                        Text(option.rawValue)
+                    }
                                 }
                                 .pickerStyle(MenuPickerStyle())
                                 .frame(width: 360, height: 30)
@@ -109,7 +109,11 @@ struct AddNewExpenseCard: View {
                     Spacer()
                 }
                 Button(action: {
-                    addTransaction()
+                    if isIncome{
+                        addIncome()
+                    }else{
+                        addExpense()
+                    }
                 }) {
                     Text("Add Expense")
                         .foregroundColor(.white)
@@ -125,12 +129,16 @@ struct AddNewExpenseCard: View {
         }
         .padding(15)
         .background(Color.white)
-        
     }
     
-    func addTransaction() {
-        let transaction = TransactionData(id: UUID().uuidString, name: expenseName, date: expenseDate, amount: expenseAmount, cashFlow: isIncome ? .income : .expense, budget: .dailyneeds, category: selectedOption)
-        context.insert(transaction)
+    func addIncome(){
+        let income = IncomeData(id: UUID().uuidString, name: expenseName, date: expenseDate, amount: expenseAmount, categoryTransaction: CategoryTransaction(rawValue: selectedOption) ?? .salary)
+        context.insert(income)
+    }
+
+    func addExpense() {
+        let expense = ExpenseData(id: UUID().uuidString, name: expenseName, date: expenseDate, amount: expenseAmount, budget: .dailyneeds, category: CategoryTransaction(rawValue: selectedOption) ?? .electricity)
+        context.insert(expense)
     }
 }
 
