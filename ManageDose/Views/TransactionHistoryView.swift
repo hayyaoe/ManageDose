@@ -10,6 +10,8 @@ import SwiftData
 
 struct TransactionHistoryView: View {
     
+    @Environment(\.modelContext) var modelContext
+    
     @Query(sort: \TransactionData.date) var transactions: [TransactionData]
     
     var body: some View {
@@ -44,11 +46,27 @@ struct TransactionHistoryView: View {
                             .padding(4)
                         Text("Add Transactions to see list")
                             .foregroundStyle(.gray)
+                        Button(action: {
+                            addTransactionSample()
+                        }, label: {
+                            Text("Add Transaction Sample")
+                        })
                     }
                     
                 }
             }
         }
+    }
+    
+    func addTransactionSample (){
+        
+        let data4 = TransactionData(id: "BUDI", name: "XX1", date: Date(), amount: 20000, cashFlow: .expense, budget: .dailyneeds, category: .electricity)
+        let data5 = TransactionData(id: "GAMING", name: "XX2", date: Date(), amount: 20000, cashFlow: .income, budget: .wants, category: .food)
+        let data6 = TransactionData(id: "YEE", name: "XX3", date: Date(), amount: 20000, cashFlow: .expense, budget: .saving, category: .electricity)
+        
+        modelContext.insert(data4)
+        modelContext.insert(data5)
+        modelContext.insert(data6)
     }
 }
 

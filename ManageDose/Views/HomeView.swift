@@ -254,6 +254,12 @@ struct Home: View {
         modelContext.insert(data5)
         modelContext.insert(data6)
     }
+    
+//    func availableBudget () -> Double{
+//        ForEach(transactions) { transaction in
+//        }
+//        return 0.0
+//    }
 }
 
 
