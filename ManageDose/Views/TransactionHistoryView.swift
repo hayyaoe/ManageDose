@@ -10,6 +10,8 @@ import SwiftData
 
 struct TransactionHistoryView: View {
     
+    @Environment(\.modelContext) var modelContext
+    
     @Query(sort: \TransactionData.date) var transactions: [TransactionData]
     
     var body: some View {
@@ -29,7 +31,7 @@ struct TransactionHistoryView: View {
             ScrollView(.vertical, showsIndicators: false){
                 LazyVStack{
                     ForEach(transactions){ transaction in
-                        TransactionItem(transactionData: TransactionData(id: "Strong", name: "McDonald's", date: Date(), amount: 109000, cashFlow: .expense, budget: .dailyneeds))
+                        TransactionItem(transactionData: TransactionData(id: "Strong", name: "McDonald's", date: Date(), amount: 109000, cashFlow: .expense, budget: .dailyneeds, category: "Halo"))
                         SeparatorBar()
                     }
                 }.padding(.horizontal)
@@ -44,12 +46,28 @@ struct TransactionHistoryView: View {
                             .padding(4)
                         Text("Add Transactions to see list")
                             .foregroundStyle(.gray)
+                        Button(action: {
+//                            addTransactionSample()
+                        }, label: {
+                            Text("Add Transaction Sample")
+                        })
                     }
                     
                 }
             }
         }
     }
+    
+//    func addTransactionSample (){
+//        
+//        let data4 = TransactionData(id: "BUDI", name: "XX1", date: Date(), amount: 20000, cashFlow: .expense, budget: .dailyneeds, categoryTransaction: .electricity)
+//        let data5 = TransactionData(id: "GAMING", name: "XX2", date: Date(), amount: 20000, cashFlow: .income, budget: .wants, categoryTransaction: .food)
+//        let data6 = TransactionData(id: "YEE", name: "XX3", date: Date(), amount: 20000, cashFlow: .expense, budget: .saving, categoryTransaction: .electricity)
+//        
+//        modelContext.insert(data4)
+//        modelContext.insert(data5)
+//        modelContext.insert(data6)
+//    }
 }
 
 #Preview {

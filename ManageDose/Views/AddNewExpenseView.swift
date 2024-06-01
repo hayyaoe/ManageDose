@@ -53,12 +53,10 @@ struct AddNewExpenseView: View {
             
         }
         .sheet(isPresented: $showSheet, content: {
-            AddNewExpenseCard(allFieldsFilled: $allFieldsFilled)
+            AddNewExpenseCard(allFieldsFilled: $allFieldsFilled, isIncome: false)
                 .presentationDetents([.height(420)])
             
         })
-        
-        
     }
 }
 

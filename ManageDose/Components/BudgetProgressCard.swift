@@ -102,7 +102,7 @@ struct BudgetProgressCard: View {
             .frame(height: 110)
             .padding(15)
             .padding(.top, 45)
-            .background(Color("#F6F6F6"))
+            .background(Color(red: 246 / 255, green: 246 / 255, blue: 246 / 255))
             .cornerRadius(10)
             
             //reminder

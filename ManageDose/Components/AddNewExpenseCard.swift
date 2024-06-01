@@ -6,11 +6,22 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddNewExpenseCard: View {
+    @Environment(\.modelContext) private var context
     @Binding var allFieldsFilled: Bool
+    var isIncome: Bool
     
-    @State private var expenseCategory: String = ""
+    @State private var selectedOption = "Option 1"
+        
+    let incomeCategoryOptions: [CategoryTransaction] = [.salary, .otherIncome]
+    let expenseCategoryOptions: [CategoryTransaction] = [.electricity, .food]
+        
+    var options: [CategoryTransaction] {
+        return isIncome ? incomeCategoryOptions : expenseCategoryOptions
+    }
+
     @State private var expenseName: String = ""
     @State private var expenseAmount: Double = 50000.0
     @State private var expenseDate: Date = Date()
@@ -30,7 +41,7 @@ struct AddNewExpenseCard: View {
                 .padding(.bottom, 24)
             
             VStack(alignment: .leading){
-                Text("Add Expense")
+                Text(isIncome ? "Add Income" : "Add Expense")
                     .bold()
                     .font(.headline)
                     .padding(.bottom, 12)
@@ -44,12 +55,12 @@ struct AddNewExpenseCard: View {
                         .foregroundStyle(.blue)
                         .padding(EdgeInsets(top:0, leading:0, bottom: 10, trailing: 0))
                     VStack(alignment: .leading){
-                        Text("Expense Category")
+                        Text("\(isIncome ? "Income" : "Expense") Name")
                             .font(.subheadline)
                             .fontWeight(.medium)
                             .padding(.bottom, 4)
-                        TextField("Food and Drink", text: $expenseCategory)
-                            .font(.caption)
+                        TextField("Food and Drink", text: $expenseName)
+                            .font(.subheadline)
                             .foregroundStyle(.gray)
                         SeparatorBar()
                             .padding(.bottom, 8)
@@ -57,29 +68,39 @@ struct AddNewExpenseCard: View {
                     }
                 }
                 
-                Text("Expense Name")
+                Text("\(isIncome ? "Income" : "Expense") Category")
                     .font(.subheadline)
                     .fontWeight(.medium)
                     .padding(.bottom, 4)
-                TextField("Ex: Denver Food", text: $expenseName)
-                    .font(.caption)
-                    .foregroundStyle(.gray)
-                SeparatorBar()
-                    .padding(.bottom, 8)
+                Picker("Please choose an option", selection: $selectedOption) {
+                    ForEach(options, id: \.self) { option in
+                        Text(option.rawValue)
+                    }
+                                }
+                                .pickerStyle(MenuPickerStyle())
+                                .frame(width: 360, height: 30)
+                                .background(Color.white.opacity(0.2))
+                                .cornerRadius(5)
+                                .shadow(color: .white, radius: 2, x: 0, y: 0.1)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .stroke(Color.blue, lineWidth: 1)
+                                )
+                                .padding(.bottom, 5)
                 
-                Text("Expense Amount")
+                Text("\(isIncome ? "Income" : "Expense") Amount")
                     .font(.subheadline)
                     .fontWeight(.medium)
                     .padding(.bottom, 4)
                 TextField("Rp 0", value: $expenseAmount, formatter: numberFormatter)
-                    .font(.caption)
+                    .font(.subheadline)
                     .foregroundStyle(.gray)
                     .keyboardType(.numberPad)
                 SeparatorBar()
                     .padding(.bottom, 8)
                 
                 HStack {
-                    Text("Expense Date")
+                    Text("\(isIncome ? "Income" : "Expense") Date")
                         .font(.subheadline)
                         .fontWeight(.medium)
                         .padding(.bottom, 4)
@@ -88,40 +109,39 @@ struct AddNewExpenseCard: View {
                     Spacer()
                 }
                 Button(action: {
-
+                    if isIncome{
+                        addIncome()
+                    }else{
+                        addExpense()
+                    }
                 }) {
                     Text("Add Expense")
                         .foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(allFieldsFilled ? Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1) : Color.gray)
+                        .background(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
                         .cornerRadius(24)
                     
                 }
                 .padding(12)
-                .disabled(!allFieldsFilled)
             }
-            .onChange(of: expenseName) { checkAllFields() }
-            .onChange(of: expenseAmount) { checkAllFields() }
-            .onChange(of: expenseCategory) { checkAllFields() }
             
         }
         .padding(15)
         .background(Color.white)
-        //        .clipShape(
-        //            .rect(
-        //                topLeadingRadius: 36,
-        //                topTrailingRadius: 36
-        //            )
-        //        )
-        //        .shadow(color: Color.black.opacity(0.15), radius: 4, x: 0, y: 0)
-        
     }
-    private func checkAllFields() {
-        allFieldsFilled = !expenseName.isEmpty && expenseAmount != 0 && !expenseCategory.isEmpty
+    
+    func addIncome(){
+        let income = IncomeData(id: UUID().uuidString, name: expenseName, date: expenseDate, amount: expenseAmount, categoryTransaction: CategoryTransaction(rawValue: selectedOption) ?? .salary)
+        context.insert(income)
+    }
+
+    func addExpense() {
+        let expense = ExpenseData(id: UUID().uuidString, name: expenseName, date: expenseDate, amount: expenseAmount, budget: .dailyneeds, category: CategoryTransaction(rawValue: selectedOption) ?? .electricity)
+        context.insert(expense)
     }
 }
 
 #Preview {
-    AddNewExpenseCard(allFieldsFilled: .constant(false))
+    AddNewExpenseCard(allFieldsFilled: .constant(false), isIncome: true)
 }

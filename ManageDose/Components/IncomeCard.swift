@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct IncomeCard: View {
+    let incomeName: String
+    let incomeCategory: CategoryTransaction
+    let incomeAmount: Double
+    let incomeDate: Date
+    
     var body: some View {
         HStack{
             HStack{
@@ -20,7 +25,7 @@ struct IncomeCard: View {
                 VStack(
                     alignment: .leading
                 ){
-                    Text("McDonad's")
+                    Text(incomeName)
                         .fontWeight(.bold)
                         .font(.headline)
                 }
@@ -30,11 +35,11 @@ struct IncomeCard: View {
                 VStack(
                     alignment: .trailing
                 ){
-                    Text("- Rp. 69.420")
+                    Text("+ Rp. \(String(format: "%.2f", incomeAmount))")
                         .fontWeight(.bold)
                         .font(.headline)
                         .foregroundStyle(.red)
-                    Text("19 Mei 2024")
+                    Text(incomeDate, style: .date)
                         .font(.subheadline)
                 }
             }
@@ -51,5 +56,5 @@ struct IncomeCard: View {
 }
 
 #Preview {
-    IncomeCard()
+    IncomeCard(incomeName: "McDonad's", incomeCategory: .electricity, incomeAmount: 69.42, incomeDate: Date())
 }

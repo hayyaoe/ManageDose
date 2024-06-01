@@ -10,6 +10,8 @@ import SwiftData
 
 struct Home: View {
     
+    @Environment(\.modelContext) var modelContext
+    
     @Query( sort: \TransactionData.date ) var transactions: [TransactionData]
     @Query( sort: \BudgetingData.name) var budgets: [BudgetingData]
     
@@ -158,7 +160,7 @@ struct Home: View {
                             spacing: 16
                         ){
                             ForEach(budgets){ budget in
-                                BudgetingCard(/*budgetingData: BudgetingData(id: "Budget A", name: Budget.dailyneeds.rawValue, percentage: 0.7, budget: .dailyneeds)*/)
+                                BudgetingCard(budgetingData: budget)
                             }
                         }
                         .padding(EdgeInsets(top:0, leading:20, bottom: 0, trailing: 20))
@@ -175,6 +177,12 @@ struct Home: View {
                                 Text("Create Budgeting to see budgeting")
                                     .font(.caption)
                                     .foregroundStyle(.gray)
+                                Button(action: {
+                                    addBudgetingSample()
+                                }, label: {
+                                    Text("Add Budgeting Sample")
+                                        .font(.caption)
+                                })
                             }
                             
                         }
@@ -192,13 +200,12 @@ struct Home: View {
                     
                     LazyVStack{
                         ForEach(transactions) { transaction in
-                            TransactionItem(transactionData: TransactionData(id: "Strong", name: "McDonald's", date: Date(), amount: 109000, cashFlow: .expense, budget: .dailyneeds))
+                            TransactionItem(transactionData: transaction)
                         }
                         
                     }.padding(.horizontal)
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 100, trailing: 0))
-                .frame(width: .infinity, height: .infinity)
                 .overlay(alignment: .bottom) {
                     if transactions.isEmpty {
                         VStack{
@@ -207,10 +214,16 @@ struct Home: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(height: 30)
                                 .foregroundStyle(.gray)
+                                .padding(4)
                             Text("Add Transactions to see list")
                                 .font(.caption)
                                 .foregroundStyle(.gray)
-                                .padding(4)
+                            Button(action: {
+//                                addTransactionSample()
+                            }, label: {
+                                Text("Add Transaction Sample")
+                                    .font(.caption)
+                            })
                         }
                         
                     }
@@ -219,7 +232,36 @@ struct Home: View {
             NavBar()
         }.ignoresSafeArea(.all)
     }
+    
+    func addBudgetingSample (){
+        
+        let data1 = BudgetingData(id: "NICE", name: "MEKDI", percentage: 0.4, budget: .dailyneeds)
+        let data2 = BudgetingData(id: "COOK", name: "MEKDI", percentage: 0.3, budget: .wants)
+        let data3 = BudgetingData(id: "BRU", name: "MEKDI", percentage: 0.3, budget: .saving)
+        
+        modelContext.insert(data1)
+        modelContext.insert(data2)
+        modelContext.insert(data3)
+    }
+    
+//    func addTransactionSample (){
+//        
+//        let data4 = TransactionData(id: "BUDI", name: "XX1", date: Date(), amount: 20000, cashFlow: .expense, budget: .dailyneeds, categoryTransaction: .electricity)
+//        let data5 = TransactionData(id: "GAMING", name: "XX2", date: Date(), amount: 20000, cashFlow: .income, budget: .wants, categoryTransaction: .electricity)
+//        let data6 = TransactionData(id: "YEE", name: "XX3", date: Date(), amount: 20000, cashFlow: .expense, budget: .saving, categoryTransaction: .electricity)
+//        
+//        modelContext.insert(data4)
+//        modelContext.insert(data5)
+//        modelContext.insert(data6)
+//    }
+    
+//    func availableBudget () -> Double{
+//        ForEach(transactions) { transaction in
+//        }
+//        return 0.0
+//    }
 }
+
 
 #Preview {
     Home()
