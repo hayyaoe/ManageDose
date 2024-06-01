@@ -24,8 +24,8 @@ class BudgetingData: Identifiable{
     var percentage: Double
     var budget: Budget
 
-    init(id: String, name: String, percentage: Double, budget: Budget) {
-        self.id = id
+    init(name: String, percentage: Double, budget: Budget) {
+        self.id = UUID().uuidString
         self.name = name
         self.percentage = percentage
         self.budget = budget
