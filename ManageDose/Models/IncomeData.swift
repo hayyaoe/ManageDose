@@ -15,13 +15,13 @@ class IncomeData: Identifiable{
     var name: String
     var date: Date
     var amount: Double
-    var category: Category
+    var categoryTransaction: CategoryTransaction
     
     init( name: String, date: Date, amount: Double, category: Category) {
         self.id = UUID().uuidString
         self.name = name
         self.date = date
         self.amount = amount
-        self.category = category
+        self.categoryTransaction = categoryTransaction
     }
 }

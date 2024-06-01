@@ -9,7 +9,7 @@ import SwiftUI
 
 struct IncomeCard: View {
     let incomeName: String
-    let incomeCategory: String
+    let incomeCategory: CategoryTransaction
     let incomeAmount: Double
     let incomeDate: Date
     
@@ -56,5 +56,5 @@ struct IncomeCard: View {
 }
 
 #Preview {
-    IncomeCard(incomeName: "McDonad's", incomeCategory: "Basic Needs", incomeAmount: 69.42, incomeDate: Date())
+    IncomeCard(incomeName: "McDonad's", incomeCategory: .electricity, incomeAmount: 69.42, incomeDate: Date())
 }
