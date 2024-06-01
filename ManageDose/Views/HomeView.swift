@@ -12,8 +12,14 @@ struct Home: View {
     
     @Environment(\.modelContext) var modelContext
     
-    @Query( sort: \TransactionData.date ) var transactions: [TransactionData]
-    @Query( sort: \BudgetingData.name) var budgets: [BudgetingData]
+    @State var date = Date()
+    @State var filteredExpenses: [ExpenseData] = []
+    @State var filteredIncomes: [IncomeData] = []
+    
+    @Query var incomes: [IncomeData]
+    @Query var expenses: [ExpenseData]
+    @Query var budgets: [BudgetingData]
+    
     
     var body: some View {
          
@@ -34,15 +40,11 @@ struct Home: View {
                         }
                         
                         Spacer()
-                        
-                        HStack{
-                            Text("Mei 2024")
-                                .fontWeight(.semibold)
-                                .font(.subheadline)
-                            Image(systemName: "chevron.down")
-                                .bold()
-                                .font(.subheadline)
-                        }
+                    	
+                        DatePicker(selection: $date, displayedComponents: [.date], label: {})
+                            .onChange(of: date, perform: { newDate in
+                                filterData(for: newDate)
+                            })
                         
                     }
                     .padding(.horizontal)
@@ -55,7 +57,7 @@ struct Home: View {
                                 Text("Available Budget")
                                     .foregroundStyle(.white)
                                     .font(.subheadline)
-                                Text("Rp 2.989.999")
+                                Text("Rp \(availableBudget(), format: .number)")
                                     .foregroundStyle(.white)
                                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                                     .bold()
@@ -90,7 +92,7 @@ struct Home: View {
                                         .foregroundStyle(.white)
                                         .font(.caption2)
                                         .lineSpacing(2.0)
-                                    Text("Rp. 2.989.999")
+                                    Text("Rp \(cumulativeIncome(),format: .number)")
                                         .font(.caption)
                                         .foregroundStyle(.white)
                                         .fontWeight(.medium)
@@ -117,7 +119,7 @@ struct Home: View {
                                         .foregroundStyle(.white)
                                         .font(.caption2)
                                         .lineSpacing(2.0)
-                                    Text("Rp. 420.699.9")
+                                    Text("Rp \(cumulativeExpense(), format: .number)")
                                         .font(.caption)
                                         .foregroundStyle(.white)
                                         .fontWeight(.medium)
@@ -160,13 +162,13 @@ struct Home: View {
                             spacing: 16
                         ){
                             ForEach(budgets){ budget in
-                                BudgetingCard(budgetingData: budget)
+                                BudgetingCard(budgetingData: budget, budgetAvailable: cumulativeIncome())
                             }
                         }
                         .padding(EdgeInsets(top:0, leading:20, bottom: 0, trailing: 20))
                     }
                     .overlay {
-                        if transactions.isEmpty {
+                        if budgets.isEmpty {
                             VStack{
                                 Image(systemName: "list.bullet.rectangle")
                                     .resizable()
@@ -199,15 +201,18 @@ struct Home: View {
                     }.padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
                     
                     LazyVStack{
-                        ForEach(transactions) { transaction in
-                            TransactionItem(transactionData: transaction)
+                        ForEach(filteredExpenses) { expense in
+                            ExpenseItem(expenseData: expense)
+                        }
+                        ForEach(filteredIncomes) { income in
+                            IncomeItem(incomeData: income)
                         }
                         
                     }.padding(.horizontal)
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 100, trailing: 0))
                 .overlay(alignment: .bottom) {
-                    if transactions.isEmpty {
+                    if expenses.isEmpty && incomes.isEmpty {
                         VStack{
                             Image(systemName: "list.bullet.rectangle")
                                 .resizable()
@@ -219,7 +224,8 @@ struct Home: View {
                                 .font(.caption)
                                 .foregroundStyle(.gray)
                             Button(action: {
-                                addTransactionSample()
+                                addIncomeSample()
+                                addExpenseSample()
                             }, label: {
                                 Text("Add Transaction Sample")
                                     .font(.caption)
@@ -233,33 +239,93 @@ struct Home: View {
         }.ignoresSafeArea(.all)
     }
     
+    func filterData(for date: Date) {
+        let calendar = Calendar.current
+        let targetComponents = calendar.dateComponents([.year, .month], from: date)
+        
+        filteredExpenses = expenses.filter { expense in
+            let expenseComponents = calendar.dateComponents([.year, .month], from: expense.date)
+            return expenseComponents.year == targetComponents.year && expenseComponents.month == targetComponents.month
+        }
+        
+        filteredIncomes = incomes.filter { income in
+            let incomeComponents = calendar.dateComponents([.year, .month], from: income.date)
+            return incomeComponents.year == targetComponents.year && incomeComponents.month == targetComponents.month
+        }
+    }
+    
     func addBudgetingSample (){
         
-        let data1 = BudgetingData(id: "NICE", name: "MEKDI", percentage: 0.4, budget: .dailyneeds)
-        let data2 = BudgetingData(id: "COOK", name: "MEKDI", percentage: 0.3, budget: .wants)
-        let data3 = BudgetingData(id: "BRU", name: "MEKDI", percentage: 0.3, budget: .saving)
+        let data1 = BudgetingData(name: "MEKDI", percentage: 0.4, budget: .dailyneeds)
+        let data2 = BudgetingData( name: "MEKDI", percentage: 0.3, budget: .wants)
+        let data3 = BudgetingData( name: "MEKDI", percentage: 0.3, budget: .saving)
         
         modelContext.insert(data1)
         modelContext.insert(data2)
         modelContext.insert(data3)
     }
     
-    func addTransactionSample (){
+    func addIncomeSample (){
         
-        let data4 = TransactionData(id: "BUDI", name: "XX1", date: Date(), amount: 20000, cashFlow: .expense, budget: .dailyneeds, category: .electricity)
-        let data5 = TransactionData(id: "GAMING", name: "XX2", date: Date(), amount: 20000, cashFlow: .income, budget: .wants, category: .food)
-        let data6 = TransactionData(id: "YEE", name: "XX3", date: Date(), amount: 20000, cashFlow: .expense, budget: .saving, category: .electricity)
+        let data4 = IncomeData(name: "Gaji", date: Date(), amount: 20000000, category: .electricity)
+        let data5 = IncomeData(name: "Gaji", date: Date(), amount: 20000000, category: .electricity)
+        let data6 = IncomeData(name: "Gaji", date: Date(), amount: 20000000, category: .electricity)
         
         modelContext.insert(data4)
         modelContext.insert(data5)
         modelContext.insert(data6)
     }
     
-//    func availableBudget () -> Double{
-//        ForEach(transactions) { transaction in
-//        }
-//        return 0.0
-//    }
+    func addExpenseSample(){
+        
+        let data6 = ExpenseData(name: "Gaji", date: Date(), amount: 20000000, budget: .dailyneeds, category: .electricity)
+        let data7 = ExpenseData(name: "Gaji", date: Date(), amount: 20000000, budget: .saving, category: .electricity)
+        let data8 = ExpenseData(name: "Gaji", date: Date(), amount: 20000000, budget: .saving, category: .electricity)
+        
+        modelContext.insert(data6)
+        modelContext.insert(data7)
+        modelContext.insert(data8)
+    }
+    
+    func availableBudget() -> Double {
+      var cumulativeIncome = 0.0
+      var cumulativeExpense = 0.0
+
+      // Calculate cumulative income
+      for income in filteredIncomes {
+        cumulativeIncome += income.amount
+      }
+
+      // Calculate cumulative expense
+      for expense in filteredExpenses {
+        cumulativeExpense += expense.amount
+      }
+
+      // Return available budget
+      return cumulativeIncome - cumulativeExpense
+    }
+    
+    func cumulativeExpense() -> Double{
+        var cumulativeExpense = 0.0
+        
+        // Calculate cumulative expense
+        for expense in filteredExpenses {
+          cumulativeExpense += expense.amount
+        }
+        
+        return cumulativeExpense
+    }
+    
+    func cumulativeIncome() -> Double{
+        var cumulativeIncome = 0.0
+        
+        // Calculate cumulative expense
+        for income in filteredIncomes{
+          cumulativeIncome += income.amount
+        }
+        
+        return cumulativeIncome
+    }
 }
 
 

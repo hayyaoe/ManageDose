@@ -25,8 +25,8 @@ class ExpenseData: Identifiable{
     var budget: Budget
     var category: Category
     
-    init(id: String, name: String, date: Date, amount: Double, budget: Budget, category: Category) {
-        self.id = id
+    init(name: String, date: Date, amount: Double, budget: Budget, category: Category) {
+        self.id = UUID().uuidString
         self.name = name
         self.date = date
         self.amount = amount

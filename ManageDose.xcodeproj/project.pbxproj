@@ -31,6 +31,8 @@
 		7E71FC3E2BFB1E7000F58890 /* TransactionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E71FC3A2BFB193200F58890 /* TransactionItem.swift */; };
 		7E9282E62C09689A00E61487 /* IncomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9282E52C09689A00E61487 /* IncomeData.swift */; };
 		7E9282E82C0968A500E61487 /* ExpenseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9282E72C0968A500E61487 /* ExpenseData.swift */; };
+		7E9282EB2C09A59100E61487 /* IncomeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9282EA2C09A59100E61487 /* IncomeItem.swift */; };
+		7E9282ED2C09A5B400E61487 /* ExpenseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9282EC2C09A5B400E61487 /* ExpenseItem.swift */; };
 		7E9506CA2BFB35C200BDF341 /* TransactionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9506C92BFB35C200BDF341 /* TransactionHistoryView.swift */; };
 		7E9506CC2BFB3C1400BDF341 /* SeparatorBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9506CB2BFB3C1400BDF341 /* SeparatorBar.swift */; };
 		7EBEDBB32C02FA3D00DC4035 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBB12C02FA3D00DC4035 /* ColorExtension.swift */; };
@@ -56,7 +58,6 @@
 		7E073D3A2C0370B100933456 /* SettingBudgetRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingBudgetRow.swift; sourceTree = "<group>"; };
 		7E073D3B2C0370B100933456 /* SettingBudgetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingBudgetView.swift; sourceTree = "<group>"; };
 		7E0A45962C086D6800818A13 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
-		7E0EDBB02BF6F66E00C384B8 /* ManageDose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ManageDose.app; path = "/Users/mac/Documents/ManageDose/build/Debug-iphoneos/ManageDose.app"; sourceTree = "<absolute>"; };
 		7E0EDBB32BF6F66E00C384B8 /* ManageDoseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDoseApp.swift; sourceTree = "<group>"; };
 		7E0EDBB52BF6F66E00C384B8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7E0EDBB72BF6F66F00C384B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,6 +74,9 @@
 		7E71FC3C2BFB1E3500F58890 /* BudgetingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetingCard.swift; sourceTree = "<group>"; };
 		7E9282E52C09689A00E61487 /* IncomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeData.swift; sourceTree = "<group>"; };
 		7E9282E72C0968A500E61487 /* ExpenseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseData.swift; sourceTree = "<group>"; };
+		7E9282E92C096C6A00E61487 /* ManageDose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ManageDose.app; path = "/Users/rabirabichannel/Desktop/Codes/MAD/ManageDoseDevel/managedose/build/Debug-iphoneos/ManageDose.app"; sourceTree = "<absolute>"; };
+		7E9282EA2C09A59100E61487 /* IncomeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeItem.swift; sourceTree = "<group>"; };
+		7E9282EC2C09A5B400E61487 /* ExpenseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItem.swift; sourceTree = "<group>"; };
 		7E9506C92BFB35C200BDF341 /* TransactionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionHistoryView.swift; path = ManageDose/Views/TransactionHistoryView.swift; sourceTree = SOURCE_ROOT; };
 		7E9506CB2BFB3C1400BDF341 /* SeparatorBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorBar.swift; sourceTree = "<group>"; };
 		7EBEDBB12C02FA3D00DC4035 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 				7EBEDBB62C02FA6000DC4035 /* IncomeCard.swift */,
 				7EBEDBB82C02FA6000DC4035 /* PieChart.swift */,
 				7E71FC3A2BFB193200F58890 /* TransactionItem.swift */,
+				7E9282EA2C09A59100E61487 /* IncomeItem.swift */,
+				7E9282EC2C09A5B400E61487 /* ExpenseItem.swift */,
 				7E71FC3C2BFB1E3500F58890 /* BudgetingCard.swift */,
 				7E9506CB2BFB3C1400BDF341 /* SeparatorBar.swift */,
 				3F7695972C00238600FEE52D /* AddNewExpenseCard.swift */,
@@ -209,7 +215,7 @@
 			);
 			name = ManageDose;
 			productName = ManageDose;
-			productReference = 7E0EDBB02BF6F66E00C384B8 /* ManageDose.app */;
+			productReference = 7E9282E92C096C6A00E61487 /* ManageDose.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -262,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E9282EB2C09A59100E61487 /* IncomeItem.swift in Sources */,
 				7E0A45972C086D6800818A13 /* SplashScreenView.swift in Sources */,
 				3F76959A2C00252400FEE52D /* PopUpBar.swift in Sources */,
 				7EBEDBC42C02FA7200DC4035 /* DetailBudget.swift in Sources */,
@@ -276,6 +283,7 @@
 				7E073D402C0370B100933456 /* SettingBudgetView.swift in Sources */,
 				7EBEDBBF2C02FA6000DC4035 /* Button.swift in Sources */,
 				7E71FC3E2BFB1E7000F58890 /* TransactionItem.swift in Sources */,
+				7E9282ED2C09A5B400E61487 /* ExpenseItem.swift in Sources */,
 				7E5F572D2C085F5500639A80 /* OnBoarding3View.swift in Sources */,
 				7EBEDBBD2C02FA6000DC4035 /* BudgetProgressCard.swift in Sources */,
 				7EBEDBBE2C02FA6000DC4035 /* PieChart.swift in Sources */,

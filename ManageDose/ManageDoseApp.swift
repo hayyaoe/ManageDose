@@ -14,7 +14,7 @@ struct ManageDoseApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-        }.modelContainer(for: [TransactionData.self, BudgetingData.self])
+        }.modelContainer(for: [BudgetingData.self, IncomeData.self, ExpenseData.self])
     }
 }
 

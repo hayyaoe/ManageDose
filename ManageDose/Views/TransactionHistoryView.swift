@@ -12,7 +12,9 @@ struct TransactionHistoryView: View {
     
     @Environment(\.modelContext) var modelContext
     
-    @Query(sort: \TransactionData.date) var transactions: [TransactionData]
+//    @State private var filter: String
+    
+    @Query(sort: \ExpenseData.date) var expenses: [ExpenseData]
     
     var body: some View {
         VStack{
@@ -30,13 +32,13 @@ struct TransactionHistoryView: View {
             }.padding()
             ScrollView(.vertical, showsIndicators: false){
                 LazyVStack{
-                    ForEach(transactions){ transaction in
-                        TransactionItem(transactionData: TransactionData(id: "Strong", name: "McDonald's", date: Date(), amount: 109000, cashFlow: .expense, budget: .dailyneeds, category: "Halo"))
+                    ForEach(expenses){ expense in
+                        ExpenseItem(expenseData: expense )
                         SeparatorBar()
                     }
                 }.padding(.horizontal)
             }.overlay{
-                if transactions.isEmpty {
+                if expenses.isEmpty {
                     VStack{
                         Image(systemName: "list.bullet.rectangle")
                             .resizable()
@@ -47,7 +49,7 @@ struct TransactionHistoryView: View {
                         Text("Add Transactions to see list")
                             .foregroundStyle(.gray)
                         Button(action: {
-                            addTransactionSample()
+                            addExpenseSample()
                         }, label: {
                             Text("Add Transaction Sample")
                         })
@@ -58,15 +60,16 @@ struct TransactionHistoryView: View {
         }
     }
     
-    func addTransactionSample (){
+    
+    func addExpenseSample(){
         
-        let data4 = TransactionData(id: "BUDI", name: "XX1", date: Date(), amount: 20000, cashFlow: .expense, budget: .dailyneeds, category: .electricity)
-        let data5 = TransactionData(id: "GAMING", name: "XX2", date: Date(), amount: 20000, cashFlow: .income, budget: .wants, category: .food)
-        let data6 = TransactionData(id: "YEE", name: "XX3", date: Date(), amount: 20000, cashFlow: .expense, budget: .saving, category: .electricity)
+        let data6 = ExpenseData(name: "Gaji", date: Date(), amount: 20000000, budget: .dailyneeds, category: .electricity)
+        let data7 = ExpenseData(name: "Gaji", date: Date(), amount: 20000000, budget: .saving, category: .electricity)
+        let data8 = ExpenseData(name: "Gaji", date: Date(), amount: 20000000, budget: .saving, category: .electricity)
         
-        modelContext.insert(data4)
-        modelContext.insert(data5)
         modelContext.insert(data6)
+        modelContext.insert(data7)
+        modelContext.insert(data8)
     }
 }
 

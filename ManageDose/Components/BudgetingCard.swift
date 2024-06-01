@@ -10,6 +10,7 @@ import SwiftUI
 struct BudgetingCard: View {
     
     var budgetingData: BudgetingData
+    var budgetAvailable: Double
     
     var body: some View {
         VStack(
@@ -22,11 +23,11 @@ struct BudgetingCard: View {
                 .frame(height:60)
                 .foregroundStyle(.blue)
                 .padding(EdgeInsets(top:0, leading:0, bottom: 10, trailing: 0))
-            Text("")
+            Text(budgetingData.name)
                 .font(.subheadline)
                 .fontWeight(.medium)
                 .foregroundStyle(.gray)
-            Text("")
+            Text("Rp \(budgetingData.percentage * budgetAvailable, format: .number)")
                 .fontWeight(.bold)
                 .font(.subheadline)
                 .truncationMode(.tail)
@@ -43,8 +44,8 @@ struct BudgetingCard: View {
 
 struct BudgetingCard_Preview: PreviewProvider {
     static var previews: some View {
-        let budgetingData = BudgetingData(id: "Budget A", name: Budget.dailyneeds.rawValue, percentage: 0.7, budget: .dailyneeds )
-        BudgetingCard(budgetingData: budgetingData)
+        let budgetingData = BudgetingData( name: "Name", percentage: 0.7, budget: .dailyneeds )
+        BudgetingCard(budgetingData: budgetingData, budgetAvailable: 100000000)
     }
 }
 
