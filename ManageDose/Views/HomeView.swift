@@ -212,7 +212,7 @@ struct Home: View {
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 100, trailing: 0))
                 .overlay(alignment: .bottom) {
-                    if expenses.isEmpty && incomes.isEmpty {
+                    if filteredExpenses.isEmpty && filteredIncomes.isEmpty {
                         VStack{
                             Image(systemName: "list.bullet.rectangle")
                                 .resizable()
@@ -225,7 +225,7 @@ struct Home: View {
                                 .foregroundStyle(.gray)
                             Button(action: {
                                 addIncomeSample()
-                                addExpenseSample()
+//                                addExpenseSample()
                             }, label: {
                                 Text("Add Transaction Sample")
                                     .font(.caption)
@@ -239,7 +239,7 @@ struct Home: View {
         }.ignoresSafeArea(.all)
     }
     
-    func filterData(for date: Date) {
+    private func filterData(for date: Date) {
         let calendar = Calendar.current
         let targetComponents = calendar.dateComponents([.year, .month], from: date)
         
@@ -254,40 +254,40 @@ struct Home: View {
         }
     }
     
-    func addBudgetingSample (){
+    private func addBudgetingSample (){
         
-        let data1 = BudgetingData(name: "MEKDI", percentage: 0.4, budget: .dailyneeds)
-        let data2 = BudgetingData( name: "MEKDI", percentage: 0.3, budget: .wants)
-        let data3 = BudgetingData( name: "MEKDI", percentage: 0.3, budget: .saving)
+        let data1 = BudgetingData(name: "Daily Needs", percentage: 0.5, budget: .dailyneeds)
+        let data2 = BudgetingData( name: "Wants", percentage: 0.2, budget: .wants)
+        let data3 = BudgetingData( name: "Savings", percentage: 0.3, budget: .saving)
         
         modelContext.insert(data1)
         modelContext.insert(data2)
         modelContext.insert(data3)
     }
     
-    func addIncomeSample (){
+    private func addIncomeSample (){
         
-        let data4 = IncomeData(name: "Gaji", date: Date(), amount: 20000000, category: .electricity)
-        let data5 = IncomeData(name: "Gaji", date: Date(), amount: 20000000, category: .electricity)
-        let data6 = IncomeData(name: "Gaji", date: Date(), amount: 20000000, category: .electricity)
+        let data4 = IncomeData(name: "Gaji Utama", date: Date(), amount: 1500000, categoryTransaction: .salary)
+        let data5 = IncomeData(name: "Jual HP", date: Date(), amount: 250000, categoryTransaction:  .otherIncome)
+        let data6 = IncomeData(name: "Gaji Youtube", date: Date(), amount: 250000, categoryTransaction: .otherIncome)
         
         modelContext.insert(data4)
         modelContext.insert(data5)
         modelContext.insert(data6)
     }
     
-    func addExpenseSample(){
+    private func addExpenseSample(){
         
-        let data6 = ExpenseData(name: "Gaji", date: Date(), amount: 20000000, budget: .dailyneeds, category: .electricity)
-        let data7 = ExpenseData(name: "Gaji", date: Date(), amount: 20000000, budget: .saving, category: .electricity)
-        let data8 = ExpenseData(name: "Gaji", date: Date(), amount: 20000000, budget: .saving, category: .electricity)
+        let data6 = ExpenseData(name: "Makan McD", date: Date(), amount: 60000, budget: .dailyneeds, categoryTransaction: .food)
+        let data7 = ExpenseData(name: "Bayar Listrik", date: Date(), amount: 150000, budget: .saving, categoryTransaction: .electricity)
+        let data8 = ExpenseData(name: "Gacoan", date: Date(), amount: 40000, budget: .saving, categoryTransaction: .food)
         
         modelContext.insert(data6)
         modelContext.insert(data7)
         modelContext.insert(data8)
     }
     
-    func availableBudget() -> Double {
+    private func availableBudget() -> Double {
       var cumulativeIncome = 0.0
       var cumulativeExpense = 0.0
 
@@ -305,7 +305,7 @@ struct Home: View {
       return cumulativeIncome - cumulativeExpense
     }
     
-    func cumulativeExpense() -> Double{
+    private func cumulativeExpense() -> Double{
         var cumulativeExpense = 0.0
         
         // Calculate cumulative expense
@@ -316,7 +316,7 @@ struct Home: View {
         return cumulativeExpense
     }
     
-    func cumulativeIncome() -> Double{
+    private func cumulativeIncome() -> Double{
         var cumulativeIncome = 0.0
         
         // Calculate cumulative expense

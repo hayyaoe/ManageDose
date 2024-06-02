@@ -9,11 +9,26 @@ import SwiftUI
 import SwiftData
 
 struct ExpenseItem: View {
+    
     var expenseData: ExpenseData
+    
+    private var image: String {
+        switch expenseData.categoryTransaction {
+        case .salary:
+            return "savings"
+        case .otherIncome:
+            return "savings"
+        case .food:
+            return "food"
+        case .electricity:
+            return "dailyneeds"
+        }
+    }
+
     
     var body: some View {
         HStack{
-            Image(systemName: "tag.square")
+            Image(image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .foregroundStyle(.yellow)
@@ -25,7 +40,7 @@ struct ExpenseItem: View {
                 Text(expenseData.name)
                     .fontWeight(.bold)
                     .font(.headline)
-                Text(expenseData.category.rawValue)
+                Text(expenseData.categoryTransaction.rawValue)
                     .font(.subheadline)
           
             }
@@ -36,10 +51,10 @@ struct ExpenseItem: View {
                 alignment: .trailing
             ){
         
-                Text("Rp \(expenseData.amount,format: .number)")
+                Text("- Rp \(expenseData.amount,format: .number)")
                     .fontWeight(.bold)
                     .font(.headline)
-                    .foregroundStyle(.green)
+                    .foregroundStyle(.red)
             
 
                 Text(expenseData.date, style: .date)

@@ -9,11 +9,26 @@ import SwiftUI
 import SwiftData
 
 struct IncomeItem: View {
+    
     var incomeData: IncomeData
+    
+    private var image: String {
+        switch incomeData.categoryTransaction {
+        case .salary:
+            return "income"
+        case .otherIncome:
+            return "income"
+        case .food:
+            return "food"
+        case .electricity:
+            return "dailyneeds"
+        }
+    }
+
     
     var body: some View {
         HStack{
-            Image(systemName: "tag.square")
+            Image(image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .foregroundStyle(.yellow)
@@ -25,7 +40,7 @@ struct IncomeItem: View {
                 Text(incomeData.name)
                     .fontWeight(.bold)
                     .font(.headline)
-                Text(incomeData.category.rawValue)
+                Text(incomeData.categoryTransaction.rawValue)
                     .font(.subheadline)
           
             }
@@ -36,7 +51,7 @@ struct IncomeItem: View {
                 alignment: .trailing
             ){
         
-                Text("Rp \(incomeData.amount,format: .number)")
+                Text("+ Rp \(incomeData.amount,format: .number)")
                     .fontWeight(.bold)
                     .font(.headline)
                     .foregroundStyle(.green)
