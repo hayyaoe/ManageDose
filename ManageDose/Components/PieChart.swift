@@ -27,9 +27,9 @@ struct PieChart: View {
     let basic: Double
     let savings: Double
     let wants: Double
-    let budget: Int
+    let budget: Double
     
-    init(basic: Double, savings: Double, wants: Double, budget: Int) {
+    init(basic: Double, savings: Double, wants: Double, budget: Double) {
         self.basic = basic
         self.savings = savings
         self.wants = wants
@@ -65,7 +65,7 @@ struct PieChart: View {
                         .font(.system(size: 12))
                         .fontWeight(.semibold)
                         .foregroundStyle(.gray)
-                    Text("Rp \(self.budget)")
+                    Text("Rp \(self.budget, format: .number)")
                         .font(.system(size: 15))
                         .fontWeight(.medium)
                         .foregroundStyle(.black)

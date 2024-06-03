@@ -96,9 +96,13 @@ struct SettingBudget: View {
                 }
                 .padding(20)
                 
-                NavigationLink(value: "navigateToBudgeting", label: {
+//                NavigationLink(value: "navigateToBudgeting", label: {
+//                    EmptyView()
+//                })
+                
+                NavigationLink(destination: BudgetingView(budgetings: $budgetings, budget: budget), isActive: $navigateToBudgeting) {
                     EmptyView()
-                })
+                }
                 
                 Spacer()
             }
@@ -114,13 +118,13 @@ struct SettingBudget: View {
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
-            .alert(isPresented: $showAlert) {
-                Alert(
-                    title: Text("Save Budget"),
-                    message: Text(alertMessage),
-                    dismissButton: .default(Text("OK"))
-                )
-            }
+//            .alert(isPresented: $showAlert) {
+//                Alert(
+//                    title: Text("Save Budget"),
+//                    message: Text(alertMessage),
+//                    dismissButton: .default(Text("OK"))
+//                )
+//            }
         }
     }
     
