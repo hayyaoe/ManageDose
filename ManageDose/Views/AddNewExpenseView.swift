@@ -14,7 +14,7 @@ struct AddNewExpenseView: View {
     var body: some View {
         
         VStack{
-            BudgetProgressCard(colorAlert: Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1))
+            BudgetProgressCard(progressPercentage: 0.7, budget: 1000)
                 .padding(.horizontal)
 //            Button(action: {
 //

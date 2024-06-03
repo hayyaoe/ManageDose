@@ -21,8 +21,9 @@ struct Home: View {
     @Query var budgets: [BudgetingData]
     
     
-    var body: some View {
-         
+    var budget: Int = 1000000
+    
+    var body: some View { 
         VStack{
             ScrollView(.vertical, showsIndicators: false){
                 VStack{
@@ -65,98 +66,121 @@ struct Home: View {
                             
                             Spacer()
                             
-                            Button(action: {}, label: {
-                                Text("Atur Ulang")
-                                    .foregroundStyle(.white)
-                                    .font(.caption)
-                                    .padding(8)
-                                    .background{
-                                        Color(red:0.19215686274509805,green:0.10588235294117647,blue:0.7019607843137254).cornerRadius(18)
-                                    }
-                            })
+                            HStack{
+                                Text("Mei 2024")
+                                    .fontWeight(.semibold)
+                                    .font(.subheadline)
+                                Image(systemName: "chevron.down")
+                                    .bold()
+                                    .font(.subheadline)
+                            }
                             
                         }
-                        .padding(24)
+                        .padding(.horizontal)
                         
-                        HStack{
+                        VStack{
                             HStack{
-                                Image(systemName: "arrow.down.circle.fill")
-                                    .foregroundStyle(.green)
-                                    .font(.title)
-                                    .bold()
-                                
                                 VStack(
                                     alignment: .leading
                                 ){
-                                    Text("Income")
+                                    Text("Available Budget")
                                         .foregroundStyle(.white)
                                         .font(.caption2)
                                         .lineSpacing(2.0)
                                     Text("Rp \(cumulativeIncome(),format: .number)")
                                         .font(.caption)
                                         .foregroundStyle(.white)
-                                        .fontWeight(.medium)
-                                        .truncationMode(.tail)
-                                        .lineLimit(1)
+                                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                                        .bold()
                                 }
-                            }
-                            .frame(width:140)
-                            .padding(12)
-                            .background{
-                                Color(red:0.19215686274509805,green:0.10588235294117647,blue:0.7019607843137254).cornerRadius(16)
-                            }
-                            
-                            HStack{
-                                Image(systemName: "arrow.up.circle.fill")
-                                    .foregroundStyle(.red)
-                                    .font(.title)
-                                    .bold()
                                 
-                                VStack(
-                                    alignment: .leading
-                                ){
-                                    Text("Expense")
+                                Spacer()
+                                
+                                NavigationLink(destination: SettingBudget(budget: budget, budgetings: budgets)) {
+                                    Text("Atur Ulang")
                                         .foregroundStyle(.white)
                                         .font(.caption2)
                                         .lineSpacing(2.0)
                                     Text("Rp \(cumulativeExpense(), format: .number)")
                                         .font(.caption)
-                                        .foregroundStyle(.white)
-                                        .fontWeight(.medium)
-                                        .truncationMode(.tail)
-                                        .lineLimit(1)
-                                }
+                                        .padding(8)
+                                        .background(Color(red: 0.192, green: 0.106, blue: 0.702)
+                                        .cornerRadius(18)
+                                        )
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
                             }
-                            .frame(width:140)
-                            .padding(12)
-                            .background{
-                                Color(red:0.19215686274509805,green:0.10588235294117647,blue:0.7019607843137254).cornerRadius(16)
-                            }
+                            .padding(24)
                             
-                        }.padding(.vertical)
+                            HStack{
+                                HStack{
+                                    Image(systemName: "arrow.down.circle.fill")
+                                        .foregroundStyle(.green)
+                                        .font(.title)
+                                        .bold()
+                                    
+                                    VStack(
+                                        alignment: .leading
+                                    ){
+                                        Text("Income")
+                                            .foregroundStyle(.white)
+                                            .font(.caption2)
+                                            .lineSpacing(2.0)
+                                        Text("Rp. 2.989.999")
+                                            .font(.caption)
+                                            .foregroundStyle(.white)
+                                            .fontWeight(.medium)
+                                            .truncationMode(.tail)
+                                            .lineLimit(1)
+                                    }
+                                }
+                                .frame(width:140)
+                                .padding(12)
+                                .background{
+                                    Color(red:0.19215686274509805,green:0.10588235294117647,blue:0.7019607843137254).cornerRadius(16)
+                                }
+                                
+                                HStack{
+                                    Image(systemName: "arrow.up.circle.fill")
+                                        .foregroundStyle(.red)
+                                        .font(.title)
+                                        .bold()
+                                    
+                                    VStack(
+                                        alignment: .leading
+                                    ){
+                                        Text("Expense")
+                                            .foregroundStyle(.white)
+                                            .font(.caption2)
+                                            .lineSpacing(2.0)
+                                        Text("Rp. 420.699.9")
+                                            .font(.caption)
+                                            .foregroundStyle(.white)
+                                            .fontWeight(.medium)
+                                            .truncationMode(.tail)
+                                            .lineLimit(1)
+                                    }
+                                }
+                                .frame(width:140)
+                                .padding(12)
+                                .background{
+                                    Color(red:0.19215686274509805,green:0.10588235294117647,blue:0.7019607843137254).cornerRadius(16)
+                                }
+                                
+                            }.padding(.vertical)
+                        }
+                        .background{
+                            Color(red:0.3254901960784314,green:0.2235294117647059,blue:0.9333333333333333).cornerRadius(20)
+                        }
+                        .padding(.horizontal)
+                        
                     }
+                    .padding(EdgeInsets(top: 80, leading: 0, bottom: 30, trailing: 0))
+                    .frame(maxWidth: .infinity)
                     .background{
-                        Color(red:0.3254901960784314,green:0.2235294117647059,blue:0.9333333333333333).cornerRadius(20)
+                        Color(red:0.8627450980392157 ,green:0.8352941176470589 ,blue:1 )
                     }
-                    .padding(.horizontal)
-                    
-                }
-                .padding(EdgeInsets(top: 80, leading: 0, bottom: 30, trailing: 0))
-                .frame(maxWidth: .infinity)
-                .background{
-                    Color(red:0.8627450980392157 ,green:0.8352941176470589 ,blue:1 )
-                }
-                
-                
-                VStack{
-                    HStack{
-                        Text("Budgeting")
-                            .fontWeight(.semibold)
-                            .font(.title3)
-                        Spacer()
-                    }
-                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
-                    
+                   
                     ScrollView(.horizontal, showsIndicators: false){
                         LazyHStack(
                             spacing: 16
@@ -165,7 +189,6 @@ struct Home: View {
                                 BudgetingCard(budgetingData: budget, budgetAvailable: cumulativeIncome())
                             }
                         }
-                        .padding(EdgeInsets(top:0, leading:20, bottom: 0, trailing: 20))
                     }
                     .overlay {
                         if budgets.isEmpty {
@@ -176,13 +199,13 @@ struct Home: View {
                                     .frame(height: 30)
                                     .foregroundStyle(.gray)
                                     .padding(4)
-                                Text("Create Budgeting to see budgeting")
+                                Text("Add Transactions to see list")
                                     .font(.caption)
                                     .foregroundStyle(.gray)
                                 Button(action: {
-                                    addBudgetingSample()
+                                    //                                addTransactionSample()
                                 }, label: {
-                                    Text("Add Budgeting Sample")
+                                    Text("Add Transaction Sample")
                                         .font(.caption)
                                 })
                             }
