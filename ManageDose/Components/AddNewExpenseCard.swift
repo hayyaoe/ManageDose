@@ -132,12 +132,12 @@ struct AddNewExpenseCard: View {
     }
     
     func addIncome(){
-        let income = IncomeData(id: UUID().uuidString, name: expenseName, date: expenseDate, amount: expenseAmount, categoryTransaction: CategoryTransaction(rawValue: selectedOption) ?? .salary)
+        let income = IncomeData(name: expenseName, date: expenseDate, amount: expenseAmount, categoryTransaction: CategoryTransaction(rawValue: selectedOption) ?? .salary)
         context.insert(income)
     }
 
     func addExpense() {
-        let expense = ExpenseData(id: UUID().uuidString, name: expenseName, date: expenseDate, amount: expenseAmount, budget: .dailyneeds, category: CategoryTransaction(rawValue: selectedOption) ?? .electricity)
+        let expense = ExpenseData(name: expenseName, date: expenseDate, amount: expenseAmount, budget: .dailyneeds, categoryTransaction: CategoryTransaction(rawValue: selectedOption) ?? .electricity)
         context.insert(expense)
     }
 }

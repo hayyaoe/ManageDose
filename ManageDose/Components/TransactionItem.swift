@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TransactionItem: View {
     var transactionData: TransactionData
