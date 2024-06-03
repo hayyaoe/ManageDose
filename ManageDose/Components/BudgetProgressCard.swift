@@ -42,8 +42,8 @@ struct TopCornersRoundedShape: Shape {
 
 
 struct BudgetProgressCard: View {
-    let progressPercentage: Double = 0.7
-    let colorAlert: Color
+    let progressPercentage: Double
+    let budget: Int
     var body: some View {
         ZStack(alignment: .topLeading){
             //logo and progress
@@ -67,30 +67,39 @@ struct BudgetProgressCard: View {
                             .lineLimit(1)
                     }
                     Spacer()
-                    Text("Rp. 3.343.000")
+                    Text("Rp \(self.budget)")
                         .font(.system(size: 15))
                         .fontWeight(.medium)
                         .foregroundStyle(.black)
                 }
                 ZStack(alignment: .leading){
                     Capsule()
-                        .frame(width: UIScreen.main.bounds.width-80)
+                        .frame(width: UIScreen.main.bounds.width - 80)
                         .foregroundColor(Color(red: 226 / 255, green: 226 / 255, blue: 226 / 255, opacity: 1))
                     Capsule()
                         .frame(width: CGFloat(progressPercentage) * (UIScreen.main.bounds.width - 80))
-                        .foregroundColor(Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1))
+                        .foregroundColor({
+                            if progressPercentage < 0.5 {
+                                return Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1)
+                            } else if progressPercentage < 0.8 {
+                                return Color.yellow
+                            } else {
+                                return Color.red
+                            }
+                        }())
+
                 }
                 .frame(height: 6)
                 .padding(.top, 8)
                 HStack{
-                    Text("Rp. 99.989.000 used")
+                    Text("\(self.budget) used")
                         .fontWeight(.regular)
                         .foregroundStyle(.gray)
                         .font(.system(size: 12))
                         .truncationMode(.tail)
                         .lineLimit(1)
                     Spacer()
-                    Text("Rp. 99.989.000 remaining")
+                    Text("\(self.budget) Remaining")
                         .fontWeight(.regular)
                         .foregroundStyle(.gray)
                         .font(.system(size: 12))
@@ -119,13 +128,20 @@ struct BudgetProgressCard: View {
             }
             .frame(maxWidth: 400, alignment: .leading)
             .padding(15)
-            .background(colorAlert)
-            .clipShape(TopCornersRoundedShape(radius: 10))
+            .background({
+                if progressPercentage < 0.5 {
+                    return Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1)
+                } else if progressPercentage < 0.8 {
+                    return Color.yellow
+                } else {
+                    return Color.red
+                }
+            }())            .clipShape(TopCornersRoundedShape(radius: 10))
         }
         
     }
 }
 
 #Preview {
-    BudgetProgressCard(colorAlert: Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1))
+    BudgetProgressCard(progressPercentage: 0.5, budget: 1000)
 }

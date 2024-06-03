@@ -30,5 +30,4 @@ class BudgetingData: Identifiable{
         self.percentage = percentage
         self.budget = budget
     }
-    
 }
