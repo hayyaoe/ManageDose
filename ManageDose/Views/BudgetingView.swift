@@ -79,8 +79,8 @@ struct BudgetingView: View {
 
 #Preview {
     BudgetingView(budgetings: [
-        BudgetingData(id: UUID().uuidString, name: "Basic Needs", percentage: 50, budget: .dailyneeds),
-        BudgetingData(id: UUID().uuidString, name: "Savings", percentage: 20, budget: .saving),
-        BudgetingData(id: UUID().uuidString, name: "Wants", percentage: 30, budget: .wants)
+        BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds),
+        BudgetingData(name: "Savings", percentage: 20, budget: .saving),
+        BudgetingData(name: "Wants", percentage: 30, budget: .wants)
     ], budget: 2000000)
 }
