@@ -69,12 +69,12 @@
 		7E5F572F2C085F8500639A80 /* NavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		7E5F57302C085F8500639A80 /* PageIndicatorFill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndicatorFill.swift; sourceTree = "<group>"; };
 		7E5F57312C085F8500639A80 /* PageIndicatorBlank.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndicatorBlank.swift; sourceTree = "<group>"; };
+		7E6D55072C0DA97C007FF572 /* ManageDose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ManageDose.app; path = "/Users/rabirabichannel/Desktop/Codes/MAD/ManageDoseDevel/managedose/build/Debug-iphoneos/ManageDose.app"; sourceTree = "<absolute>"; };
 		7E71FC382BFAEC2500F58890 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7E71FC3A2BFB193200F58890 /* TransactionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionItem.swift; sourceTree = "<group>"; };
 		7E71FC3C2BFB1E3500F58890 /* BudgetingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetingCard.swift; sourceTree = "<group>"; };
 		7E9282E52C09689A00E61487 /* IncomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeData.swift; sourceTree = "<group>"; };
 		7E9282E72C0968A500E61487 /* ExpenseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseData.swift; sourceTree = "<group>"; };
-		7E9282E92C096C6A00E61487 /* ManageDose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ManageDose.app; path = "/Users/rabirabichannel/Desktop/Codes/MAD/ManageDoseDevel/managedose/build/Debug-iphoneos/ManageDose.app"; sourceTree = "<absolute>"; };
 		7E9282EA2C09A59100E61487 /* IncomeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeItem.swift; sourceTree = "<group>"; };
 		7E9282EC2C09A5B400E61487 /* ExpenseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseItem.swift; sourceTree = "<group>"; };
 		7E9506C92BFB35C200BDF341 /* TransactionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionHistoryView.swift; path = ManageDose/Views/TransactionHistoryView.swift; sourceTree = SOURCE_ROOT; };
@@ -215,7 +215,7 @@
 			);
 			name = ManageDose;
 			productName = ManageDose;
-			productReference = 7E9282E92C096C6A00E61487 /* ManageDose.app */;
+			productReference = 7E6D55072C0DA97C007FF572 /* ManageDose.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

@@ -104,9 +104,9 @@ struct SettingBudget: View {
     }
     
     func saveBudgeting(basicNeedsPercentage: Double, savingsPercentage: Double, wantsPercentage: Double) {
-        let basicNeeds = BudgetingData(id: UUID().uuidString, name: "Basic Needs", percentage: basicNeedsPercentage, budget: .dailyneeds)
-        let savings = BudgetingData(id: UUID().uuidString, name: "Savings", percentage: savingsPercentage, budget: .saving)
-        let wants = BudgetingData(id: UUID().uuidString, name: "Wants", percentage: wantsPercentage, budget: .wants)
+        let basicNeeds = BudgetingData( name: "Basic Needs", percentage: basicNeedsPercentage, budget: .dailyneeds)
+        let savings = BudgetingData(name: "Savings", percentage: savingsPercentage, budget: .saving)
+        let wants = BudgetingData(name: "Wants", percentage: wantsPercentage, budget: .wants)
         
         modelContext.insert(basicNeeds)
         modelContext.insert(savings)
@@ -123,8 +123,8 @@ struct SettingBudget: View {
 
 #Preview {
     SettingBudget(budget: 3000000, budgetings: [
-        BudgetingData(id: UUID().uuidString, name: "Basic Needs", percentage: 50, budget: .dailyneeds),
-        BudgetingData(id: UUID().uuidString, name: "Savings", percentage: 20, budget: .saving),
-        BudgetingData(id: UUID().uuidString, name: "Wants", percentage: 30, budget: .wants)
+        BudgetingData( name: "Basic Needs", percentage: 50, budget: .dailyneeds),
+        BudgetingData( name: "Savings", percentage: 20, budget: .saving),
+        BudgetingData(name: "Wants", percentage: 30, budget: .wants)
     ], isPreview: true)
 }
