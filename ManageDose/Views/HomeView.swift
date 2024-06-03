@@ -16,6 +16,8 @@ struct Home: View {
     @State var filteredExpenses: [ExpenseData] = []
     @State var filteredIncomes: [IncomeData] = []
     
+    @State private var isDefaultBudgetingSet: Bool = false
+    
     @Query var incomes: [IncomeData]
     @Query var expenses: [ExpenseData]
     @Query var budgets: [BudgetingData]
@@ -61,12 +63,12 @@ struct Home: View {
                                 Spacer()
                                 
                                 NavigationLink(destination: SettingBudget(budgetings: .constant(self.budgets), budget: self.availableBudget())) {
-                                                                    Text("Atur Ulang")
-                                                                        .foregroundColor(.white)
-                                                                        .font(.caption)
-                                                                        .padding(8)
-                                                                        .background(Color(red: 0.192, green: 0.106, blue: 0.702).cornerRadius(18))
-                                                                }
+                                    Text("Atur Ulang")
+                                        .foregroundColor(.white)
+                                        .font(.caption)
+                                        .padding(8)
+                                        .background(Color(red: 0.192, green: 0.106, blue: 0.702).cornerRadius(18))
+                                }
                             }
                             .padding(24)
                             
@@ -214,8 +216,11 @@ struct Home: View {
                 NavBar()
             }
             .ignoresSafeArea(.all)
-            .toolbar{
-                Button("Add Default Budgeting", action: defaultBudgeting)
+            .onAppear {
+                if !isDefaultBudgetingSet {
+                    defaultBudgeting()
+                    isDefaultBudgetingSet = true
+                }
             }
         }
     }

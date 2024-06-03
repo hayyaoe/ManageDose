@@ -12,8 +12,8 @@ struct SettingBudget: View {
     @Environment(\.modelContext) var modelContext
     @Binding var budgetings: [BudgetingData]
     
-    @State private var width: CGFloat = (UIScreen.main.bounds.width - 60) * 0.5
-    @State private var width1: CGFloat = (UIScreen.main.bounds.width - 60) * 0.8
+    @State private var width: CGFloat = 0.0
+    @State private var width1: CGFloat = 0.0
     
     @State private var navigateToBudgeting = false
     @State private var showAlert = false
@@ -102,6 +102,17 @@ struct SettingBudget: View {
                 
                 Spacer()
             }
+            .onAppear {
+                if let dailyNeedsPercentage = budgetings.first(where: { $0.budget == .dailyneeds })?.percentage {
+                    width = (UIScreen.main.bounds.width - 60) * CGFloat(dailyNeedsPercentage) / 100.0
+                }
+
+                if let dailyNeedsPercentage = budgetings.first(where: { $0.budget == .dailyneeds })?.percentage,
+                    let savingsPercentage = budgetings.first(where: { $0.budget == .saving })?.percentage {
+                    let combinedPercentage = dailyNeedsPercentage + savingsPercentage
+                    width1 = (UIScreen.main.bounds.width - 60) * CGFloat(combinedPercentage) / 100.0
+                }
+            }
             .navigationBarTitleDisplayMode(.inline)
             .alert(isPresented: $showAlert) {
                 Alert(
@@ -114,13 +125,9 @@ struct SettingBudget: View {
     }
     
     func saveBudgeting(basicNeedsPercentage: Double, savingsPercentage: Double, wantsPercentage: Double) {
-        let basicNeeds = BudgetingData( name: "Basic Needs", percentage: basicNeedsPercentage, budget: .dailyneeds)
-        let savings = BudgetingData(name: "Savings", percentage: savingsPercentage, budget: .saving)
-        let wants = BudgetingData(name: "Wants", percentage: wantsPercentage, budget: .wants)
-        
-        modelContext.insert(basicNeeds)
-        modelContext.insert(savings)
-        modelContext.insert(wants)
+        budgetings.first(where: { $0.budget == .dailyneeds })?.percentage = basicNeedsPercentage
+        budgetings.first(where: { $0.budget == .wants })?.percentage = wantsPercentage
+        budgetings.first(where: { $0.budget == .saving })?.percentage = savingsPercentage
         
         do {
             try modelContext.save()
