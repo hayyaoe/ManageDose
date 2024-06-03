@@ -72,7 +72,7 @@ struct BudgetingView: View {
                 }
             }
             .navigationBarTitle("Budgeting")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitleDisplayMode(.large)
         }
     }
 }
