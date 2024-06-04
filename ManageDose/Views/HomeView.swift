@@ -23,10 +23,32 @@ struct Home: View {
     @Query var budgets: [BudgetingData]
     
     var body: some View {
-        
-        NavigationView{
-            VStack{
-                ScrollView(.vertical, showsIndicators: false){
+        NavigationView(content: {
+        VStack{
+            ScrollView(.vertical, showsIndicators: false){
+                VStack{
+                    HStack{
+                        VStack(
+                            alignment: .leading
+                        ) {
+                            Text("Hello,")
+                                .foregroundStyle(.gray)
+                                .fontWeight(.semibold)
+                                .font(.title3)
+                            Text("Username")
+                                .fontWeight(.semibold)
+                                .font(.title3)
+                        }
+                        
+                        Spacer()
+                        
+                        DatePicker(selection: $date, displayedComponents: [.date], label: {})
+                            .onChange(of: date, perform: { newDate in
+                                filterData(for: newDate)
+                            })
+                        
+                    }
+                    .padding(.horizontal)
                     VStack{
                         HStack{
                             VStack(alignment: .leading) {
@@ -41,10 +63,15 @@ struct Home: View {
                             
                             Spacer()
                             
-                            DatePicker(selection: $date, displayedComponents: [.date], label: {})
-                                .onChange(of: date) { newDate in
-                                    filterData(for: newDate)
-                                }
+                            NavigationLink(destination: IncomeDetailView(), label:{
+                                Text("Atur Ulang")
+                                    .foregroundStyle(.white)
+                                    .font(.caption)
+                                    .padding(8)
+                                    .background{
+                                        Color(red:0.19215686274509805,green:0.10588235294117647,blue:0.7019607843137254).cornerRadius(18)
+                                    }
+                            })
                         }
                         .padding(.horizontal)
                         
@@ -222,7 +249,9 @@ struct Home: View {
                     isDefaultBudgetingSet = true
                 }
             }
-        }
+
+        }.ignoresSafeArea(.all)
+        })
     }
     
     func filterData(for date: Date) {

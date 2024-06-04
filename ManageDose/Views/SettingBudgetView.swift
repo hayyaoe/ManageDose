@@ -15,6 +15,8 @@ struct SettingBudget: View {
     @State private var width: CGFloat = 0.0
     @State private var width1: CGFloat = 0.0
     
+    @State private var goToBudgeting = false
+    
     @State private var navigateToBudgeting = false
     @State private var showAlert = false
     @State private var alertMessage = ""
@@ -102,7 +104,7 @@ struct SettingBudget: View {
                 
                 NavigationLink(destination: BudgetingView(budgetings: $budgetings, budget: budget), isActive: $navigateToBudgeting) {
                     EmptyView()
-                }
+                }.hidden()
                 
                 Spacer()
             }

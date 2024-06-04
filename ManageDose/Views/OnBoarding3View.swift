@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct OnBoarding3View: View {
+    
+    @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
+    
     var body: some View {
         VStack{
             ZStack{
@@ -38,7 +41,7 @@ struct OnBoarding3View: View {
                 .multilineTextAlignment(.center)
     
             Button(action: {
-                
+                hasSeenOnboarding = true
             }) {
                 Text("Continue")
                     .frame(maxWidth: 320)
