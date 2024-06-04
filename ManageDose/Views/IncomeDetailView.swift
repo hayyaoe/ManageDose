@@ -10,8 +10,9 @@ import SwiftData
 
 struct IncomeDetailView: View {
     @Environment(\.modelContext) private var context
-    @Query private var incomes : [IncomeData]
-    @Query private var budgets : [BudgetingData]
+    @Binding var incomes : [IncomeData]
+    @Binding var budgets : [BudgetingData]
+    @Binding var selectedTab: Int
     @State private var showSheet = false
     @State private var allFieldsFilled = false
     var totalIncome: Double {
@@ -80,7 +81,7 @@ struct IncomeDetailView: View {
             }
             .padding(.top, 0)
             
-            NavigationLink(destination: SettingBudget(budget: totalIncome, budgetings: budgets, isPreview: false), label: {
+            NavigationLink(destination: SettingBudget(budgetings: $budgets, selectedTab: $selectedTab, budget: totalIncome, isPreview: false).toolbar(.hidden, for: .tabBar), label: {
                 Text("Submit")
                     .font(.title2)
                     .fontWeight(.semibold)
@@ -106,5 +107,20 @@ struct IncomeDetailView: View {
 }
 
 #Preview {
-    IncomeDetailView()
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: BudgetingData.self, configurations: config)
+        let example = [BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds), BudgetingData(name: "Wants", percentage: 30, budget: .wants), BudgetingData(name: "Savings", percentage: 20, budget: .saving)]
+        
+        let incomeExample = [IncomeData(name: "Salary", date: Date(), amount: 1000000, categoryTransaction: .salary), IncomeData(name: "Salary", date: Date(), amount: 1000000, categoryTransaction: .salary), IncomeData(name: "Salary", date: Date(), amount: 1000000, categoryTransaction: .salary)]
+        
+        @State var budgetings = example
+        @State var incomes = incomeExample
+        @State var selectedTab = 1
+        
+        return IncomeDetailView(incomes: $incomes, budgets: $budgetings, selectedTab: $selectedTab)
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container")
+    }
 }
