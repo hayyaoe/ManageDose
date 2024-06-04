@@ -78,6 +78,7 @@ struct SettingBudget: View {
                     Slider(totalWidth: totalWidth, width: $width, width1: $width1)
                     
                     SettingBudgetRow(basicNeedsPercentage: .constant(basicNeedsPercentage), wantsPercentage: .constant(wantsPercentage), savingsPercentage: .constant(savingsPercentage), budget: .constant(Double(self.budget)))
+
                     Spacer()
                 }
                 .padding(20)
@@ -146,7 +147,7 @@ struct SettingBudget: View {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: BudgetingData.self, configurations: config)
-        let example = [BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds), BudgetingData(name: "Wants", percentage: 30, budget: .wants), BudgetingData(name: "Savings", percentage: 20, budget: .saving)]
+        let example = [BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds, totalBudget: 1000, used: 500), BudgetingData(name: "Wants", percentage: 30, budget: .wants, totalBudget: 1000, used: 500), BudgetingData(name: "Savings", percentage: 20, budget: .saving, totalBudget: 1000, used: 500)]
         
         @State var budgetings = example
         @State var selectedTab = 1

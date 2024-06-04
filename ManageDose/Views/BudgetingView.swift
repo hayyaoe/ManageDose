@@ -19,6 +19,14 @@ struct BudgetingView: View {
         let savingsPercentage = budgetings.first(where: { $0.budget == .saving })?.percentage ?? 0
         let wantsPercentage = budgetings.first(where: { $0.budget == .wants })?.percentage ?? 0
         
+        let basicNeedsAmount = budgetings.first(where: { $0.budget == .dailyneeds })?.amount ?? 0
+        let savingsAmount = budgetings.first(where: { $0.budget == .saving })?.amount ?? 0
+        let wantsAmount = budgetings.first(where: { $0.budget == .wants })?.amount ?? 0
+        
+        let basicNeedsUsed = budgetings.first(where: { $0.budget == .dailyneeds })?.used ?? 0
+        let savingsUsed = budgetings.first(where: { $0.budget == .saving })?.used ?? 0
+        let wantsUsed = budgetings.first(where: { $0.budget == .wants })?.used ?? 0
+        
         VStack{
             HStack{
                 Text("Budgeting")
@@ -56,13 +64,13 @@ struct BudgetingView: View {
                 }
                 .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 20))
                 NavigationLink(destination: DetailBudget()) {
-                    BudgetProgressCard(progressPercentage: 0.3, budget: 1000)
+                    BudgetProgressCard(budget: basicNeedsAmount, used: basicNeedsUsed, name: "Basic Needs")
                 }
                 NavigationLink(destination: DetailBudget()) {
-                    BudgetProgressCard(progressPercentage: 0.7, budget: 1000)
+                    BudgetProgressCard(budget: wantsAmount, used: wantsUsed, name: "Wants")
                 }
                 NavigationLink(destination: DetailBudget()) {
-                    BudgetProgressCard(progressPercentage: 0.9, budget: 1000)
+                    BudgetProgressCard(budget: savingsAmount, used: savingsUsed, name: "Savings")
                     }
                 }
                 .padding(.horizontal)
@@ -75,7 +83,10 @@ struct BudgetingView: View {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: BudgetingData.self, configurations: config)
-        let example = [BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds), BudgetingData(name: "Wants", percentage: 30, budget: .wants), BudgetingData(name: "Savings", percentage: 20, budget: .saving)]
+        let example = [
+            BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds, totalBudget: 3000000, used: 500),
+            BudgetingData(name: "Wants", percentage: 30, budget: .wants, totalBudget: 3000000, used: 100000),
+            BudgetingData(name: "Savings", percentage: 20, budget: .saving, totalBudget: 3000000, used: 500000)]
         
         @State var budgetings = example
         

@@ -42,9 +42,13 @@ struct TopCornersRoundedShape: Shape {
 
 
 struct BudgetProgressCard: View {
-    let progressPercentage: Double
-    let budget: Int
+    let budget: Double
+    let used: Double
+    let name: String
+    
     var body: some View {
+        let remaining = budget - used
+        let progressPercentage = used / budget
         ZStack(alignment: .topLeading){
             //logo and progress
             VStack{
@@ -55,7 +59,7 @@ struct BudgetProgressCard: View {
                         .frame(height:45)
                         .foregroundStyle(.blue)
                     VStack(alignment: .leading){
-                        Text("Basic Needs")
+                        Text("\(self.name)")
                             .font(.system(size: 18))
                             .fontWeight(.medium)
                             .foregroundStyle(.black)
@@ -67,7 +71,7 @@ struct BudgetProgressCard: View {
                             .lineLimit(1)
                     }
                     Spacer()
-                    Text("Rp \(self.budget)")
+                    Text("Rp \(self.budget, format: .number)")
                         .font(.system(size: 15))
                         .fontWeight(.medium)
                         .foregroundStyle(.black)
@@ -92,14 +96,14 @@ struct BudgetProgressCard: View {
                 .frame(height: 6)
                 .padding(.top, 8)
                 HStack{
-                    Text("\(self.budget) used")
+                    Text("\(self.used, format: .number) used")
                         .fontWeight(.regular)
                         .foregroundStyle(.gray)
                         .font(.system(size: 12))
                         .truncationMode(.tail)
                         .lineLimit(1)
                     Spacer()
-                    Text("\(self.budget) Remaining")
+                    Text("\(remaining, format: .number) Remaining")
                         .fontWeight(.regular)
                         .foregroundStyle(.gray)
                         .font(.system(size: 12))
@@ -121,9 +125,20 @@ struct BudgetProgressCard: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 20)
-                    Text("Your budget is healty!")
-                        .foregroundStyle(.white)
-                        .font(.system(size: 15))
+                    if progressPercentage < 0.5 {
+                        Text("Your budget is healty!")
+                            .foregroundStyle(.white)
+                            .font(.system(size: 15))
+                    } else if progressPercentage < 0.8 {
+                        Text("Watch your spending!")
+                            .foregroundStyle(.white)
+                            .font(.system(size: 15))
+                    } else {
+                        Text("Your budget is almost full!")
+                            .foregroundStyle(.white)
+                            .font(.system(size: 15))
+                    }
+                    
                 }
             }
             .frame(maxWidth: 400, alignment: .leading)
@@ -143,5 +158,5 @@ struct BudgetProgressCard: View {
 }
 
 #Preview {
-    BudgetProgressCard(progressPercentage: 0.5, budget: 1000)
+    BudgetProgressCard(budget: 1000, used: 900, name: "Savings")
 }

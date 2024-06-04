@@ -62,7 +62,7 @@ struct BudgetingCard: View {
 
 struct BudgetingCard_Preview: PreviewProvider {
     static var previews: some View {
-        let budgetingData = BudgetingData( name: "Name", percentage: 0.7, budget: .dailyneeds )
+        let budgetingData = BudgetingData( name: "Name", percentage: 0.7, budget: .dailyneeds, totalBudget: 1000, used: 500)
         BudgetingCard(budgetingData: budgetingData, budgetAvailable: 100000000)
     }
 }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04CF6E812C0DE15E00B1133B /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF6E802C0DE15E00B1133B /* ModelData.swift */; };
 		3F7695982C00238600FEE52D /* AddNewExpenseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7695972C00238600FEE52D /* AddNewExpenseCard.swift */; };
 		3F76959A2C00252400FEE52D /* PopUpBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7695992C00252400FEE52D /* PopUpBar.swift */; };
 		3F76959C2C0037EF00FEE52D /* AddNewExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76959B2C0037EF00FEE52D /* AddNewExpenseView.swift */; };
@@ -52,7 +51,6 @@
 
 /* Begin PBXFileReference section */
 		04CF6E7F2C0DBCA200B1133B /* ManageDose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManageDose.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		04CF6E802C0DE15E00B1133B /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		3F7695972C00238600FEE52D /* AddNewExpenseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewExpenseCard.swift; sourceTree = "<group>"; };
 		3F7695992C00252400FEE52D /* PopUpBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpBar.swift; sourceTree = "<group>"; };
 		3F76959B2C0037EF00FEE52D /* AddNewExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewExpenseView.swift; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 				7E4215792BFC9F5E00B0AFDB /* BudgetingData.swift */,
 				7E9282E52C09689A00E61487 /* IncomeData.swift */,
 				7E9282E72C0968A500E61487 /* ExpenseData.swift */,
-				04CF6E802C0DE15E00B1133B /* ModelData.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -301,7 +298,6 @@
 				3F76959C2C0037EF00FEE52D /* AddNewExpenseView.swift in Sources */,
 				7EBEDBC52C02FA7200DC4035 /* IncomeDetail.swift in Sources */,
 				7EE673FE2C05B278001777E4 /* IncomeDetailView.swift in Sources */,
-				04CF6E812C0DE15E00B1133B /* ModelData.swift in Sources */,
 				7E5F572C2C085F5500639A80 /* OnBoarding2View.swift in Sources */,
 				7E9506CA2BFB35C200BDF341 /* TransactionHistoryView.swift in Sources */,
 				7E073D3F2C0370B100933456 /* SettingBudgetRow.swift in Sources */,

@@ -35,7 +35,7 @@
 ////                    .foregroundStyle(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
 ////            }
 //            
-//            NavigationLink(destination: BudgetingView(budgetings: $budgets, budget: availableBudget(), ), label: {
+//            NavigationLink(destination: BudgetingView(budgetings: budgetings, budget: availableBudget() ), label: {
 //                Image(systemName: "newspaper")
 //                                    .imageScale(.large)
 //                                    .foregroundStyle(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
