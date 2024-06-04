@@ -18,12 +18,13 @@ struct Home: View {
     
     @State private var isDefaultBudgetingSet: Bool = false
     
-    @Query var incomes: [IncomeData]
-    @Query var expenses: [ExpenseData]
-    @Query var budgets: [BudgetingData]
+    @Binding var incomes: [IncomeData]
+    @Binding var expenses: [ExpenseData]
+    @Binding var budgets: [BudgetingData]
+    
+    @Binding var selectedTab: Int
     
     var body: some View {
-        NavigationView(content: {
         VStack{
             ScrollView(.vertical, showsIndicators: false){
                 VStack{
@@ -42,7 +43,6 @@ struct Home: View {
                             }
                             
                             Spacer()
-                            
                             DatePicker(selection: $date, displayedComponents: [.date], label: {})
                                 .onChange(of: date, perform: { newDate in
                                     filterData(for: newDate)
@@ -64,7 +64,7 @@ struct Home: View {
                                 
                                 Spacer()
                                 
-                                NavigationLink(destination: SettingBudget(budgetings: .constant(self.budgets), budget: self.availableBudget())) {
+                                NavigationLink(destination: IncomeDetailView(incomes: .constant(self.incomes), budgets: .constant(self.budgets), selectedTab: $selectedTab).toolbar(.hidden, for: .tabBar) ) {
                                     Text("Atur Ulang")
                                         .foregroundColor(.white)
                                         .font(.caption)
@@ -215,7 +215,6 @@ struct Home: View {
                         }
                     }
                 }
-                //NavBar()
             }
             .ignoresSafeArea(.all)
             .onAppear {
@@ -226,7 +225,6 @@ struct Home: View {
             }
 
         }.ignoresSafeArea(.all)
-        })
     }
     
     func filterData(for date: Date) {
@@ -311,5 +309,26 @@ struct Home: View {
 }
 
 #Preview {
-    Home()
+    
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: BudgetingData.self, configurations: config)
+        let example = [BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds), BudgetingData(name: "Wants", percentage: 30, budget: .wants), BudgetingData(name: "Savings", percentage: 20, budget: .saving)]
+        
+        let incomeExample = [IncomeData(name: "Salary", date: Date(), amount: 1000000, categoryTransaction: .salary), IncomeData(name: "Salary", date: Date(), amount: 1000000, categoryTransaction: .salary), IncomeData(name: "Salary", date: Date(), amount: 1000000, categoryTransaction: .salary)]
+        
+        let expenseExample = [ExpenseData(name: "Salary", date: Date(), amount: 1000000, budget: .wants, categoryTransaction: .salary)]
+        
+        @State var budgetings = example
+        @State var incomes = incomeExample
+        @State var expenses = expenseExample
+        @State var selectedTab = 1
+        
+        return Home(incomes: $incomes, expenses: $expenses, budgets: $budgetings, selectedTab: $selectedTab)
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container")
+    }
+    
+    
 }
