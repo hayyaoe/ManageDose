@@ -75,7 +75,6 @@ struct TransactionHistoryView: View {
                 }
                 
             }
-            NavBar()
         }.ignoresSafeArea(.all)
     }
     

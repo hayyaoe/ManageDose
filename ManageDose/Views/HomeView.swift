@@ -22,7 +22,7 @@ struct Home: View {
     
     
     var body: some View {
-         
+        NavigationView(content: {
         VStack{
             ScrollView(.vertical, showsIndicators: false){
                 VStack{
@@ -65,7 +65,7 @@ struct Home: View {
                             
                             Spacer()
                             
-                            Button(action: {}, label: {
+                            NavigationLink(destination: IncomeDetailView(), label:{
                                 Text("Atur Ulang")
                                     .foregroundStyle(.white)
                                     .font(.caption)
@@ -235,8 +235,8 @@ struct Home: View {
                     }
                 }
             }
-            NavBar()
         }.ignoresSafeArea(.all)
+        })
     }
     
     func filterData(for date: Date) {

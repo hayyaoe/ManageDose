@@ -11,6 +11,7 @@ import SwiftData
 struct IncomeDetailView: View {
     @Environment(\.modelContext) private var context
     @Query private var incomes : [IncomeData]
+    @Query private var budgets : [BudgetingData]
     @State private var showSheet = false
     @State private var allFieldsFilled = false
     var totalIncome: Double {
@@ -78,7 +79,17 @@ struct IncomeDetailView: View {
                     .fontWeight(.semibold)
             }
             .padding(.top, 0)
-            CustomButton()
+            
+            NavigationLink(destination: SettingBudget(budget: totalIncome, budgetings: budgets, isPreview: false), label: {
+                Text("Submit")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
+                    .cornerRadius(40)
+            })
         }
         .padding(.horizontal, 15)
         .navigationBarTitle(Text("Detail Budget")

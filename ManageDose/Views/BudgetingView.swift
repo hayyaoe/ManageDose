@@ -12,7 +12,7 @@ struct BudgetingView: View {
     @Environment(\.modelContext) var modelContext
     
     var budgetings: [BudgetingData]
-    var budget: Int
+    var budget: Double
     
     var body: some View {
         let basicNeedsPercentage = budgetings.first(where: { $0.budget == .dailyneeds })?.percentage ?? 0

@@ -14,8 +14,10 @@ struct SettingBudget: View {
     @State private var width: CGFloat = (UIScreen.main.bounds.width - 60) * 0.5
     @State private var width1: CGFloat = (UIScreen.main.bounds.width - 60) * 0.8
     
+    @State private var goToBudgeting = false
+    
     @State private var navigateToBudgeting = false
-    var budget: Int
+    var budget: Double
     var budgetings: [BudgetingData]
     var isPreview: Bool = false
     
@@ -37,7 +39,7 @@ struct SettingBudget: View {
                     HStack {
                         Text("Rp.")
                             .font(.title2)
-                        Text("\(self.budget)")
+                        Text("\(self.budget, specifier: "%.2f")")
                             .font(.title)
                             .fontWeight(.bold)
                     }
@@ -93,9 +95,10 @@ struct SettingBudget: View {
                 }
                 .padding(20)
                 
+                
                 NavigationLink(destination: BudgetingView(budgetings: self.budgetings, budget: self.budget), isActive: $navigateToBudgeting) {
                     EmptyView()
-                }
+                }.hidden()
                 
                 Spacer()
             }
