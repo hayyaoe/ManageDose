@@ -11,6 +11,7 @@ import SwiftData
 struct SettingBudget: View {
     @Environment(\.modelContext) var modelContext
     @Binding var budgetings: [BudgetingData]
+    @Binding var selectedTab: Int
     
     @State private var width: CGFloat = 0.0
     @State private var width1: CGFloat = 0.0
@@ -30,7 +31,6 @@ struct SettingBudget: View {
         let savingsPercentage = (((width1 - width) / totalWidth) * 100).rounded()
         let wantsPercentage = (((totalWidth - width1) / totalWidth) * 100).rounded()
         
-        NavigationView {
             VStack(alignment: .leading) {
                 VStack(alignment: .leading) {
                     Text("Spending Budget")
@@ -77,7 +77,7 @@ struct SettingBudget: View {
                     
                     Slider(totalWidth: totalWidth, width: $width, width1: $width1)
                     
-                    SettingBudgetRow(basicNeedsPercentage: .constant(basicNeedsPercentage), wantsPercentage: .constant(wantsPercentage), savingsPercentage: .constant(savingsPercentage), budget: .constant(Int(Double(self.budget))))
+                    SettingBudgetRow(basicNeedsPercentage: .constant(basicNeedsPercentage), wantsPercentage: .constant(wantsPercentage), savingsPercentage: .constant(savingsPercentage), budget: .constant(Double(self.budget)))
                     Spacer()
                 }
                 .padding(20)
@@ -86,7 +86,7 @@ struct SettingBudget: View {
                     if !isPreview {
                         self.saveBudgeting(basicNeedsPercentage: basicNeedsPercentage, savingsPercentage: savingsPercentage, wantsPercentage: wantsPercentage)
                     }
-                    self.navigateToBudgeting = true
+                    selectedTab = 2
                 }) {
                     Text("Save Budget")
                         .frame(maxWidth: .infinity)
@@ -98,13 +98,7 @@ struct SettingBudget: View {
                 }
                 .padding(20)
                 
-//                NavigationLink(value: "navigateToBudgeting", label: {
-//                    EmptyView()
-//                })
                 
-                NavigationLink(destination: BudgetingView(budgetings: $budgetings, budget: budget), isActive: $navigateToBudgeting) {
-                    EmptyView()
-                }.hidden()
                 
                 Spacer()
             }
@@ -127,7 +121,7 @@ struct SettingBudget: View {
 //                    dismissButton: .default(Text("OK"))
 //                )
 //            }
-        }
+        
     }
     
     func saveBudgeting(basicNeedsPercentage: Double, savingsPercentage: Double, wantsPercentage: Double) {
@@ -155,8 +149,9 @@ struct SettingBudget: View {
         let example = [BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds), BudgetingData(name: "Wants", percentage: 30, budget: .wants), BudgetingData(name: "Savings", percentage: 20, budget: .saving)]
         
         @State var budgetings = example
+        @State var selectedTab = 1
         
-        return SettingBudget(budgetings: $budgetings, budget: 3000000, isPreview: true)
+        return SettingBudget(budgetings: $budgetings, selectedTab: $selectedTab, budget: 3000000, isPreview: true)
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container")
