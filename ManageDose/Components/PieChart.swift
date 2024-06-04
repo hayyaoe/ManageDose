@@ -65,7 +65,7 @@ struct PieChart: View {
                         .font(.system(size: 12))
                         .fontWeight(.semibold)
                         .foregroundStyle(.gray)
-                    Text("Rp \(self.budget)")
+                    Text("Rp \(self.budget, format: .number)")
                         .font(.system(size: 15))
                         .fontWeight(.medium)
                         .foregroundStyle(.black)

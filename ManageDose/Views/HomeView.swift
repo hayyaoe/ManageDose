@@ -16,10 +16,11 @@ struct Home: View {
     @State var filteredExpenses: [ExpenseData] = []
     @State var filteredIncomes: [IncomeData] = []
     
+    @State private var isDefaultBudgetingSet: Bool = false
+    
     @Query var incomes: [IncomeData]
     @Query var expenses: [ExpenseData]
     @Query var budgets: [BudgetingData]
-    
     
     var body: some View {
         NavigationView(content: {
@@ -48,19 +49,16 @@ struct Home: View {
                         
                     }
                     .padding(.horizontal)
-                    
                     VStack{
                         HStack{
-                            VStack(
-                                alignment: .leading
-                            ){
-                                Text("Available Budget")
-                                    .foregroundStyle(.white)
-                                    .font(.subheadline)
-                                Text("Rp \(availableBudget(), format: .number)")
-                                    .foregroundStyle(.white)
-                                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                                    .bold()
+                            VStack(alignment: .leading) {
+                                Text("Hello,")
+                                    .foregroundColor(.gray)
+                                    .fontWeight(.semibold)
+                                    .font(.title3)
+                                Text("Username")
+                                    .fontWeight(.semibold)
+                                    .font(.title3)
                             }
                             
                             Spacer()
@@ -74,167 +72,184 @@ struct Home: View {
                                         Color(red:0.19215686274509805,green:0.10588235294117647,blue:0.7019607843137254).cornerRadius(18)
                                     }
                             })
-                            
                         }
-                        .padding(24)
+                        .padding(.horizontal)
                         
+                        VStack{
+                            HStack{
+                                VStack(alignment: .leading){
+                                    Text("Available Budget")
+                                        .foregroundColor(.white)
+                                        .font(.subheadline)
+                                    Text("Rp \(availableBudget(), format: .number)")
+                                        .foregroundColor(.white)
+                                        .font(.title)
+                                        .bold()
+                                }
+                                
+                                Spacer()
+                                
+                                NavigationLink(destination: SettingBudget(budgetings: .constant(self.budgets), budget: self.availableBudget())) {
+                                    Text("Atur Ulang")
+                                        .foregroundColor(.white)
+                                        .font(.caption)
+                                        .padding(8)
+                                        .background(Color(red: 0.192, green: 0.106, blue: 0.702).cornerRadius(18))
+                                }
+                            }
+                            .padding(24)
+                            
+                            HStack{
+                                HStack{
+                                    Image(systemName: "arrow.down.circle.fill")
+                                        .foregroundColor(.green)
+                                        .font(.title)
+                                        .bold()
+                                    
+                                    VStack(alignment: .leading){
+                                        Text("Income")
+                                            .foregroundColor(.white)
+                                            .font(.caption2)
+                                            .lineSpacing(2.0)
+                                        Text("Rp \(cumulativeIncome(), format: .number)")
+                                            .font(.caption)
+                                            .foregroundColor(.white)
+                                            .fontWeight(.medium)
+                                            .truncationMode(.tail)
+                                            .lineLimit(1)
+                                    }
+                                }
+                                .frame(width: 140)
+                                .padding(12)
+                                .background(Color(red: 0.192, green: 0.106, blue: 0.702).cornerRadius(16))
+                                
+                                HStack{
+                                    Image(systemName: "arrow.up.circle.fill")
+                                        .foregroundColor(.red)
+                                        .font(.title)
+                                        .bold()
+                                    
+                                    VStack(alignment: .leading){
+                                        Text("Expense")
+                                            .foregroundColor(.white)
+                                            .font(.caption2)
+                                            .lineSpacing(2.0)
+                                        Text("Rp \(cumulativeExpense(), format: .number)")
+                                            .font(.caption)
+                                            .foregroundColor(.white)
+                                            .fontWeight(.medium)
+                                            .truncationMode(.tail)
+                                            .lineLimit(1)
+                                    }
+                                }
+                                .frame(width: 140)
+                                .padding(12)
+                                .background(Color(red: 0.192, green: 0.106, blue: 0.702).cornerRadius(16))
+                                
+                            }
+                            .padding(.vertical)
+                        }
+                        .background(Color(red: 0.325, green: 0.224, blue: 0.933).cornerRadius(20))
+                        .padding(.horizontal)
+                    }
+                    .padding(EdgeInsets(top: 80, leading: 0, bottom: 30, trailing: 0))
+                    .frame(maxWidth: .infinity)
+                    .background(Color(red: 0.863, green: 0.835, blue: 1))
+                    
+                    VStack{
                         HStack{
-                            HStack{
-                                Image(systemName: "arrow.down.circle.fill")
-                                    .foregroundStyle(.green)
-                                    .font(.title)
-                                    .bold()
-                                
-                                VStack(
-                                    alignment: .leading
-                                ){
-                                    Text("Income")
-                                        .foregroundStyle(.white)
-                                        .font(.caption2)
-                                        .lineSpacing(2.0)
-                                    Text("Rp \(cumulativeIncome(),format: .number)")
-                                        .font(.caption)
-                                        .foregroundStyle(.white)
-                                        .fontWeight(.medium)
-                                        .truncationMode(.tail)
-                                        .lineLimit(1)
+                            Text("Budgeting")
+                                .fontWeight(.semibold)
+                                .font(.title3)
+                            Spacer()
+                        }
+                        .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
+                        
+                        ScrollView(.horizontal, showsIndicators: false){
+                            LazyHStack(spacing: 16){
+                                ForEach(budgets){ budget in
+                                    BudgetingCard(budgetingData: budget, budgetAvailable: cumulativeIncome())
                                 }
                             }
-                            .frame(width:140)
-                            .padding(12)
-                            .background{
-                                Color(red:0.19215686274509805,green:0.10588235294117647,blue:0.7019607843137254).cornerRadius(16)
-                            }
-                            
-                            HStack{
-                                Image(systemName: "arrow.up.circle.fill")
-                                    .foregroundStyle(.red)
-                                    .font(.title)
-                                    .bold()
-                                
-                                VStack(
-                                    alignment: .leading
-                                ){
-                                    Text("Expense")
-                                        .foregroundStyle(.white)
-                                        .font(.caption2)
-                                        .lineSpacing(2.0)
-                                    Text("Rp \(cumulativeExpense(), format: .number)")
+                            .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
+                        }
+                        .overlay {
+                            if budgets.isEmpty {
+                                VStack{
+                                    Image(systemName: "list.bullet.rectangle")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(height: 30)
+                                        .foregroundColor(.gray)
+                                        .padding(4)
+                                    Text("Create Budgeting to see budgeting")
                                         .font(.caption)
-                                        .foregroundStyle(.white)
-                                        .fontWeight(.medium)
-                                        .truncationMode(.tail)
-                                        .lineLimit(1)
+                                        .foregroundColor(.gray)
+                                    Button(action: {
+                                        addBudgetingSample()
+                                    }) {
+                                        Text("Add Budgeting Sample")
+                                            .font(.caption)
+                                    }
                                 }
-                            }
-                            .frame(width:140)
-                            .padding(12)
-                            .background{
-                                Color(red:0.19215686274509805,green:0.10588235294117647,blue:0.7019607843137254).cornerRadius(16)
-                            }
-                            
-                        }.padding(.vertical)
-                    }
-                    .background{
-                        Color(red:0.3254901960784314,green:0.2235294117647059,blue:0.9333333333333333).cornerRadius(20)
-                    }
-                    .padding(.horizontal)
-                    
-                }
-                .padding(EdgeInsets(top: 80, leading: 0, bottom: 30, trailing: 0))
-                .frame(maxWidth: .infinity)
-                .background{
-                    Color(red:0.8627450980392157 ,green:0.8352941176470589 ,blue:1 )
-                }
-                
-                
-                VStack{
-                    HStack{
-                        Text("Budgeting")
-                            .fontWeight(.semibold)
-                            .font(.title3)
-                        Spacer()
-                    }
-                    .padding(EdgeInsets(top: 10, leading: 20, bottom: 0, trailing: 20))
-                    
-                    ScrollView(.horizontal, showsIndicators: false){
-                        LazyHStack(
-                            spacing: 16
-                        ){
-                            ForEach(budgets){ budget in
-                                BudgetingCard(budgetingData: budget, budgetAvailable: cumulativeIncome())
                             }
                         }
-                        .padding(EdgeInsets(top:0, leading:20, bottom: 0, trailing: 20))
                     }
-                    .overlay {
-                        if budgets.isEmpty {
+                    .frame(height: 200)
+                    
+                    VStack{
+                        HStack{
+                            Text("Latest Transaction")
+                                .fontWeight(.semibold)
+                                .font(.title3)
+                            Spacer()
+                        }
+                        .padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
+                        
+                        LazyVStack{
+                            ForEach(filteredExpenses) { expense in
+                                ExpenseItem(expenseData: expense)
+                            }
+                            ForEach(filteredIncomes) { income in
+                                IncomeItem(incomeData: income)
+                            }
+                        }
+                        .padding(.horizontal)
+                    }
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 100, trailing: 0))
+                    .overlay(alignment: .bottom) {
+                        if expenses.isEmpty && incomes.isEmpty {
                             VStack{
                                 Image(systemName: "list.bullet.rectangle")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(height: 30)
-                                    .foregroundStyle(.gray)
+                                    .foregroundColor(.gray)
                                     .padding(4)
-                                Text("Create Budgeting to see budgeting")
+                                Text("Add Transactions to see list")
                                     .font(.caption)
-                                    .foregroundStyle(.gray)
+                                    .foregroundColor(.gray)
                                 Button(action: {
-                                    addBudgetingSample()
-                                }, label: {
-                                    Text("Add Budgeting Sample")
+                                    addIncomeSample()
+                                    addExpenseSample()
+                                }) {
+                                    Text("Add Transaction Sample")
                                         .font(.caption)
-                                })
+                                }
                             }
-                            
                         }
                     }
                 }
-                .frame(height: 200)
-                
-                VStack{
-                    HStack{
-                        Text("Latest Transaction")
-                            .fontWeight(.semibold)
-                            .font(.title3)
-                        Spacer()
-                    }.padding(EdgeInsets(top: 10, leading: 20, bottom: 10, trailing: 20))
-                    
-                    LazyVStack{
-                        ForEach(filteredExpenses) { expense in
-                            ExpenseItem(expenseData: expense)
-                        }
-                        ForEach(filteredIncomes) { income in
-                            IncomeItem(incomeData: income)
-                        }
-                        
-                    }.padding(.horizontal)
-                }
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 100, trailing: 0))
-                .overlay(alignment: .bottom) {
-                    if expenses.isEmpty && incomes.isEmpty {
-                        VStack{
-                            Image(systemName: "list.bullet.rectangle")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: 30)
-                                .foregroundStyle(.gray)
-                                .padding(4)
-                            Text("Add Transactions to see list")
-                                .font(.caption)
-                                .foregroundStyle(.gray)
-                            Button(action: {
-                                addIncomeSample()
-                                addExpenseSample()
-                            }, label: {
-                                Text("Add Transaction Sample")
-                                    .font(.caption)
-                            })
-                        }
-                        
-                    }
+                NavBar()
+            }
+            .ignoresSafeArea(.all)
+            .onAppear {
+                if !isDefaultBudgetingSet {
+                    defaultBudgeting()
+                    isDefaultBudgetingSet = true
                 }
             }
+
         }.ignoresSafeArea(.all)
         })
     }
@@ -254,21 +269,29 @@ struct Home: View {
         }
     }
     
-    func addBudgetingSample (){
+    func defaultBudgeting() {
+        let basicNeeds = BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds)
+        let savings = BudgetingData(name: "Savings", percentage: 20, budget: .saving)
+        let wants = BudgetingData(name: "Wants", percentage: 30, budget: .wants)
         
+        modelContext.insert(basicNeeds)
+        modelContext.insert(savings)
+        modelContext.insert(wants)
+    }
+    
+    func addBudgetingSample() {
         let data1 = BudgetingData(name: "Daily Needs", percentage: 0.5, budget: .dailyneeds)
-        let data2 = BudgetingData( name: "Wants", percentage: 0.2, budget: .wants)
-        let data3 = BudgetingData( name: "Savings", percentage: 0.3, budget: .saving)
+        let data2 = BudgetingData(name: "Wants", percentage: 0.2, budget: .wants)
+        let data3 = BudgetingData(name: "Savings", percentage: 0.3, budget: .saving)
         
         modelContext.insert(data1)
         modelContext.insert(data2)
         modelContext.insert(data3)
     }
     
-    func addIncomeSample (){
-        
+    func addIncomeSample() {
         let data4 = IncomeData(name: "Gaji Utama", date: Date(), amount: 1500000, categoryTransaction: .salary)
-        let data5 = IncomeData(name: "Jual HP", date: Date(), amount: 250000, categoryTransaction:  .otherIncome)
+        let data5 = IncomeData(name: "Jual HP", date: Date(), amount: 250000, categoryTransaction: .otherIncome)
         let data6 = IncomeData(name: "Gaji Youtube", date: Date(), amount: 250000, categoryTransaction: .otherIncome)
         
         modelContext.insert(data4)
@@ -276,8 +299,7 @@ struct Home: View {
         modelContext.insert(data6)
     }
     
-    func addExpenseSample(){
-        
+    func addExpenseSample() {
         let data6 = ExpenseData(name: "Makan McD", date: Date(), amount: 60000, budget: .dailyneeds, categoryTransaction: .food)
         let data7 = ExpenseData(name: "Bayar Listrik", date: Date(), amount: 150000, budget: .saving, categoryTransaction: .electricity)
         let data8 = ExpenseData(name: "Gacoan", date: Date(), amount: 40000, budget: .saving, categoryTransaction: .food)
@@ -288,46 +310,40 @@ struct Home: View {
     }
     
     func availableBudget() -> Double {
-      var cumulativeIncome = 0.0
-      var cumulativeExpense = 0.0
+        var cumulativeIncome = 0.0
+        var cumulativeExpense = 0.0
 
-      // Calculate cumulative income
-      for income in filteredIncomes {
-        cumulativeIncome += income.amount
-      }
+        for income in filteredIncomes {
+            cumulativeIncome += income.amount
+        }
 
-      // Calculate cumulative expense
-      for expense in filteredExpenses {
-        cumulativeExpense += expense.amount
-      }
+        for expense in filteredExpenses {
+            cumulativeExpense += expense.amount
+        }
 
-      // Return available budget
-      return cumulativeIncome - cumulativeExpense
+        return cumulativeIncome - cumulativeExpense
     }
     
-    func cumulativeExpense() -> Double{
+    func cumulativeExpense() -> Double {
         var cumulativeExpense = 0.0
         
-        // Calculate cumulative expense
         for expense in filteredExpenses {
-          cumulativeExpense += expense.amount
+            cumulativeExpense += expense.amount
         }
         
         return cumulativeExpense
     }
     
-    func cumulativeIncome() -> Double{
+    func cumulativeIncome() -> Double {
         var cumulativeIncome = 0.0
         
-        // Calculate cumulative expense
-        for income in filteredIncomes{
-          cumulativeIncome += income.amount
+        for income in filteredIncomes {
+            cumulativeIncome += income.amount
         }
         
         return cumulativeIncome
     }
 }
-
 
 #Preview {
     Home()

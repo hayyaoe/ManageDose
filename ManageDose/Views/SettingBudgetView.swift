@@ -10,15 +10,18 @@ import SwiftData
 
 struct SettingBudget: View {
     @Environment(\.modelContext) var modelContext
+    @Binding var budgetings: [BudgetingData]
     
-    @State private var width: CGFloat = (UIScreen.main.bounds.width - 60) * 0.5
-    @State private var width1: CGFloat = (UIScreen.main.bounds.width - 60) * 0.8
+    @State private var width: CGFloat = 0.0
+    @State private var width1: CGFloat = 0.0
     
     @State private var goToBudgeting = false
     
     @State private var navigateToBudgeting = false
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+    
     var budget: Double
-    var budgetings: [BudgetingData]
     var isPreview: Bool = false
     
     var body: some View {
@@ -39,7 +42,7 @@ struct SettingBudget: View {
                     HStack {
                         Text("Rp.")
                             .font(.title2)
-                        Text("\(self.budget, specifier: "%.2f")")
+                        Text("\(self.budget, format: .number)")
                             .font(.title)
                             .fontWeight(.bold)
                     }
@@ -74,14 +77,14 @@ struct SettingBudget: View {
                     
                     Slider(totalWidth: totalWidth, width: $width, width1: $width1)
                     
-                    SettingBudgetRow(basicNeedsPercentage: .constant(basicNeedsPercentage), wantsPercentage: .constant(wantsPercentage), savingsPercentage: .constant(savingsPercentage), budget: .constant(self.budget))
+                    SettingBudgetRow(basicNeedsPercentage: .constant(basicNeedsPercentage), wantsPercentage: .constant(wantsPercentage), savingsPercentage: .constant(savingsPercentage), budget: .constant(Int(Double(self.budget))))
                     Spacer()
                 }
                 .padding(20)
                 
                 Button(action: {
                     if !isPreview {
-                        self.saveBudgeting(basicNeedsPercentage: basicNeedsPercentage.rounded(), savingsPercentage: savingsPercentage.rounded(), wantsPercentage: wantsPercentage.rounded())
+                        self.saveBudgeting(basicNeedsPercentage: basicNeedsPercentage, savingsPercentage: savingsPercentage, wantsPercentage: wantsPercentage)
                     }
                     self.navigateToBudgeting = true
                 }) {
@@ -95,39 +98,67 @@ struct SettingBudget: View {
                 }
                 .padding(20)
                 
+//                NavigationLink(value: "navigateToBudgeting", label: {
+//                    EmptyView()
+//                })
                 
-                NavigationLink(destination: BudgetingView(budgetings: self.budgetings, budget: self.budget), isActive: $navigateToBudgeting) {
+                NavigationLink(destination: BudgetingView(budgetings: $budgetings, budget: budget), isActive: $navigateToBudgeting) {
                     EmptyView()
                 }.hidden()
                 
                 Spacer()
             }
+            .onAppear {
+                if let dailyNeedsPercentage = budgetings.first(where: { $0.budget == .dailyneeds })?.percentage {
+                    width = (UIScreen.main.bounds.width - 60) * CGFloat(dailyNeedsPercentage) / 100.0
+                }
+
+                if let dailyNeedsPercentage = budgetings.first(where: { $0.budget == .dailyneeds })?.percentage,
+                    let savingsPercentage = budgetings.first(where: { $0.budget == .saving })?.percentage {
+                    let combinedPercentage = dailyNeedsPercentage + savingsPercentage
+                    width1 = (UIScreen.main.bounds.width - 60) * CGFloat(combinedPercentage) / 100.0
+                }
+            }
             .navigationBarTitleDisplayMode(.inline)
+//            .alert(isPresented: $showAlert) {
+//                Alert(
+//                    title: Text("Save Budget"),
+//                    message: Text(alertMessage),
+//                    dismissButton: .default(Text("OK"))
+//                )
+//            }
         }
     }
     
     func saveBudgeting(basicNeedsPercentage: Double, savingsPercentage: Double, wantsPercentage: Double) {
-        let basicNeeds = BudgetingData( name: "Basic Needs", percentage: basicNeedsPercentage, budget: .dailyneeds)
-        let savings = BudgetingData(name: "Savings", percentage: savingsPercentage, budget: .saving)
-        let wants = BudgetingData(name: "Wants", percentage: wantsPercentage, budget: .wants)
-        
-        modelContext.insert(basicNeeds)
-        modelContext.insert(savings)
-        modelContext.insert(wants)
+        budgetings.first(where: { $0.budget == .dailyneeds })?.percentage = basicNeedsPercentage
+        budgetings.first(where: { $0.budget == .wants })?.percentage = wantsPercentage
+        budgetings.first(where: { $0.budget == .saving })?.percentage = savingsPercentage
         
         do {
             try modelContext.save()
             print("Budgeting data saved successfully.")
+            alertMessage = "Budgeting data saved successfully."
+            showAlert = true
         } catch {
             print("Failed to save budgeting data: \(error.localizedDescription)")
+            alertMessage = "Failed to save budgeting data: \(error.localizedDescription)"
+            showAlert = true
         }
     }
 }
 
 #Preview {
-    SettingBudget(budget: 3000000, budgetings: [
-        BudgetingData( name: "Basic Needs", percentage: 50, budget: .dailyneeds),
-        BudgetingData( name: "Savings", percentage: 20, budget: .saving),
-        BudgetingData(name: "Wants", percentage: 30, budget: .wants)
-    ], isPreview: true)
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: BudgetingData.self, configurations: config)
+        let example = [BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds), BudgetingData(name: "Wants", percentage: 30, budget: .wants), BudgetingData(name: "Savings", percentage: 20, budget: .saving)]
+        
+        @State var budgetings = example
+        
+        return SettingBudget(budgetings: $budgetings, budget: 3000000, isPreview: true)
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container")
+    }
 }
