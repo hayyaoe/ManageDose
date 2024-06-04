@@ -14,7 +14,7 @@ struct AddNewExpenseView: View {
     var body: some View {
         
         VStack{
-            BudgetProgressCard(progressPercentage: 0.7, budget: 1000)
+            BudgetProgressCard(budget: 1000, used: 500, name: "Basic Needs")
                 .padding(.horizontal)
 //            Button(action: {
 //

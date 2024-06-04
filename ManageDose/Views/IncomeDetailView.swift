@@ -80,7 +80,7 @@ struct IncomeDetailView: View {
             }
             .padding(.top, 0)
             
-            NavigationLink(destination: SettingBudget(budget: totalIncome, budgetings: budgets, isPreview: false), label: {
+            NavigationLink(destination: SettingBudget(budgetings: .constant(self.budgets), budget: totalIncome, isPreview: false), label: {
                 Text("Submit")
                     .font(.title2)
                     .fontWeight(.semibold)

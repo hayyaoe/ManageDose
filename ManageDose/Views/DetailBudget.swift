@@ -15,7 +15,7 @@ struct DetailBudget: View {
     @State private var allFieldsFilled = false
     var body: some View {
         VStack{
-            BudgetProgressCard(progressPercentage: 0.7, budget: 1000)
+            BudgetProgressCard(budget: 1000, used: 500, name: "Basic Needs")
                 .padding(.top, 10)
             Rectangle()
                 .fill(Color(red: 220/255, green: 213/255, blue: 255/255, opacity: 1))

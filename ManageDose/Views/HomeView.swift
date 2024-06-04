@@ -27,33 +27,13 @@ struct Home: View {
         VStack{
             ScrollView(.vertical, showsIndicators: false){
                 VStack{
-                    HStack{
-                        VStack(
-                            alignment: .leading
-                        ) {
-                            Text("Hello,")
-                                .foregroundStyle(.gray)
-                                .fontWeight(.semibold)
-                                .font(.title3)
-                            Text("Username")
-                                .fontWeight(.semibold)
-                                .font(.title3)
-                        }
-                        
-                        Spacer()
-                        
-                        DatePicker(selection: $date, displayedComponents: [.date], label: {})
-                            .onChange(of: date, perform: { newDate in
-                                filterData(for: newDate)
-                            })
-                        
-                    }
-                    .padding(.horizontal)
                     VStack{
                         HStack{
-                            VStack(alignment: .leading) {
+                            VStack(
+                                alignment: .leading
+                            ) {
                                 Text("Hello,")
-                                    .foregroundColor(.gray)
+                                    .foregroundStyle(.gray)
                                     .fontWeight(.semibold)
                                     .font(.title3)
                                 Text("Username")
@@ -63,18 +43,13 @@ struct Home: View {
                             
                             Spacer()
                             
-                            NavigationLink(destination: IncomeDetailView(), label:{
-                                Text("Atur Ulang")
-                                    .foregroundStyle(.white)
-                                    .font(.caption)
-                                    .padding(8)
-                                    .background{
-                                        Color(red:0.19215686274509805,green:0.10588235294117647,blue:0.7019607843137254).cornerRadius(18)
-                                    }
-                            })
+                            DatePicker(selection: $date, displayedComponents: [.date], label: {})
+                                .onChange(of: date, perform: { newDate in
+                                    filterData(for: newDate)
+                                })
+                            
                         }
                         .padding(.horizontal)
-                        
                         VStack{
                             HStack{
                                 VStack(alignment: .leading){
@@ -186,7 +161,7 @@ struct Home: View {
                                         .font(.caption)
                                         .foregroundColor(.gray)
                                     Button(action: {
-                                        addBudgetingSample()
+                                        defaultBudgeting()
                                     }) {
                                         Text("Add Budgeting Sample")
                                             .font(.caption)
@@ -240,7 +215,7 @@ struct Home: View {
                         }
                     }
                 }
-                NavBar()
+                //NavBar()
             }
             .ignoresSafeArea(.all)
             .onAppear {
@@ -270,23 +245,13 @@ struct Home: View {
     }
     
     func defaultBudgeting() {
-        let basicNeeds = BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds)
-        let savings = BudgetingData(name: "Savings", percentage: 20, budget: .saving)
-        let wants = BudgetingData(name: "Wants", percentage: 30, budget: .wants)
+        let basicNeeds = BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds, totalBudget: availableBudget(), used: 0)
+        let savings = BudgetingData(name: "Savings", percentage: 20, budget: .saving, totalBudget: availableBudget(), used: 0)
+        let wants = BudgetingData(name: "Wants", percentage: 30, budget: .wants, totalBudget: availableBudget(), used: 0)
         
         modelContext.insert(basicNeeds)
         modelContext.insert(savings)
         modelContext.insert(wants)
-    }
-    
-    func addBudgetingSample() {
-        let data1 = BudgetingData(name: "Daily Needs", percentage: 0.5, budget: .dailyneeds)
-        let data2 = BudgetingData(name: "Wants", percentage: 0.2, budget: .wants)
-        let data3 = BudgetingData(name: "Savings", percentage: 0.3, budget: .saving)
-        
-        modelContext.insert(data1)
-        modelContext.insert(data2)
-        modelContext.insert(data3)
     }
     
     func addIncomeSample() {
