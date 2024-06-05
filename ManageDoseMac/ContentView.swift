@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  MacManageDose
+//  ManageDoseMac
 //
 //  Created by MacBook Pro on 05/06/24.
 //
