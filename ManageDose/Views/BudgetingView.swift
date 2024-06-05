@@ -11,6 +11,7 @@ import SwiftData
 struct BudgetingView: View {
     @Environment(\.modelContext) var modelContext
     @Binding var budgetings: [BudgetingData]
+    @Binding var selectedTab: Int
     
     var budget: Double
     
@@ -18,18 +19,6 @@ struct BudgetingView: View {
         let basicNeeds = budgetings.first(where: { $0.budget == .dailyneeds })
         let savings = budgetings.first(where: { $0.budget == .saving })
         let wants = budgetings.first(where: { $0.budget == .wants })
-        
-        let basicNeedsPercentage = basicNeeds?.percentage ?? 0
-        let savingsPercentage = savings?.percentage ?? 0
-        let wantsPercentage = wants?.percentage ?? 0
-        
-        let basicNeedsAmount = basicNeeds?.amount ?? 0
-        let savingsAmount = savings?.amount ?? 0
-        let wantsAmount = wants?.amount ?? 0
-        
-        let basicNeedsUsed = basicNeeds?.used ?? 0
-        let savingsUsed = savings?.used ?? 0
-        let wantsUsed = wants?.used ?? 0
         
         VStack{
             HStack{
@@ -53,12 +42,14 @@ struct BudgetingView: View {
             }
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack(spacing: 20) {
-                    PieChart(
-                        basic: basicNeedsPercentage,
-                        savings: savingsPercentage,
-                        wants: wantsPercentage,
-                        budget: self.budget
-                    )
+                    NavigationLink(destination: SettingBudget(budgetings: $budgetings, selectedTab: $selectedTab, budget: budget, isPreview: false).toolbar(.hidden, for: .tabBar), label: {
+                        PieChart(
+                            basic: basicNeeds?.percentage ?? 0,
+                            savings: savings?.percentage ?? 0,
+                            wants: wants?.percentage ?? 0,
+                            budget: self.budget
+                        )
+                    })
                     HStack {
                         Text("Expend Allocation")
                             .fontWeight(.semibold)
@@ -68,17 +59,17 @@ struct BudgetingView: View {
                     .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 20))
                     if let basicNeeds = basicNeeds {
                         NavigationLink(destination: DetailBudget(budgeting: Binding(get: { basicNeeds }, set: { _ in }))) {
-                            BudgetProgressCard(budget: basicNeedsAmount, used: basicNeedsUsed, name: "Basic Needs")
+                            BudgetProgressCard(budget: basicNeeds.amount, used: basicNeeds.used, name: "Basic Needs")
                         }
                     }
                     if let wants = wants {
                         NavigationLink(destination: DetailBudget(budgeting: Binding(get: { wants }, set: { _ in }))) {
-                            BudgetProgressCard(budget: wantsAmount, used: wantsUsed, name: "Wants")
+                            BudgetProgressCard(budget: wants.amount, used: wants.used, name: "Wants")
                         }
                     }
                     if let savings = savings {
                         NavigationLink(destination: DetailBudget(budgeting: Binding(get: { savings }, set: { _ in }))) {
-                            BudgetProgressCard(budget: savingsAmount, used: savingsUsed, name: "Savings")
+                            BudgetProgressCard(budget: savings.amount, used: savings.used, name: "Savings")
                         }
                     }
                 }
@@ -99,8 +90,9 @@ struct BudgetingView: View {
         ]
         
         @State var budgetings = example
+        @State var selectedTab = 1
         
-        return BudgetingView(budgetings: $budgetings, budget: 3000000)
+        return BudgetingView(budgetings: $budgetings, selectedTab: $selectedTab, budget: 3000000)
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container")
