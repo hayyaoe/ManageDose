@@ -22,6 +22,8 @@ struct CustomButton: View {
                 .background(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
                 .cornerRadius(40)
         }
+        
+        
     }
 }
 

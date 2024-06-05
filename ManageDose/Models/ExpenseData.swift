@@ -8,11 +8,19 @@
 import Foundation
 import SwiftData
 
-enum CategoryTransaction: String, Codable {
+enum CategoryTransaction: String, Codable{
     case food = "Food"
     case electricity = "Electric Bill"
     case salary = "Salary"
     case otherIncome = "Other Income"
+    case investment = "Investment"
+    case retirement = "Retirement"
+    case entertainment = "Entertainment"
+    case shopping = "Shopping"
+    
+    static var allCases: [CategoryTransaction] {
+        return [.food, .electricity, .salary, .otherIncome, .entertainment, .retirement, .shopping, .investment]
+    }
 }
 
 @Model
@@ -24,14 +32,14 @@ class ExpenseData: Identifiable{
     var amount: Double
     var budget: Budget
     var categoryTransaction: CategoryTransaction
-    
-    init(id: String, name: String, date: Date, amount: Double, budget: Budget, category: CategoryTransaction) {
-        self.id = id
+  
+    init(name: String, date: Date, amount: Double, budget: Budget, categoryTransaction: CategoryTransaction) {
+        self.id = UUID().uuidString
         self.name = name
         self.date = date
         self.amount = amount
         self.budget = budget
-        self.categoryTransaction = category
+        self.categoryTransaction = categoryTransaction
     }
     
 }

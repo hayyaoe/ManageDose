@@ -11,11 +11,13 @@ import SwiftData
 struct DetailBudget: View {
     @Environment(\.modelContext) private var context
     @Query private var expenses : [ExpenseData]
+    @Binding var budgeting: BudgetingData
     @State private var showSheet = false
     @State private var allFieldsFilled = false
+    
     var body: some View {
         VStack{
-            BudgetProgressCard(colorAlert: Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1))
+            BudgetProgressCard(budget: budgeting.amount, used: budgeting.used, name: budgeting.name)
                 .padding(.top, 10)
             Rectangle()
                 .fill(Color(red: 220/255, green: 213/255, blue: 255/255, opacity: 1))
@@ -23,8 +25,8 @@ struct DetailBudget: View {
                 .padding(10)
             ScrollView(.vertical, showsIndicators: false){
                 LazyVStack(){
-                    ForEach(expenses){ expense in
-                        ExpenseCard(expenseName: expense.name, expenseCategory: expense.categoryTransaction, expenseAmount: expense.amount, expenseDate: expense.date)
+                    ForEach(expenses.filter { $0.budget.rawValue == budgeting.budget.rawValue }) { expense in
+                        ExpenseCard(expenseName: expense.name, expenseCategory: expense.categoryTransaction, expenseAmount: expense.amount, expenseDate: expense.date, budgetCatefory: expense.budget)
                     }
                 }
             }
@@ -53,7 +55,7 @@ struct DetailBudget: View {
             .fontWeight(.semibold)
         , displayMode: .inline)
         .sheet(isPresented: $showSheet, content: {
-            AddNewExpenseCard(allFieldsFilled: $allFieldsFilled, isIncome: false)
+            AddNewExpenseCard(allFieldsFilled: $allFieldsFilled, isIncome: false, category: budgeting.name)
                 .presentationDetents([.height(420)])
             
         })
@@ -61,5 +63,16 @@ struct DetailBudget: View {
 }
 
 #Preview {
-    DetailBudget()
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: BudgetingData.self, configurations: config)
+        let example = BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds, totalBudget: 3000000, used: 500)
+        
+        @State var budgetings = example
+        
+        return DetailBudget(budgeting: $budgetings)
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container")
+    }
 }

@@ -11,20 +11,20 @@ struct SettingBudgetRow: View {
     @Binding var basicNeedsPercentage: CGFloat
     @Binding var wantsPercentage: CGFloat
     @Binding var savingsPercentage: CGFloat
-    @Binding var budget: Int
+    @Binding var budget: Double
     
     var body: some View {
         VStack(alignment: .leading){
             HStack (spacing: 15){
-                SettingBudgetItem(percentage: Int(basicNeedsPercentage), name: "Basic Needs", amount: budget*Int(basicNeedsPercentage)/100)
-                SettingBudgetItem(percentage: Int(savingsPercentage), name: "Savings", amount: budget*Int(savingsPercentage)/100)
+                SettingBudgetItem(percentage: Int(basicNeedsPercentage), name: "Basic Needs", amount: Int(budget)*Int(basicNeedsPercentage)/100)
+                SettingBudgetItem(percentage: Int(savingsPercentage), name: "Savings", amount: Int(budget)*Int(savingsPercentage)/100)
             }
             .frame(width: .infinity)
             
             Spacer().frame(height: 14)
             
             
-            SettingBudgetItem(percentage: Int(wantsPercentage), name: "Wants", amount: budget*Int(wantsPercentage)/100)
+            SettingBudgetItem(percentage: Int(wantsPercentage), name: "Wants", amount: Int(budget)*Int(wantsPercentage)/100)
         }
     }
 }

@@ -42,20 +42,38 @@ struct TopCornersRoundedShape: Shape {
 
 
 struct BudgetProgressCard: View {
-    let progressPercentage: Double = 0.7
-    let colorAlert: Color
+    let budget: Double
+    let used: Double
+    let name: String
+    
+    var icon: String {
+        switch name {
+        case "Basic Needs":
+            return "basic needs"
+        case "Wants":
+            return "wants"
+        case "Savings":
+            return "savings"
+        default:
+            return "basic needs"
+        }
+    }
+    
+        
     var body: some View {
+        let remaining = budget - used
+        let progressPercentage = used / budget
         ZStack(alignment: .topLeading){
             //logo and progress
             VStack{
                 HStack{
-                    Image(systemName: "checkmark.square.fill")
+                    Image(icon)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height:45)
                         .foregroundStyle(.blue)
                     VStack(alignment: .leading){
-                        Text("Basic Needs")
+                        Text("\(self.name)")
                             .font(.system(size: 18))
                             .fontWeight(.medium)
                             .foregroundStyle(.black)
@@ -67,30 +85,39 @@ struct BudgetProgressCard: View {
                             .lineLimit(1)
                     }
                     Spacer()
-                    Text("Rp. 3.343.000")
+                    Text("Rp \(self.budget, format: .number)")
                         .font(.system(size: 15))
                         .fontWeight(.medium)
                         .foregroundStyle(.black)
                 }
                 ZStack(alignment: .leading){
                     Capsule()
-                        .frame(width: UIScreen.main.bounds.width-80)
+                        .frame(width: UIScreen.main.bounds.width - 80)
                         .foregroundColor(Color(red: 226 / 255, green: 226 / 255, blue: 226 / 255, opacity: 1))
                     Capsule()
                         .frame(width: CGFloat(progressPercentage) * (UIScreen.main.bounds.width - 80))
-                        .foregroundColor(Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1))
+                        .foregroundColor({
+                            if progressPercentage < 0.5 {
+                                return Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1)
+                            } else if progressPercentage < 0.8 {
+                                return Color.yellow
+                            } else {
+                                return Color.red
+                            }
+                        }())
+
                 }
                 .frame(height: 6)
                 .padding(.top, 8)
                 HStack{
-                    Text("Rp. 99.989.000 used")
+                    Text("\(self.used, format: .number) used")
                         .fontWeight(.regular)
                         .foregroundStyle(.gray)
                         .font(.system(size: 12))
                         .truncationMode(.tail)
                         .lineLimit(1)
                     Spacer()
-                    Text("Rp. 99.989.000 remaining")
+                    Text("\(remaining, format: .number) Remaining")
                         .fontWeight(.regular)
                         .foregroundStyle(.gray)
                         .font(.system(size: 12))
@@ -112,20 +139,38 @@ struct BudgetProgressCard: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 20)
-                    Text("Your budget is healty!")
-                        .foregroundStyle(.white)
-                        .font(.system(size: 15))
+                    if progressPercentage < 0.5 {
+                        Text("Your budget is healty!")
+                            .foregroundStyle(.white)
+                            .font(.system(size: 15))
+                    } else if progressPercentage < 0.8 {
+                        Text("Watch your spending!")
+                            .foregroundStyle(.white)
+                            .font(.system(size: 15))
+                    } else {
+                        Text("Your budget is almost full!")
+                            .foregroundStyle(.white)
+                            .font(.system(size: 15))
+                    }
+                    
                 }
             }
             .frame(maxWidth: 400, alignment: .leading)
             .padding(15)
-            .background(colorAlert)
-            .clipShape(TopCornersRoundedShape(radius: 10))
+            .background({
+                if progressPercentage < 0.5 {
+                    return Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1)
+                } else if progressPercentage < 0.8 {
+                    return Color.yellow
+                } else {
+                    return Color.red
+                }
+            }())            .clipShape(TopCornersRoundedShape(radius: 10))
         }
         
     }
 }
 
 #Preview {
-    BudgetProgressCard(colorAlert: Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1))
+    BudgetProgressCard(budget: 1000, used: 900, name: "Savings")
 }

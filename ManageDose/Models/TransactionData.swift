@@ -11,6 +11,7 @@ import SwiftData
 enum CashFlow: String, Codable, CaseIterable{
     case income = "Income"
     case expense = "Expense"
+    
 }
 
 

@@ -13,7 +13,7 @@ struct ManageDoseApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashScreen()
         }.modelContainer(for: [TransactionData.self, BudgetingData.self, IncomeData.self, ExpenseData.self])
     }
 }

@@ -6,15 +6,19 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddNewExpenseView: View {
+    @Environment(\.modelContext) var modelContext
+    @Binding var budgetings: [BudgetingData]
+    
     @State private var showSheet = false
     @State private var allFieldsFilled = false
-
+    
     var body: some View {
         
         VStack{
-            BudgetProgressCard(colorAlert: Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1))
+            BudgetProgressCard(budget: 1000, used: 500, name: "Basic Needs")
                 .padding(.horizontal)
 //            Button(action: {
 //
@@ -53,7 +57,7 @@ struct AddNewExpenseView: View {
             
         }
         .sheet(isPresented: $showSheet, content: {
-            AddNewExpenseCard(allFieldsFilled: $allFieldsFilled, isIncome: false)
+            AddNewExpenseCard(allFieldsFilled: $allFieldsFilled, isIncome: false, category: "Saving")
                 .presentationDetents([.height(420)])
             
         })
@@ -61,5 +65,19 @@ struct AddNewExpenseView: View {
 }
 
 #Preview {
-    AddNewExpenseView()
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: BudgetingData.self, configurations: config)
+        let example = [
+            BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds, totalBudget: 3000000, used: 500),
+            BudgetingData(name: "Wants", percentage: 30, budget: .wants, totalBudget: 3000000, used: 100000),
+            BudgetingData(name: "Savings", percentage: 20, budget: .saving, totalBudget: 3000000, used: 500000)]
+        
+        @State var budgetings = example
+        
+        return AddNewExpenseView(budgetings: $budgetings)
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container")
+    }
 }
