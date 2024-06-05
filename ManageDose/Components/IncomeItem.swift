@@ -12,6 +12,7 @@ struct IncomeItem: View {
     
     var incomeData: IncomeData
     
+    
     private var image: String {
         switch incomeData.categoryTransaction {
         case .salary:
@@ -22,13 +23,21 @@ struct IncomeItem: View {
             return "food"
         case .electricity:
             return "dailyneeds"
+        case .investment:
+            return "investment"
+        case .retirement:
+            return "retirement"
+        case .entertainment:
+            return "entertainment"
+        case .shopping:
+            return "shopping"
         }
     }
 
     
     var body: some View {
         HStack{
-            Image(image)
+            Image("income")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .foregroundStyle(.yellow)

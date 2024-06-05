@@ -85,7 +85,7 @@ struct SettingBudget: View {
                 
                 Button(action: {
                     if !isPreview {
-                        self.saveBudgeting(basicNeedsPercentage: basicNeedsPercentage, savingsPercentage: savingsPercentage, wantsPercentage: wantsPercentage)
+                        self.saveBudgeting(basicNeedsPercentage: basicNeedsPercentage, savingsPercentage: savingsPercentage, wantsPercentage: wantsPercentage, totalBudget: self.budget)
                     }
                     selectedTab = 2
                 }) {
@@ -125,20 +125,19 @@ struct SettingBudget: View {
         
     }
     
-    func saveBudgeting(basicNeedsPercentage: Double, savingsPercentage: Double, wantsPercentage: Double) {
+    func saveBudgeting(basicNeedsPercentage: Double, savingsPercentage: Double, wantsPercentage: Double, totalBudget: Double) {
         budgetings.first(where: { $0.budget == .dailyneeds })?.percentage = basicNeedsPercentage
+        budgetings.first(where: { $0.budget == .dailyneeds })?.updateAmount(totalBudget: totalBudget)
         budgetings.first(where: { $0.budget == .wants })?.percentage = wantsPercentage
+        budgetings.first(where: { $0.budget == .wants })?.updateAmount(totalBudget: totalBudget)
         budgetings.first(where: { $0.budget == .saving })?.percentage = savingsPercentage
+        budgetings.first(where: { $0.budget == .saving })?.updateAmount(totalBudget: totalBudget)
         
         do {
             try modelContext.save()
             print("Budgeting data saved successfully.")
-            alertMessage = "Budgeting data saved successfully."
-            showAlert = true
         } catch {
             print("Failed to save budgeting data: \(error.localizedDescription)")
-            alertMessage = "Failed to save budgeting data: \(error.localizedDescription)"
-            showAlert = true
         }
     }
 }

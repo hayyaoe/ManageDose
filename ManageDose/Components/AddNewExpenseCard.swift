@@ -11,16 +11,54 @@ import SwiftData
 struct AddNewExpenseCard: View {
     @Environment(\.modelContext) private var context
     @Binding var allFieldsFilled: Bool
+    @Binding var budgeting: BudgetingData
     var isIncome: Bool
+    let category : String
+    @State private var selectedOption = CategoryTransaction.electricity
     
-    @State private var selectedOption = "Option 1"
+//    let incomeCategoryOptions: [CategoryTransaction] = [.salary, .otherIncome]
+//        let expenseCategoryOptions: [CategoryTransaction] = [.electricity, .food]
+//            
+//        var options: [CategoryTransaction] {
+//            return isIncome ? incomeCategoryOptions : expenseCategoryOptions
+//        }
+    var options: [CategoryTransaction] {
+            if isIncome {
+                return incomeCategoryOptions
+            } else {
+                switch category {
+                case "Savings":
+                    return savingOptions
+                case "Basic Needs":
+                    return basicNeedsOptions
+                case "Wants":
+                    return wantsOptions
+                default:
+                    return []
+                }
+            }
+        }
+    
         
     let incomeCategoryOptions: [CategoryTransaction] = [.salary, .otherIncome]
-    let expenseCategoryOptions: [CategoryTransaction] = [.electricity, .food]
+    let savingOptions: [CategoryTransaction] = [.investment, .retirement]
+    let basicNeedsOptions: [CategoryTransaction] = [.electricity, .food]
+    let wantsOptions: [CategoryTransaction] = [.entertainment, .shopping]
         
-    var options: [CategoryTransaction] {
-        return isIncome ? incomeCategoryOptions : expenseCategoryOptions
+    
+    var icon: String {
+        switch category {
+        case "Basic Needs":
+            return "basic needs"
+        case "Wants":
+            return "wants"
+        case "Savings":
+            return "savings"
+        default:
+            return "basic needs"
+        }
     }
+    
 
     @State private var expenseName: String = ""
     @State private var expenseAmount: Double = 50000.0
@@ -48,7 +86,7 @@ struct AddNewExpenseCard: View {
                 HStack(
                     spacing: 24
                 ){
-                    Image(systemName: "checkmark.square.fill")
+                    Image(icon)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height:50)
@@ -72,21 +110,22 @@ struct AddNewExpenseCard: View {
                     .font(.subheadline)
                     .fontWeight(.medium)
                     .padding(.bottom, 4)
+                
                 Picker("Please choose an option", selection: $selectedOption) {
                     ForEach(options, id: \.self) { option in
                         Text(option.rawValue)
                     }
-                                }
-                                .pickerStyle(MenuPickerStyle())
-                                .frame(width: 360, height: 30)
-                                .background(Color.white.opacity(0.2))
-                                .cornerRadius(5)
-                                .shadow(color: .white, radius: 2, x: 0, y: 0.1)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .stroke(Color.blue, lineWidth: 1)
-                                )
-                                .padding(.bottom, 5)
+                }
+                .pickerStyle(MenuPickerStyle())
+                .frame(width: 360, height: 30)
+                .background(Color.white.opacity(0.2))
+                .cornerRadius(5)
+                .shadow(color: .white, radius: 2, x: 0, y: 0.1)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 5)
+                        .stroke(Color.blue, lineWidth: 1)
+                    )
+                    .padding(.bottom, 5)
                 
                 Text("\(isIncome ? "Income" : "Expense") Amount")
                     .font(.subheadline)
@@ -111,6 +150,7 @@ struct AddNewExpenseCard: View {
                 Button(action: {
                     if isIncome{
                         addIncome()
+                        
                     }else{
                         addExpense()
                     }
@@ -132,16 +172,39 @@ struct AddNewExpenseCard: View {
     }
     
     func addIncome(){
-        let income = IncomeData(name: expenseName, date: expenseDate, amount: expenseAmount, categoryTransaction: CategoryTransaction(rawValue: selectedOption) ?? .salary)
+        let income = IncomeData(name: expenseName, date: expenseDate, amount: expenseAmount, categoryTransaction: CategoryTransaction(rawValue: selectedOption.rawValue) ?? .salary)
         context.insert(income)
     }
 
     func addExpense() {
-        let expense = ExpenseData(name: expenseName, date: expenseDate, amount: expenseAmount, budget: .dailyneeds, categoryTransaction: CategoryTransaction(rawValue: selectedOption) ?? .electricity)
+        var budget: Budget
+        switch category {
+            case "Basic Needs":
+                budget = .dailyneeds
+            case "Wants":
+                budget = .wants
+            case "Savings":
+                budget = .saving
+        default:
+            budget = .dailyneeds
+        }
+        let expense = ExpenseData(name: expenseName, date: expenseDate, amount: expenseAmount, budget: budget, categoryTransaction: CategoryTransaction(rawValue: selectedOption.rawValue) ?? .electricity)
         context.insert(expense)
+        budgeting.updateUsed(expense: expenseAmount)
     }
 }
 
 #Preview {
-    AddNewExpenseCard(allFieldsFilled: .constant(false), isIncome: true)
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: BudgetingData.self, configurations: config)
+        let example = BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds, totalBudget: 3000000, used: 500)
+        
+        @State var budgetings = example
+        
+        return AddNewExpenseCard(allFieldsFilled: .constant(false), budgeting: $budgetings, isIncome: true, category: "Basic Needs")
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container")
+    }
 }

@@ -16,7 +16,7 @@ struct IncomeCard: View {
     var body: some View {
         HStack{
             HStack{
-                Image(systemName: "tag.square")
+                Image("income")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundStyle(.yellow)

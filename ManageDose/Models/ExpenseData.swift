@@ -13,9 +13,13 @@ enum CategoryTransaction: String, Codable{
     case electricity = "Electric Bill"
     case salary = "Salary"
     case otherIncome = "Other Income"
+    case investment = "Investment"
+    case retirement = "Retirement"
+    case entertainment = "Entertainment"
+    case shopping = "Shopping"
     
     static var allCases: [CategoryTransaction] {
-        return [.food, .electricity, .salary, .otherIncome]
+        return [.food, .electricity, .salary, .otherIncome, .entertainment, .retirement, .shopping, .investment]
     }
 }
 

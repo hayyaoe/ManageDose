@@ -34,6 +34,16 @@ class BudgetingData: Identifiable{
         self.budget = budget
         self.amount = totalBudget * (percentage / 100)
         self.used = used
-        self.remaining = totalBudget * (percentage / 100) - used
+        self.remaining = totalBudget * (percentage / 100)
     }
+    
+    func updateAmount(totalBudget: Double){
+        self.amount = totalBudget * (self.percentage / 100)
+    }
+    
+    func updateUsed(expense: Double) {
+        self.used = self.used + expense
+        self.remaining = self.remaining - self.used
+    }
+    
 }

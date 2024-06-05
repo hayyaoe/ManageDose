@@ -218,9 +218,11 @@ struct Home: View {
             }
             .ignoresSafeArea(.all)
             .onAppear {
-                if !isDefaultBudgetingSet {
-                    defaultBudgeting()
-                    isDefaultBudgetingSet = true
+                if budgets.isEmpty {
+                    if !isDefaultBudgetingSet {
+                        defaultBudgeting()
+                        isDefaultBudgetingSet = true
+                    }
                 }
             }
 
@@ -313,7 +315,10 @@ struct Home: View {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: BudgetingData.self, configurations: config)
-        let example = [BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds), BudgetingData(name: "Wants", percentage: 30, budget: .wants), BudgetingData(name: "Savings", percentage: 20, budget: .saving)]
+        let example = [
+            BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds, totalBudget: 3000000, used: 500),
+            BudgetingData(name: "Wants", percentage: 30, budget: .wants, totalBudget: 3000000, used: 100000),
+            BudgetingData(name: "Savings", percentage: 20, budget: .saving, totalBudget: 3000000, used: 500000)]
         
         let incomeExample = [IncomeData(name: "Salary", date: Date(), amount: 1000000, categoryTransaction: .salary), IncomeData(name: "Salary", date: Date(), amount: 1000000, categoryTransaction: .salary), IncomeData(name: "Salary", date: Date(), amount: 1000000, categoryTransaction: .salary)]
         
