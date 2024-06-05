@@ -143,7 +143,9 @@ struct Home: View {
                         ScrollView(.horizontal, showsIndicators: false){
                             LazyHStack(spacing: 16){
                                 ForEach(budgets){ budget in
-                                    BudgetingCard(budgetingData: budget, budgetAvailable: cumulativeIncome())
+                                    NavigationLink(destination: DetailBudget(budgeting: Binding(get: { budget }, set: { _ in }))) {
+                                        BudgetingCard(budgetingData: budget, budgetAvailable: cumulativeIncome())
+                                    }
                                 }
                             }
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))

@@ -85,7 +85,7 @@ struct IncomeDetailView: View {
             .padding(.top, 0)
             
             NavigationLink(destination: SettingBudget(budgetings: $budgets, selectedTab: $selectedTab, budget: totalIncome, isPreview: false).toolbar(.hidden, for: .tabBar), label: {
-                Text("Submit")
+                Text("Save")
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundColor(.white)

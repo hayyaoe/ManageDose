@@ -38,8 +38,10 @@ struct ExpenseItem: View {
                 Text(expenseData.name)
                     .fontWeight(.bold)
                     .font(.headline)
+                    .foregroundColor(.black)
                 Text(expenseData.categoryTransaction.rawValue)
                     .font(.subheadline)
+                    .foregroundColor(.black)
           
             }
             
@@ -57,8 +59,29 @@ struct ExpenseItem: View {
 
                 Text(expenseData.date, style: .date)
                     .font(.subheadline)
+                    .foregroundColor(.black)
             }
         }
         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+    }
+}
+
+#Preview {
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: ExpenseData.self, configurations: config)
+        
+        let exampleExpense = ExpenseData(
+            name: "Monthly Salary",
+            date: Date(),
+            amount: 5000000,
+            budget: .dailyneeds,
+            categoryTransaction: .entertainment
+        )
+        
+        return ExpenseItem(expenseData: exampleExpense)
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container")
     }
 }
