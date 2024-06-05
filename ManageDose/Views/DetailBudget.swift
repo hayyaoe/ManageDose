@@ -55,7 +55,7 @@ struct DetailBudget: View {
             .fontWeight(.semibold)
         , displayMode: .inline)
         .sheet(isPresented: $showSheet, content: {
-            AddNewExpenseCard(allFieldsFilled: $allFieldsFilled, isIncome: false, category: budgeting.name)
+            AddNewExpenseCard(allFieldsFilled: $allFieldsFilled, budgeting: $budgeting, isIncome: false, category: budgeting.name)
                 .presentationDetents([.height(420)])
             
         })
