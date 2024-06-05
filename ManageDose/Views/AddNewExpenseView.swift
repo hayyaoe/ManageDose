@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddNewExpenseView: View {
+    @Environment(\.modelContext) var modelContext
+    @Binding var budgetings: [BudgetingData]
+    
     @State private var showSheet = false
     @State private var allFieldsFilled = false
-
+    
     var body: some View {
         
         VStack{
@@ -61,5 +65,19 @@ struct AddNewExpenseView: View {
 }
 
 #Preview {
-    AddNewExpenseView()
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: BudgetingData.self, configurations: config)
+        let example = [
+            BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds, totalBudget: 3000000, used: 500),
+            BudgetingData(name: "Wants", percentage: 30, budget: .wants, totalBudget: 3000000, used: 100000),
+            BudgetingData(name: "Savings", percentage: 20, budget: .saving, totalBudget: 3000000, used: 500000)]
+        
+        @State var budgetings = example
+        
+        return AddNewExpenseView(budgetings: $budgetings)
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container")
+    }
 }

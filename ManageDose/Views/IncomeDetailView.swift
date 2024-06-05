@@ -110,7 +110,7 @@ struct IncomeDetailView: View {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: BudgetingData.self, configurations: config)
-        let example = [BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds), BudgetingData(name: "Wants", percentage: 30, budget: .wants), BudgetingData(name: "Savings", percentage: 20, budget: .saving)]
+        let example = [BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds, totalBudget: 30000, used: 100), BudgetingData(name: "Wants", percentage: 30, budget: .wants, totalBudget: 30000, used: 100), BudgetingData(name: "Savings", percentage: 20, budget: .saving, totalBudget: 30000, used: 100)]
         
         let incomeExample = [IncomeData(name: "Salary", date: Date(), amount: 1000000, categoryTransaction: .salary), IncomeData(name: "Salary", date: Date(), amount: 1000000, categoryTransaction: .salary), IncomeData(name: "Salary", date: Date(), amount: 1000000, categoryTransaction: .salary)]
         

@@ -11,11 +11,13 @@ import SwiftData
 struct DetailBudget: View {
     @Environment(\.modelContext) private var context
     @Query private var expenses : [ExpenseData]
+    @Binding var budgeting: BudgetingData
     @State private var showSheet = false
     @State private var allFieldsFilled = false
+    
     var body: some View {
         VStack{
-            BudgetProgressCard(budget: 1000, used: 500, name: "Basic Needs")
+            BudgetProgressCard(budget: budgeting.amount, used: budgeting.used, name: budgeting.name)
                 .padding(.top, 10)
             Rectangle()
                 .fill(Color(red: 220/255, green: 213/255, blue: 255/255, opacity: 1))
@@ -61,5 +63,16 @@ struct DetailBudget: View {
 }
 
 #Preview {
-    DetailBudget()
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: BudgetingData.self, configurations: config)
+        let example = BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds, totalBudget: 3000000, used: 500)
+        
+        @State var budgetings = example
+        
+        return DetailBudget(budgeting: $budgetings)
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container")
+    }
 }
