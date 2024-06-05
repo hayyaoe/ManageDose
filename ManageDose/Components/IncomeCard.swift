@@ -38,7 +38,7 @@ struct IncomeCard: View {
                     Text("+ Rp. \(String(format: "%.2f", incomeAmount))")
                         .fontWeight(.bold)
                         .font(.headline)
-                        .foregroundStyle(.red)
+                        .foregroundStyle(.green)
                     Text(incomeDate, style: .date)
                         .font(.subheadline)
                 }

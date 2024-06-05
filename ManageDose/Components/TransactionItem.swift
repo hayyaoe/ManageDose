@@ -55,9 +55,23 @@ struct TransactionItem: View {
     }
 }
 
-struct TransactionItem_Preview: PreviewProvider {
-    static var previews: some View {
+//struct TransactionItem_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let transaction = TransactionData(id: "Nice", name: "ChiFry", date: Date(), amount: 69420, cashFlow: .income, budget: .dailyneeds, category: "Halo")
+//        TransactionItem(transactionData: transaction)
+//    }
+//}
+
+#Preview {
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: TransactionData.self, configurations: config)
+        
         let transaction = TransactionData(id: "Nice", name: "ChiFry", date: Date(), amount: 69420, cashFlow: .income, budget: .dailyneeds, category: "Halo")
-        TransactionItem(transactionData: transaction)
+        
+        return TransactionItem(transactionData: transaction)
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container")
     }
 }

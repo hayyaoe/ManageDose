@@ -37,7 +37,7 @@ struct Home: View {
                                     .foregroundStyle(.gray)
                                     .fontWeight(.semibold)
                                     .font(.title3)
-                                Text("Username")
+                                Text("Willas")
                                     .fontWeight(.semibold)
                                     .font(.title3)
                             }
@@ -314,7 +314,7 @@ struct Home: View {
     
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: BudgetingData.self, configurations: config)
+        let container = try ModelContainer(for: BudgetingData.self, IncomeData.self, ExpenseData.self, configurations: config)
         let example = [
             BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds, totalBudget: 3000000, used: 500),
             BudgetingData(name: "Wants", percentage: 30, budget: .wants, totalBudget: 3000000, used: 100000),
@@ -334,6 +334,4 @@ struct Home: View {
     } catch {
         fatalError("Failed to create model container")
     }
-    
-    
 }
