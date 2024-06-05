@@ -8,36 +8,50 @@
 import SwiftUI
 
 struct ExpenseCard: View {
+    let expenseName: String
+    let expenseCategory: CategoryTransaction
+    let expenseAmount: Double
+    let expenseDate: Date
+    let budgetCatefory: Budget
+    
+    var icon: String {
+        switch budgetCatefory {
+        case .saving:
+            return "savings"
+        case .dailyneeds:
+            return "basic needs"
+        case .wants:
+            return "wants"
+        }
+    }
+    
+    
+
     var body: some View {
-        HStack{
-            HStack{
-                Image(systemName: "tag.square")
+        HStack {
+            HStack {
+                Image(icon)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundStyle(.yellow)
                     .frame(height: 50)
                 
-                VStack(
-                    alignment: .leading
-                ){
-                    Text("McDonad's")
+                VStack(alignment: .leading) {
+                    Text(expenseName)
                         .fontWeight(.bold)
                         .font(.headline)
-                    Text("Basic Needs")
+                    Text(expenseCategory.rawValue)
                         .font(.subheadline)
-              
                 }
                 
                 Spacer()
                 
-                VStack(
-                    alignment: .trailing
-                ){
-                    Text("- Rp. 69.420")
+                VStack(alignment: .trailing) {
+                    Text("- Rp. \(String(format: "%.2f", expenseAmount))")
                         .fontWeight(.bold)
                         .font(.headline)
                         .foregroundStyle(.red)
-                    Text("19 Mei 2024")
+                    Text(expenseDate, style: .date)
                         .font(.subheadline)
                 }
             }
@@ -54,5 +68,6 @@ struct ExpenseCard: View {
 }
 
 #Preview {
-    ExpenseCard()
+    ExpenseCard(expenseName: "McDonad's", expenseCategory: .electricity, expenseAmount: 69.42, expenseDate: Date(), budgetCatefory: .dailyneeds)
 }
+
