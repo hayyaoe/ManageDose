@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct BudgetingCard: View {
     
+    @Environment(\.modelContext) private var modelContext
     var budgetingData: BudgetingData
     var budgetAvailable: Double
     var expenseData: [ExpenseData] = []
@@ -38,7 +40,7 @@ struct BudgetingCard: View {
                 .font(.subheadline)
                 .fontWeight(.medium)
                 .foregroundStyle(.gray)
-            Text("Rp \((budgetingData.percentage * budgetAvailable) - calculateUsage(), format: .number)")
+            Text("Rp \(budgetingData.amount, format: .number)")
                 .fontWeight(.bold)
                 .font(.subheadline)
                 .truncationMode(.tail)
@@ -60,12 +62,28 @@ struct BudgetingCard: View {
         
 }
 
-struct BudgetingCard_Preview: PreviewProvider {
-    static var previews: some View {
-        let budgetingData = BudgetingData( name: "Name", percentage: 0.7, budget: .dailyneeds, totalBudget: 1000, used: 500)
-        BudgetingCard(budgetingData: budgetingData, budgetAvailable: 100000000)
+//struct BudgetingCard_Preview: PreviewProvider {
+//    static var previews: some View {
+//        let budgetingData = BudgetingData( name: "Name", percentage: 0.7, budget: .dailyneeds, totalBudget: 1000, used: 500)
+//        BudgetingCard(budgetingData: budgetingData, budgetAvailable: 100000000)
+//    }
+//}
+
+#Preview {
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: BudgetingData.self, configurations: config)
+        let example = BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds, totalBudget: 3000000, used: 500)
+        
+        @State var budgetings = example
+        
+        return BudgetingCard(budgetingData: budgetings, budgetAvailable: 3000000)
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container")
     }
 }
+
 
 //#Preview{
 //    BudgetingCard()

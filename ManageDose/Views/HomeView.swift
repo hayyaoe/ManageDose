@@ -218,9 +218,11 @@ struct Home: View {
             }
             .ignoresSafeArea(.all)
             .onAppear {
-                if !isDefaultBudgetingSet {
-                    defaultBudgeting()
-                    isDefaultBudgetingSet = true
+                if budgets.isEmpty {
+                    if !isDefaultBudgetingSet {
+                        defaultBudgeting()
+                        isDefaultBudgetingSet = true
+                    }
                 }
             }
 

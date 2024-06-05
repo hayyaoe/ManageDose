@@ -19,6 +19,7 @@ struct IncomeDetailView: View {
         incomes.reduce(0) { $0 + $1.amount }
     }
     var body: some View {
+        let basicNeeds = budgets.first(where: { $0.budget == .dailyneeds })
         VStack{
             VStack(alignment: .leading){
                 Text("Insert Insertion Source")
@@ -98,9 +99,8 @@ struct IncomeDetailView: View {
             .fontWeight(.semibold)
         , displayMode: .inline)
         .sheet(isPresented: $showSheet, content: {
-            AddNewExpenseCard(allFieldsFilled: $allFieldsFilled, isIncome: true, category: "")
+            AddNewExpenseCard(allFieldsFilled: $allFieldsFilled, budgeting: Binding(get: { basicNeeds! }, set: { _ in }), isIncome: true, category: "")
                 .presentationDetents([.height(420)])
-            
         })
 
     }
