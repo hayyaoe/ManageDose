@@ -226,6 +226,7 @@ struct Home: View {
                         isDefaultBudgetingSet = true
                     }
                 }
+                filterData(for: date)
             }
 
         }.ignoresSafeArea(.all)
