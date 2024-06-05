@@ -13,7 +13,7 @@ struct AddNewExpenseCard: View {
     @Binding var allFieldsFilled: Bool
     var isIncome: Bool
     let category : String
-    @State private var selectedOption = "Option 1"
+    @State private var selectedOption = CategoryTransaction.electricity
     
 //    let incomeCategoryOptions: [CategoryTransaction] = [.salary, .otherIncome]
 //        let expenseCategoryOptions: [CategoryTransaction] = [.electricity, .food]
@@ -109,6 +109,7 @@ struct AddNewExpenseCard: View {
                     .font(.subheadline)
                     .fontWeight(.medium)
                     .padding(.bottom, 4)
+                
                 Picker("Please choose an option", selection: $selectedOption) {
                     ForEach(options, id: \.self) { option in
                         Text(option.rawValue)
@@ -170,7 +171,7 @@ struct AddNewExpenseCard: View {
     }
     
     func addIncome(){
-        let income = IncomeData(name: expenseName, date: expenseDate, amount: expenseAmount, categoryTransaction: CategoryTransaction(rawValue: selectedOption) ?? .salary)
+        let income = IncomeData(name: expenseName, date: expenseDate, amount: expenseAmount, categoryTransaction: CategoryTransaction(rawValue: selectedOption.rawValue) ?? .salary)
         context.insert(income)
     }
 
@@ -186,7 +187,7 @@ struct AddNewExpenseCard: View {
         default:
             budget = .dailyneeds
         }
-        let expense = ExpenseData(name: expenseName, date: expenseDate, amount: expenseAmount, budget: budget, categoryTransaction: CategoryTransaction(rawValue: selectedOption) ?? .electricity)
+        let expense = ExpenseData(name: expenseName, date: expenseDate, amount: expenseAmount, budget: budget, categoryTransaction: CategoryTransaction(rawValue: selectedOption.rawValue) ?? .electricity)
         context.insert(expense)
     }
 }
