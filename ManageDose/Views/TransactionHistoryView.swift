@@ -45,12 +45,12 @@ struct TransactionHistoryView: View {
             }.padding(EdgeInsets(top: 80, leading: 20, bottom: 0, trailing: 20))
             ScrollView(.vertical, showsIndicators: false){
                 LazyVStack{
-                    ForEach(expenses.filter { selectedCategory == nil || $0.categoryTransaction == selectedCategory }) { expense in
-                        ExpenseItem(expenseData: expense )
-                        SeparatorBar()
-                    }
                     ForEach(incomes.filter { selectedCategory == nil || $0.categoryTransaction == selectedCategory }) { incomes in
                         IncomeItem(incomeData: incomes )
+                        SeparatorBar()
+                    }
+                    ForEach(expenses.filter { selectedCategory == nil || $0.categoryTransaction == selectedCategory }) { expense in
+                        ExpenseItem(expenseData: expense )
                         SeparatorBar()
                     }
                 }.padding(.horizontal)

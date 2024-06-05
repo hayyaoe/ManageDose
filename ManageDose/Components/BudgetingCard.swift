@@ -13,12 +13,12 @@ struct BudgetingCard: View {
     var budgetAvailable: Double
     var expenseData: [ExpenseData] = []
     
-    private var imageColor: String {
+    var icon: String {
         switch budgetingData.budget {
         case .dailyneeds:
-            return "food"
+            return "basic needs"
         case .wants:
-            return "dailyneeds"
+            return "wants"
         case .saving:
             return "savings"
         }
@@ -29,7 +29,7 @@ struct BudgetingCard: View {
             alignment: .leading,
             spacing: 4
         ){
-            Image(imageColor)
+            Image(icon)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height:60)

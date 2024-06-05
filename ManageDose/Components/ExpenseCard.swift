@@ -12,11 +12,25 @@ struct ExpenseCard: View {
     let expenseCategory: CategoryTransaction
     let expenseAmount: Double
     let expenseDate: Date
+    let budgetCatefory: Budget
+    
+    var icon: String {
+        switch budgetCatefory {
+        case .saving:
+            return "savings"
+        case .dailyneeds:
+            return "basic needs"
+        case .wants:
+            return "wants"
+        }
+    }
+    
+    
 
     var body: some View {
         HStack {
             HStack {
-                Image(systemName: "tag.square")
+                Image(icon)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundStyle(.yellow)
@@ -54,6 +68,6 @@ struct ExpenseCard: View {
 }
 
 #Preview {
-    ExpenseCard(expenseName: "McDonad's", expenseCategory: .electricity, expenseAmount: 69.42, expenseDate: Date())
+    ExpenseCard(expenseName: "McDonad's", expenseCategory: .electricity, expenseAmount: 69.42, expenseDate: Date(), budgetCatefory: .dailyneeds)
 }
 

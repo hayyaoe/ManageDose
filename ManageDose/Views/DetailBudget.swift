@@ -25,8 +25,8 @@ struct DetailBudget: View {
                 .padding(10)
             ScrollView(.vertical, showsIndicators: false){
                 LazyVStack(){
-                    ForEach(expenses){ expense in
-                        ExpenseCard(expenseName: expense.name, expenseCategory: expense.categoryTransaction, expenseAmount: expense.amount, expenseDate: expense.date)
+                    ForEach(expenses.filter { $0.budget.rawValue == budgeting.budget.rawValue }) { expense in
+                        ExpenseCard(expenseName: expense.name, expenseCategory: expense.categoryTransaction, expenseAmount: expense.amount, expenseDate: expense.date, budgetCatefory: expense.budget)
                     }
                 }
             }
@@ -55,7 +55,7 @@ struct DetailBudget: View {
             .fontWeight(.semibold)
         , displayMode: .inline)
         .sheet(isPresented: $showSheet, content: {
-            AddNewExpenseCard(allFieldsFilled: $allFieldsFilled, isIncome: false)
+            AddNewExpenseCard(allFieldsFilled: $allFieldsFilled, isIncome: false, category: budgeting.name)
                 .presentationDetents([.height(420)])
             
         })

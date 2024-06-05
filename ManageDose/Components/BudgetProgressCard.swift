@@ -46,6 +46,20 @@ struct BudgetProgressCard: View {
     let used: Double
     let name: String
     
+    var icon: String {
+        switch name {
+        case "Basic Needs":
+            return "basic needs"
+        case "Wants":
+            return "wants"
+        case "Savings":
+            return "savings"
+        default:
+            return "basic needs"
+        }
+    }
+    
+        
     var body: some View {
         let remaining = budget - used
         let progressPercentage = used / budget
@@ -53,7 +67,7 @@ struct BudgetProgressCard: View {
             //logo and progress
             VStack{
                 HStack{
-                    Image(systemName: "checkmark.square.fill")
+                    Image(icon)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(height:45)
