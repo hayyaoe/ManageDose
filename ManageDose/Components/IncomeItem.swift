@@ -12,7 +12,6 @@ struct IncomeItem: View {
     
     var incomeData: IncomeData
     
-    
     private var image: String {
         switch incomeData.categoryTransaction {
         case .salary:
@@ -46,11 +45,13 @@ struct IncomeItem: View {
             VStack(
                 alignment: .leading
             ){
-                Text(incomeData.name)
+                Text("\(incomeData.name)")
                     .fontWeight(.bold)
                     .font(.headline)
-                Text(incomeData.categoryTransaction.rawValue)
+                    .foregroundColor(.black)
+                Text("\(incomeData.categoryTransaction.rawValue)")
                     .font(.subheadline)
+                    .foregroundColor(.black)
           
             }
             
@@ -68,8 +69,28 @@ struct IncomeItem: View {
 
                 Text(incomeData.date, style: .date)
                     .font(.subheadline)
+                    .foregroundColor(.black)
             }
         }
         .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+    }
+}
+
+#Preview {
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: IncomeData.self, configurations: config)
+        
+        let exampleIncome = IncomeData(
+            name: "Monthly Salary",
+            date: Date(),
+            amount: 5000000,
+            categoryTransaction: .salary
+        )
+        
+        return IncomeItem(incomeData: exampleIncome)
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container")
     }
 }

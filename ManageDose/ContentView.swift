@@ -32,7 +32,7 @@ struct ContentView: View {
                     }
                 
                 NavigationView(content: {
-                BudgetingView(budgetings: .constant(self.budgets), budget: availableBudget())
+                BudgetingView(budgetings: .constant(self.budgets), selectedTab: $selectedTab, budget: availableBudget())
                 })
                     .tag(2)
                     .tabItem { 

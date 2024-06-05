@@ -45,6 +45,7 @@ struct BudgetingCard: View {
                 .font(.subheadline)
                 .truncationMode(.tail)
                 .lineLimit(1)
+                .foregroundColor(.black)
         }
         .frame(width: 110, height: 110)
         .padding(15)
