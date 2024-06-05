@@ -80,7 +80,7 @@
 		7E9506C92BFB35C200BDF341 /* TransactionHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransactionHistoryView.swift; path = ManageDose/Views/TransactionHistoryView.swift; sourceTree = SOURCE_ROOT; };
 		7E9506CB2BFB3C1400BDF341 /* SeparatorBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorBar.swift; sourceTree = "<group>"; };
 		7EBEDBB12C02FA3D00DC4035 /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		7EBEDBB42C02FA6000DC4035 /* AddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddButton.swift; path = ManageDose/Components/AddButton.swift; sourceTree = SOURCE_ROOT; };
+		7EBEDBB42C02FA6000DC4035 /* AddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddButton.swift; path = ManageDose/Views/AddButton.swift; sourceTree = SOURCE_ROOT; };
 		7EBEDBB52C02FA6000DC4035 /* ExpenseCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExpenseCard.swift; path = ManageDose/Components/ExpenseCard.swift; sourceTree = SOURCE_ROOT; };
 		7EBEDBB62C02FA6000DC4035 /* IncomeCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IncomeCard.swift; path = ManageDose/Components/IncomeCard.swift; sourceTree = SOURCE_ROOT; };
 		7EBEDBB72C02FA6000DC4035 /* BudgetProgressCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BudgetProgressCard.swift; path = ManageDose/Components/BudgetProgressCard.swift; sourceTree = SOURCE_ROOT; };
@@ -156,7 +156,6 @@
 				7E073D3A2C0370B100933456 /* SettingBudgetRow.swift */,
 				7E073D382C0370B100933456 /* Slider.swift */,
 				7EBEDBC22C02FA7100DC4035 /* IncomeDetail.swift */,
-				7EBEDBB42C02FA6000DC4035 /* AddButton.swift */,
 				7EBEDBB72C02FA6000DC4035 /* BudgetProgressCard.swift */,
 				7EBEDBB92C02FA6000DC4035 /* Button.swift */,
 				7EBEDBB52C02FA6000DC4035 /* ExpenseCard.swift */,
@@ -176,16 +175,17 @@
 		7E9506CE2BFB3EA200BDF341 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7E5F572B2C085F5500639A80 /* OnBoarding1View.swift */,
 				7E5F57292C085F5500639A80 /* OnBoarding2View.swift */,
 				7E5F572A2C085F5500639A80 /* OnBoarding3View.swift */,
 				7E073D3B2C0370B100933456 /* SettingBudgetView.swift */,
 				7EBEDBC12C02FA7100DC4035 /* DetailBudget.swift */,
 				7EBEDBC02C02FA7100DC4035 /* BudgetingView.swift */,
+				7EBEDBB42C02FA6000DC4035 /* AddButton.swift */,
 				7E9506C92BFB35C200BDF341 /* TransactionHistoryView.swift */,
 				7E71FC382BFAEC2500F58890 /* HomeView.swift */,
 				3F76959B2C0037EF00FEE52D /* AddNewExpenseView.swift */,
 				7EE673FD2C05B278001777E4 /* IncomeDetailView.swift */,
+				7E5F572B2C085F5500639A80 /* OnBoarding1View.swift */,
 				7E0A45962C086D6800818A13 /* SplashScreenView.swift */,
 			);
 			path = Views;

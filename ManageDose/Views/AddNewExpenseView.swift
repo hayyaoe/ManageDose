@@ -57,7 +57,7 @@ struct AddNewExpenseView: View {
             
         }
         .sheet(isPresented: $showSheet, content: {
-            AddNewExpenseCard(allFieldsFilled: $allFieldsFilled, isIncome: false)
+            AddNewExpenseCard(allFieldsFilled: $allFieldsFilled, isIncome: false, category: "Saving")
                 .presentationDetents([.height(420)])
             
         })

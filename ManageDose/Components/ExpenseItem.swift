@@ -12,23 +12,21 @@ struct ExpenseItem: View {
     
     var expenseData: ExpenseData
     
-    private var image: String {
-        switch expenseData.categoryTransaction {
-        case .salary:
+    private var icon: String {
+        switch expenseData.budget {
+        case .saving:
             return "savings"
-        case .otherIncome:
-            return "savings"
-        case .food:
-            return "food"
-        case .electricity:
-            return "dailyneeds"
+        case .dailyneeds:
+            return "basic needs"
+        case .wants:
+            return "wants"
         }
     }
 
     
     var body: some View {
         HStack{
-            Image(image)
+            Image(icon)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .foregroundStyle(.yellow)
