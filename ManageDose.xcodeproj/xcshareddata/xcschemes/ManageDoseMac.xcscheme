@@ -15,7 +15,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "04533A072C1096E900E969E1"
+               BlueprintIdentifier = "04B945662C10A7F2003F6161"
                BuildableName = "ManageDoseMac.app"
                BlueprintName = "ManageDoseMac"
                ReferencedContainer = "container:ManageDose.xcodeproj">
@@ -44,7 +44,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "04533A072C1096E900E969E1"
+            BlueprintIdentifier = "04B945662C10A7F2003F6161"
             BuildableName = "ManageDoseMac.app"
             BlueprintName = "ManageDoseMac"
             ReferencedContainer = "container:ManageDose.xcodeproj">
@@ -61,7 +61,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "04533A072C1096E900E969E1"
+            BlueprintIdentifier = "04B945662C10A7F2003F6161"
             BuildableName = "ManageDoseMac.app"
             BlueprintName = "ManageDoseMac"
             ReferencedContainer = "container:ManageDose.xcodeproj">
