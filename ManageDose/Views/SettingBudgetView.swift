@@ -11,7 +11,6 @@ import SwiftData
 struct SettingBudget: View {
     @Environment(\.modelContext) var modelContext
     @Binding var budgetings: [BudgetingData]
-    @Binding var selectedTab: Int
     
     @State private var width: CGFloat = 0.0
     @State private var width1: CGFloat = 0.0
@@ -21,6 +20,8 @@ struct SettingBudget: View {
     @State private var navigateToBudgeting = false
     @State private var showAlert = false
     @State private var alertMessage = ""
+    
+    @Environment(\.presentationMode) var presentationMode
     
     var budget: Double
     var isPreview: Bool = false
@@ -87,7 +88,8 @@ struct SettingBudget: View {
                     if !isPreview {
                         self.saveBudgeting(basicNeedsPercentage: basicNeedsPercentage, savingsPercentage: savingsPercentage, wantsPercentage: wantsPercentage, totalBudget: self.budget)
                     }
-                    selectedTab = 2
+                    
+                    presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Save Budget")
                         .frame(maxWidth: .infinity)
@@ -151,7 +153,7 @@ struct SettingBudget: View {
         @State var budgetings = example
         @State var selectedTab = 1
         
-        return SettingBudget(budgetings: $budgetings, selectedTab: $selectedTab, budget: 3000000, isPreview: true)
+        return SettingBudget(budgetings: $budgetings, budget: 3000000, isPreview: true)
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container")

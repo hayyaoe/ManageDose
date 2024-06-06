@@ -18,12 +18,14 @@ struct ContentView: View {
     @Query var expenses: [ExpenseData]
     @Query var budgets: [BudgetingData]
     
+    var totalIncome: Double {
+        incomes.reduce(0) { $0 + $1.amount }
+    }
+    
     var body: some View {
         if hasSeenOnboarding {
             TabView(selection: $selectedTab ,content: {
-                NavigationView(content: {
                 Home(incomes: .constant(self.incomes), expenses: .constant(self.expenses), budgets: .constant(self.budgets), selectedTab: $selectedTab)
-                })
                     .tag(1)
                     .tabItem{
                         Image(systemName: "house")
@@ -31,27 +33,23 @@ struct ContentView: View {
                                 .foregroundStyle(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
                     }
                 
-                NavigationView(content: {
-                BudgetingView(budgetings: .constant(self.budgets), selectedTab: $selectedTab, budget: availableBudget())
-                })
-                    .tag(2)
-                    .tabItem { 
-                        Image(systemName: "newspaper")
-                            .imageScale(.large)
-                            .foregroundStyle(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
-                    }
+                    BudgetingView(budgetings: .constant(self.budgets), selectedTab: $selectedTab, budget: totalBudget())
+                        .tag(2)
+                        .tabItem {
+                            Image(systemName: "newspaper")
+                                .imageScale(.large)
+                                .foregroundStyle(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
+                        }
+
                 
                 
-                NavigationView(content: {
                 TransactionHistoryView()
-                })
                     .tag(3)
                     .tabItem {
                         Image(systemName: "menucard")
                                 .imageScale(.large)
                                 .foregroundStyle(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
                     }
-                
             })
 
         }else{
@@ -74,6 +72,16 @@ struct ContentView: View {
         }
 
         return cumulativeIncome - cumulativeExpense
+    }
+    
+    private func totalBudget() -> Double {
+        var cumulativeIncome = 0.0
+
+        for income in incomes {
+            cumulativeIncome += income.amount
+        }
+
+        return cumulativeIncome
     }
 }
 
