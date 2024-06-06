@@ -19,6 +19,10 @@ struct ContentView: View {
     @Binding var expenses: [ExpenseData]
     @Binding var budgets: [BudgetingData]
     
+    var totalIncome: Double {
+        incomes.reduce(0) { $0 + $1.amount }
+    }
+    
     var body: some View {
         #if os(watchOS)
         let basicNeeds = budgets.first(where: { $0.budget == .dailyneeds })
@@ -78,12 +82,9 @@ struct ContentView: View {
                 }
             }
         } else {
-            OnBoarding1View()
-        }
-        #endif
     }
     
-    private func availableBudget() -> Double {
+        #endif
         var cumulativeIncome = 0.0
         var cumulativeExpense = 0.0
 
@@ -113,6 +114,33 @@ struct ContentView: View {
     do {
         let appGroupID = "group.com.hayyaoe.ManageDose"
         guard let sharedContainerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupID) else {
+    do {
+        let appGroupID = "group.com.hayyaoe.ManageDose"
+        guard let sharedContainerURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupID) else {
+            fatalError("Shared container could not be found.")
+        }
+        
+//        let config = ModelConfiguration(url: sharedContainerURL)
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: BudgetingData.self, IncomeData.self, ExpenseData.self, configurations: config)
+        let example = [
+            BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds, totalBudget: 3000000, used: 500),
+            BudgetingData(name: "Wants", percentage: 30, budget: .wants, totalBudget: 3000000, used: 100000),
+            BudgetingData(name: "Savings", percentage: 20, budget: .saving, totalBudget: 3000000, used: 500000)]
+        
+        let incomeExample = [IncomeData(name: "Salary", date: Date(), amount: 1000000, categoryTransaction: .salary), IncomeData(name: "Salary", date: Date(), amount: 1000000, categoryTransaction: .salary), IncomeData(name: "Salary", date: Date(), amount: 1000000, categoryTransaction: .salary)]
+        
+        let expenseExample = [ExpenseData(name: "Salary", date: Date(), amount: 1000000, budget: .wants, categoryTransaction: .salary)]
+        
+        @State var budgetings = example
+        @State var incomes = incomeExample
+        @State var expenses = expenseExample
+        
+        return ContentView(incomes: $incomes, expenses: $expenses, budgets: $budgetings)
+            .modelContainer(container)
+    } catch {
+        fatalError("Failed to create model container")
+    }
             fatalError("Shared container could not be found.")
         }
         
