@@ -16,6 +16,8 @@ struct IncomeDetailView: View {
     @State private var showSheet = false
     @State private var allFieldsFilled = false
     
+    @Environment(\.presentationMode) var presentationMode
+    
     var totalIncome: Double {
         incomes.reduce(0) { $0 + $1.amount }
     }
@@ -84,7 +86,14 @@ struct IncomeDetailView: View {
             }
             .padding(.top, 0)
             
-            NavigationLink(destination: SettingBudget(budgetings: $budgets, selectedTab: $selectedTab, budget: totalIncome, isPreview: false).toolbar(.hidden, for: .tabBar), label: {
+            Button {
+                if budgets.isEmpty{
+                    saveBudgeting(basicNeedsPercentage: 50, savingsPercentage: 20, wantsPercentage: 30, totalBudget: totalIncome)
+                }
+                
+                selectedTab = 2
+                presentationMode.wrappedValue.dismiss()
+            } label: {
                 Text("Save")
                     .font(.title2)
                     .fontWeight(.semibold)
@@ -93,12 +102,10 @@ struct IncomeDetailView: View {
                     .frame(maxWidth: .infinity)
                     .background(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
                     .cornerRadius(40)
-            })
+            }
         }
         .padding(.horizontal, 15)
-        .navigationBarTitle(Text("Detail Budget")
-            .font(.title3)
-            .fontWeight(.semibold), displayMode: .inline)
+        .navigationBarTitle(Text("Detail Budget"))
         .sheet(isPresented: $showSheet, content: {
             if let basicNeeds = basicNeeds {
                 AddNewExpenseCard(allFieldsFilled: $allFieldsFilled, budgeting: Binding(get: { basicNeeds }, set: { _ in }), isIncome: true, category: "")
@@ -107,6 +114,22 @@ struct IncomeDetailView: View {
                 Text("No basic needs budget available")
             }
         })
+    }
+    
+    func saveBudgeting(basicNeedsPercentage: Double, savingsPercentage: Double, wantsPercentage: Double, totalBudget: Double) {
+        budgets.first(where: { $0.budget == .dailyneeds })?.percentage = basicNeedsPercentage
+        budgets.first(where: { $0.budget == .dailyneeds })?.updateAmount(totalBudget: totalBudget)
+        budgets.first(where: { $0.budget == .wants })?.percentage = wantsPercentage
+        budgets.first(where: { $0.budget == .wants })?.updateAmount(totalBudget: totalBudget)
+        budgets.first(where: { $0.budget == .saving })?.percentage = savingsPercentage
+        budgets.first(where: { $0.budget == .saving })?.updateAmount(totalBudget: totalBudget)
+        
+        do {
+            try context.save()
+            print("Budgeting data saved successfully.")
+        } catch {
+            print("Failed to save budgeting data: \(error.localizedDescription)")
+        }
     }
 }
 
@@ -129,6 +152,7 @@ struct IncomeDetailView: View {
         @State var budgetings = example
         @State var incomes = incomeExample
         @State var selectedTab = 1
+        @State var navigationPath = [String]()
         
         return IncomeDetailView(incomes: $incomes, budgets: $budgetings, selectedTab: $selectedTab)
             .modelContainer(container)
@@ -136,4 +160,3 @@ struct IncomeDetailView: View {
         fatalError("Failed to create model container")
     }
 }
-
