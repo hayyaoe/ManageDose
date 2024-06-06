@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TopCornersRoundedShape: Shape {
     var radius: CGFloat
@@ -46,6 +47,25 @@ struct BudgetProgressCard: View {
     let used: Double
     let name: String
     
+    @Query(sort: \ExpenseData.date) private var expenses: [ExpenseData]
+
+    var categoryBudget: Budget {
+        switch name {
+        case "Basic Needs":
+            return .dailyneeds
+        case "Wants":
+            return .wants
+        case "Savings":
+            return .saving
+        default:
+            return .dailyneeds
+        }
+    }
+    
+    var numberOfTransactions: Int {
+        return expenses.filter { $0.budget.rawValue == categoryBudget.rawValue }.count
+    }
+    
     var icon: String {
         switch name {
         case "Basic Needs":
@@ -77,7 +97,7 @@ struct BudgetProgressCard: View {
                             .font(.system(size: 18))
                             .fontWeight(.medium)
                             .foregroundStyle(.black)
-                        Text("2 Transaction")
+                        Text("\(numberOfTransactions) Transaction")
                             .fontWeight(.regular)
                             .foregroundStyle(.gray)
                             .font(.system(size: 14))
