@@ -18,7 +18,7 @@ struct AddNewExpenseCard: View {
     
 //    let incomeCategoryOptions: [CategoryTransaction] = [.salary, .otherIncome]
 //        let expenseCategoryOptions: [CategoryTransaction] = [.electricity, .food]
-//            
+//
 //        var options: [CategoryTransaction] {
 //            return isIncome ? incomeCategoryOptions : expenseCategoryOptions
 //        }

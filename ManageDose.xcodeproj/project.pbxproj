@@ -7,11 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0446CA0A2C11C1A700E27268 /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0446CA092C11C1A700E27268 /* PieChart.swift */; };
+		0446CA0B2C11C4E600E27268 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0EDBB52BF6F66E00C384B8 /* ContentView.swift */; };
+		0446CA0E2C11C76900E27268 /* SeparatorBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9506CB2BFB3C1400BDF341 /* SeparatorBar.swift */; };
+		0446CA0F2C11C77000E27268 /* PopUpBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7695992C00252400FEE52D /* PopUpBar.swift */; };
+		0446CA112C11C94500E27268 /* AddNewExpenseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0446CA102C11C94500E27268 /* AddNewExpenseCard.swift */; };
+		04A6ED502C11CCDB00C0A522 /* BudgetProgressCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A6ED4F2C11CCDB00C0A522 /* BudgetProgressCard.swift */; };
+		04A6ED522C11D13200C0A522 /* ExpenseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A6ED512C11D13200C0A522 /* ExpenseCard.swift */; };
+		04A6ED532C11D5DD00C0A522 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0A45962C086D6800818A13 /* SplashScreenView.swift */; };
+		04A6ED552C11DA0E00C0A522 /* DetailBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A6ED542C11DA0E00C0A522 /* DetailBudget.swift */; };
 		04DD3C552C117FBC002DDE3C /* ManageDoseMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD3C542C117FBC002DDE3C /* ManageDoseMacApp.swift */; };
 		04DD3C572C117FBC002DDE3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD3C562C117FBC002DDE3C /* ContentView.swift */; };
 		04DD3C592C117FBE002DDE3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DD3C582C117FBE002DDE3C /* Assets.xcassets */; };
 		04DD3C5C2C117FBE002DDE3C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DD3C5B2C117FBE002DDE3C /* Preview Assets.xcassets */; };
-		3F7695982C00238600FEE52D /* AddNewExpenseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7695972C00238600FEE52D /* AddNewExpenseCard.swift */; };
+		04E6A9312C11B79700023DBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E6A9302C11B79700023DBE /* Assets.xcassets */; };
+		04E6A9342C11B79700023DBE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E6A9332C11B79700023DBE /* Preview Assets.xcassets */; };
+		04E6A9372C11B79700023DBE /* WatchManageDose Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 04E6A92A2C11B79500023DBE /* WatchManageDose Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		04E6A93C2C11B89600023DBE /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBEDBB12C02FA3D00DC4035 /* ColorExtension.swift */; };
+		04E6A93D2C11B89600023DBE /* ManageDoseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0EDBB32BF6F66E00C384B8 /* ManageDoseApp.swift */; };
+		04E6A93E2C11B89600023DBE /* ExpenseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9282E72C0968A500E61487 /* ExpenseData.swift */; };
+		04E6A93F2C11B89600023DBE /* TransactionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4215772BFC8F7100B0AFDB /* TransactionData.swift */; };
+		04E6A9402C11B89600023DBE /* IncomeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9282E52C09689A00E61487 /* IncomeData.swift */; };
+		04E6A9412C11B89600023DBE /* BudgetingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E4215792BFC9F5E00B0AFDB /* BudgetingData.swift */; };
+		04E6A9422C11B89600023DBE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EBEDBC82C02FB2E00DC4035 /* Preview Assets.xcassets */; };
+		04E6A9482C11BAAB00023DBE /* ExpendAllocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6A9472C11BAAB00023DBE /* ExpendAllocationView.swift */; };
 		3F76959A2C00252400FEE52D /* PopUpBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7695992C00252400FEE52D /* PopUpBar.swift */; };
 		3F76959C2C0037EF00FEE52D /* AddNewExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76959B2C0037EF00FEE52D /* AddNewExpenseView.swift */; };
 		7E073D3D2C0370B100933456 /* Slider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E073D382C0370B100933456 /* Slider.swift */; };
@@ -53,7 +72,38 @@
 		7EE673FE2C05B278001777E4 /* IncomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EE673FD2C05B278001777E4 /* IncomeDetailView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		04E6A9352C11B79700023DBE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7E0EDBA82BF6F66E00C384B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 04E6A9292C11B79500023DBE;
+			remoteInfo = "WatchManageDose Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		04E6A9382C11B79700023DBE /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				04E6A9372C11B79700023DBE /* WatchManageDose Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0446CA092C11C1A700E27268 /* PieChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChart.swift; sourceTree = "<group>"; };
+		0446CA102C11C94500E27268 /* AddNewExpenseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewExpenseCard.swift; sourceTree = "<group>"; };
+		04A6ED4F2C11CCDB00C0A522 /* BudgetProgressCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetProgressCard.swift; sourceTree = "<group>"; };
+		04A6ED512C11D13200C0A522 /* ExpenseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCard.swift; sourceTree = "<group>"; };
+		04A6ED542C11DA0E00C0A522 /* DetailBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailBudget.swift; sourceTree = "<group>"; };
+		04CCBDE42C121A3C0066E7AD /* WatchManageDose Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchManageDose Watch App.entitlements"; sourceTree = "<group>"; };
+		04CCBDE52C121A5D0066E7AD /* ManageDose.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ManageDose.entitlements; sourceTree = "<group>"; };
 		04CF6E7F2C0DBCA200B1133B /* ManageDose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManageDose.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DD3C522C117FBC002DDE3C /* ManageDoseMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManageDoseMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DD3C542C117FBC002DDE3C /* ManageDoseMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDoseMacApp.swift; sourceTree = "<group>"; };
@@ -61,7 +111,10 @@
 		04DD3C582C117FBE002DDE3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04DD3C5B2C117FBE002DDE3C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		04DD3C5D2C117FBE002DDE3C /* ManageDoseMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ManageDoseMac.entitlements; sourceTree = "<group>"; };
-		3F7695972C00238600FEE52D /* AddNewExpenseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewExpenseCard.swift; sourceTree = "<group>"; };
+		04E6A92A2C11B79500023DBE /* WatchManageDose Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchManageDose Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		04E6A9302C11B79700023DBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04E6A9332C11B79700023DBE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		04E6A9472C11BAAB00023DBE /* ExpendAllocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpendAllocationView.swift; sourceTree = "<group>"; };
 		3F7695992C00252400FEE52D /* PopUpBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpBar.swift; sourceTree = "<group>"; };
 		3F76959B2C0037EF00FEE52D /* AddNewExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewExpenseView.swift; sourceTree = "<group>"; };
 		7E073D382C0370B100933456 /* Slider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Slider.swift; sourceTree = "<group>"; };
@@ -111,6 +164,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04E6A9272C11B79500023DBE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7E0EDBAD2BF6F66E00C384B8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -121,6 +181,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0446CA082C11C19800E27268 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0446CA092C11C1A700E27268 /* PieChart.swift */,
+				04A6ED4F2C11CCDB00C0A522 /* BudgetProgressCard.swift */,
+				04A6ED512C11D13200C0A522 /* ExpenseCard.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		04DD3C532C117FBC002DDE3C /* ManageDoseMac */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +211,35 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		04E6A92B2C11B79500023DBE /* WatchManageDose Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				04CCBDE42C121A3C0066E7AD /* WatchManageDose Watch App.entitlements */,
+				0446CA082C11C19800E27268 /* Components */,
+				04E6A9442C11B9FA00023DBE /* Views */,
+				04E6A9302C11B79700023DBE /* Assets.xcassets */,
+				04E6A9322C11B79700023DBE /* Preview Content */,
+			);
+			path = "WatchManageDose Watch App";
+			sourceTree = "<group>";
+		};
+		04E6A9322C11B79700023DBE /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				04E6A9332C11B79700023DBE /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		04E6A9442C11B9FA00023DBE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				04E6A9472C11BAAB00023DBE /* ExpendAllocationView.swift */,
+				04A6ED542C11DA0E00C0A522 /* DetailBudget.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		7E0EDBA72BF6F66E00C384B8 = {
 			isa = PBXGroup;
 			children = (
@@ -148,12 +247,15 @@
 				04CF6E7F2C0DBCA200B1133B /* ManageDose.app */,
 				04DD3C522C117FBC002DDE3C /* ManageDoseMac.app */,
 				04DD3C532C117FBC002DDE3C /* ManageDoseMac */,
+				04E6A92A2C11B79500023DBE /* WatchManageDose Watch App.app */,
+				04E6A92B2C11B79500023DBE /* WatchManageDose Watch App */,
 			);
 			sourceTree = "<group>";
 		};
 		7E0EDBB22BF6F66E00C384B8 /* ManageDose */ = {
 			isa = PBXGroup;
 			children = (
+				04CCBDE52C121A5D0066E7AD /* ManageDose.entitlements */,
 				7E0EDBB32BF6F66E00C384B8 /* ManageDoseApp.swift */,
 				7E0EDBB52BF6F66E00C384B8 /* ContentView.swift */,
 				7E0EDBB72BF6F66F00C384B8 /* Assets.xcassets */,
@@ -206,8 +308,8 @@
 				7E9282EC2C09A5B400E61487 /* ExpenseItem.swift */,
 				7E71FC3C2BFB1E3500F58890 /* BudgetingCard.swift */,
 				7E9506CB2BFB3C1400BDF341 /* SeparatorBar.swift */,
-				3F7695972C00238600FEE52D /* AddNewExpenseCard.swift */,
 				3F7695992C00252400FEE52D /* PopUpBar.swift */,
+				0446CA102C11C94500E27268 /* AddNewExpenseCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -258,6 +360,23 @@
 			productReference = 04DD3C522C117FBC002DDE3C /* ManageDoseMac.app */;
 			productType = "com.apple.product-type.application";
 		};
+		04E6A9292C11B79500023DBE /* WatchManageDose Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 04E6A93B2C11B79700023DBE /* Build configuration list for PBXNativeTarget "WatchManageDose Watch App" */;
+			buildPhases = (
+				04E6A9262C11B79500023DBE /* Sources */,
+				04E6A9272C11B79500023DBE /* Frameworks */,
+				04E6A9282C11B79500023DBE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WatchManageDose Watch App";
+			productName = "WatchManageDose Watch App";
+			productReference = 04E6A92A2C11B79500023DBE /* WatchManageDose Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 		7E0EDBAF2BF6F66E00C384B8 /* ManageDose */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E0EDBBE2BF6F66F00C384B8 /* Build configuration list for PBXNativeTarget "ManageDose" */;
@@ -265,10 +384,12 @@
 				7E0EDBAC2BF6F66E00C384B8 /* Sources */,
 				7E0EDBAD2BF6F66E00C384B8 /* Frameworks */,
 				7E0EDBAE2BF6F66E00C384B8 /* Resources */,
+				04E6A9382C11B79700023DBE /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				04E6A9362C11B79700023DBE /* PBXTargetDependency */,
 			);
 			name = ManageDose;
 			productName = ManageDose;
@@ -286,6 +407,9 @@
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					04DD3C512C117FBC002DDE3C = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					04E6A9292C11B79500023DBE = {
 						CreatedOnToolsVersion = 15.3;
 					};
 					7E0EDBAF2BF6F66E00C384B8 = {
@@ -308,6 +432,7 @@
 			targets = (
 				7E0EDBAF2BF6F66E00C384B8 /* ManageDose */,
 				04DD3C512C117FBC002DDE3C /* ManageDoseMac */,
+				04E6A9292C11B79500023DBE /* WatchManageDose Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -319,6 +444,16 @@
 			files = (
 				04DD3C5C2C117FBE002DDE3C /* Preview Assets.xcassets in Resources */,
 				04DD3C592C117FBE002DDE3C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		04E6A9282C11B79500023DBE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				04E6A9342C11B79700023DBE /* Preview Assets.xcassets in Resources */,
+				04E6A9422C11B89600023DBE /* Preview Assets.xcassets in Resources */,
+				04E6A9312C11B79700023DBE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,6 +478,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		04E6A9262C11B79500023DBE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0446CA0F2C11C77000E27268 /* PopUpBar.swift in Sources */,
+				0446CA0B2C11C4E600E27268 /* ContentView.swift in Sources */,
+				04A6ED532C11D5DD00C0A522 /* SplashScreenView.swift in Sources */,
+				04E6A93C2C11B89600023DBE /* ColorExtension.swift in Sources */,
+				04E6A9482C11BAAB00023DBE /* ExpendAllocationView.swift in Sources */,
+				04E6A93D2C11B89600023DBE /* ManageDoseApp.swift in Sources */,
+				0446CA0A2C11C1A700E27268 /* PieChart.swift in Sources */,
+				04A6ED502C11CCDB00C0A522 /* BudgetProgressCard.swift in Sources */,
+				04E6A93E2C11B89600023DBE /* ExpenseData.swift in Sources */,
+				04E6A93F2C11B89600023DBE /* TransactionData.swift in Sources */,
+				04E6A9402C11B89600023DBE /* IncomeData.swift in Sources */,
+				04A6ED552C11DA0E00C0A522 /* DetailBudget.swift in Sources */,
+				04E6A9412C11B89600023DBE /* BudgetingData.swift in Sources */,
+				04A6ED522C11D13200C0A522 /* ExpenseCard.swift in Sources */,
+				0446CA0E2C11C76900E27268 /* SeparatorBar.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7E0EDBAC2BF6F66E00C384B8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -358,6 +515,7 @@
 				7E0EDBB62BF6F66E00C384B8 /* ContentView.swift in Sources */,
 				7E71FC3D2BFB1E3500F58890 /* BudgetingCard.swift in Sources */,
 				7E9506CC2BFB3C1400BDF341 /* SeparatorBar.swift in Sources */,
+				0446CA112C11C94500E27268 /* AddNewExpenseCard.swift in Sources */,
 				7E71FC392BFAEC2500F58890 /* HomeView.swift in Sources */,
 				7E073D402C0370B100933456 /* SettingBudgetView.swift in Sources */,
 				7EBEDBBF2C02FA6000DC4035 /* Button.swift in Sources */,
@@ -382,13 +540,20 @@
 				7E9282E82C0968A500E61487 /* ExpenseData.swift in Sources */,
 				7E0EDBB42BF6F66E00C384B8 /* ManageDoseApp.swift in Sources */,
 				7E5F57322C085F8500639A80 /* NavBar.swift in Sources */,
-				3F7695982C00238600FEE52D /* AddNewExpenseCard.swift in Sources */,
 				7EBEDBBA2C02FA6000DC4035 /* AddButton.swift in Sources */,
 				7E5F572E2C085F5500639A80 /* OnBoarding1View.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		04E6A9362C11B79700023DBE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 04E6A9292C11B79500023DBE /* WatchManageDose Watch App */;
+			targetProxy = 04E6A9352C11B79700023DBE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		04DD3C5F2C117FBE002DDE3C /* Debug */ = {
@@ -442,6 +607,70 @@
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		04E6A9392C11B79700023DBE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "WatchManageDose Watch App/WatchManageDose Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WatchManageDose Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 762N497Y5B;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = WatchManageDose;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.hayyaoe.ManageDose;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hayyaoe.ManageDose.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
+			};
+			name = Debug;
+		};
+		04E6A93A2C11B79700023DBE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "WatchManageDose Watch App/WatchManageDose Watch App.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WatchManageDose Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = 762N497Y5B;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = WatchManageDose;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.hayyaoe.ManageDose;
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hayyaoe.ManageDose.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.4;
 			};
 			name = Release;
 		};
@@ -567,12 +796,14 @@
 		7E0EDBBF2BF6F66F00C384B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ManageDose/ManageDose.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ManageDose/Preview Content\"";
-				DEVELOPMENT_TEAM = X7N87J76HK;
+				DEVELOPMENT_TEAM = 762N497Y5B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -597,12 +828,14 @@
 		7E0EDBC02BF6F66F00C384B8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ManageDose/ManageDose.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ManageDose/Preview Content\"";
-				DEVELOPMENT_TEAM = X7N87J76HK;
+				DEVELOPMENT_TEAM = 762N497Y5B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -632,6 +865,15 @@
 			buildConfigurations = (
 				04DD3C5F2C117FBE002DDE3C /* Debug */,
 				04DD3C602C117FBE002DDE3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		04E6A93B2C11B79700023DBE /* Build configuration list for PBXNativeTarget "WatchManageDose Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				04E6A9392C11B79700023DBE /* Debug */,
+				04E6A93A2C11B79700023DBE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
