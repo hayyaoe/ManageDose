@@ -119,7 +119,7 @@ struct BudgetProgressCard: View {
                             if progressPercentage <= 1.0{
                                 return CGFloat(progressPercentage) * (UIScreen.main.bounds.width - 80)
                             } else {
-                                return 1.0
+                                return CGFloat (UIScreen.main.bounds.width - 80)
                             }
                         }())
                     
@@ -180,6 +180,8 @@ struct BudgetProgressCard: View {
                             .font(.system(size: 15))
                     } else {
                         Text("You have exceeded your budget!")
+                            .foregroundStyle(.white)
+                            .font(.system(size: 15))
                     }
                     
                 }
@@ -187,7 +189,9 @@ struct BudgetProgressCard: View {
             .frame(maxWidth: 400, alignment: .leading)
             .padding(15)
             .background({
-                if progressPercentage < 0.5 {
+                if progressPercentage <= 0.0 {
+                    return Color(hex: "5339EE")
+                } else if progressPercentage < 0.5 {
                     return Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1)
                 } else if progressPercentage < 0.8 {
                     return Color.yellow
@@ -201,5 +205,5 @@ struct BudgetProgressCard: View {
 }
 
 #Preview {
-    BudgetProgressCard(budget: 1000, used: 900, name: "Savings")
+    BudgetProgressCard(budget: 1000, used: 0, name: "Savings")
 }

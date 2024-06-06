@@ -40,12 +40,18 @@ struct BudgetingCard: View {
                 .font(.subheadline)
                 .fontWeight(.medium)
                 .foregroundStyle(.gray)
-            Text("Rp \(budgetingData.amount, format: .number)")
+            Text("Rp \(budgetingData.remaining, format: .number)")
                 .fontWeight(.bold)
                 .font(.subheadline)
                 .truncationMode(.tail)
                 .lineLimit(1)
-                .foregroundColor(.black)
+                .foregroundColor({
+                    if budgetingData.remaining <= 0.0 {
+                        return Color.red
+                    } else {
+                        return Color.black
+                    }
+                }())
         }
         .frame(width: 110, height: 110)
         .padding(15)
