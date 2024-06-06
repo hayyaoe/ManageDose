@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		044737F62C10703E003C080E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044737F52C10703E003C080E /* ContentView.swift */; };
-		044737F82C107040003C080E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 044737F72C107040003C080E /* Assets.xcassets */; };
-		044737FB2C107040003C080E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 044737FA2C107040003C080E /* Preview Assets.xcassets */; };
+		04DD3C552C117FBC002DDE3C /* ManageDoseMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD3C542C117FBC002DDE3C /* ManageDoseMacApp.swift */; };
+		04DD3C572C117FBC002DDE3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD3C562C117FBC002DDE3C /* ContentView.swift */; };
+		04DD3C592C117FBE002DDE3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DD3C582C117FBE002DDE3C /* Assets.xcassets */; };
+		04DD3C5C2C117FBE002DDE3C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DD3C5B2C117FBE002DDE3C /* Preview Assets.xcassets */; };
 		3F7695982C00238600FEE52D /* AddNewExpenseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7695972C00238600FEE52D /* AddNewExpenseCard.swift */; };
 		3F76959A2C00252400FEE52D /* PopUpBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7695992C00252400FEE52D /* PopUpBar.swift */; };
 		3F76959C2C0037EF00FEE52D /* AddNewExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76959B2C0037EF00FEE52D /* AddNewExpenseView.swift */; };
@@ -53,12 +54,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		044737F12C10703E003C080E /* MacManageDose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacManageDose.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		044737F52C10703E003C080E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		044737F72C107040003C080E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		044737FA2C107040003C080E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		044737FC2C107040003C080E /* MacManageDose.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacManageDose.entitlements; sourceTree = "<group>"; };
 		04CF6E7F2C0DBCA200B1133B /* ManageDose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManageDose.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04DD3C522C117FBC002DDE3C /* ManageDoseMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManageDoseMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04DD3C542C117FBC002DDE3C /* ManageDoseMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDoseMacApp.swift; sourceTree = "<group>"; };
+		04DD3C562C117FBC002DDE3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		04DD3C582C117FBE002DDE3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		04DD3C5B2C117FBE002DDE3C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		04DD3C5D2C117FBE002DDE3C /* ManageDoseMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ManageDoseMac.entitlements; sourceTree = "<group>"; };
 		3F7695972C00238600FEE52D /* AddNewExpenseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewExpenseCard.swift; sourceTree = "<group>"; };
 		3F7695992C00252400FEE52D /* PopUpBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpBar.swift; sourceTree = "<group>"; };
 		3F76959B2C0037EF00FEE52D /* AddNewExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewExpenseView.swift; sourceTree = "<group>"; };
@@ -102,7 +104,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		044737EE2C10703E003C080E /* Frameworks */ = {
+		04DD3C4F2C117FBC002DDE3C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -119,21 +121,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		044737F22C10703E003C080E /* MacManageDose */ = {
+		04DD3C532C117FBC002DDE3C /* ManageDoseMac */ = {
 			isa = PBXGroup;
 			children = (
-				044737F52C10703E003C080E /* ContentView.swift */,
-				044737F72C107040003C080E /* Assets.xcassets */,
-				044737FC2C107040003C080E /* MacManageDose.entitlements */,
-				044737F92C107040003C080E /* Preview Content */,
+				04DD3C542C117FBC002DDE3C /* ManageDoseMacApp.swift */,
+				04DD3C562C117FBC002DDE3C /* ContentView.swift */,
+				04DD3C582C117FBE002DDE3C /* Assets.xcassets */,
+				04DD3C5D2C117FBE002DDE3C /* ManageDoseMac.entitlements */,
+				04DD3C5A2C117FBE002DDE3C /* Preview Content */,
 			);
-			path = MacManageDose;
+			path = ManageDoseMac;
 			sourceTree = "<group>";
 		};
-		044737F92C107040003C080E /* Preview Content */ = {
+		04DD3C5A2C117FBE002DDE3C /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				044737FA2C107040003C080E /* Preview Assets.xcassets */,
+				04DD3C5B2C117FBE002DDE3C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -143,8 +146,8 @@
 			children = (
 				7E0EDBB22BF6F66E00C384B8 /* ManageDose */,
 				04CF6E7F2C0DBCA200B1133B /* ManageDose.app */,
-				044737F12C10703E003C080E /* MacManageDose.app */,
-				044737F22C10703E003C080E /* MacManageDose */,
+				04DD3C522C117FBC002DDE3C /* ManageDoseMac.app */,
+				04DD3C532C117FBC002DDE3C /* ManageDoseMac */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,21 +241,21 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		044737F02C10703E003C080E /* MacManageDose */ = {
+		04DD3C512C117FBC002DDE3C /* ManageDoseMac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 044737FF2C107040003C080E /* Build configuration list for PBXNativeTarget "MacManageDose" */;
+			buildConfigurationList = 04DD3C5E2C117FBE002DDE3C /* Build configuration list for PBXNativeTarget "ManageDoseMac" */;
 			buildPhases = (
-				044737ED2C10703E003C080E /* Sources */,
-				044737EE2C10703E003C080E /* Frameworks */,
-				044737EF2C10703E003C080E /* Resources */,
+				04DD3C4E2C117FBC002DDE3C /* Sources */,
+				04DD3C4F2C117FBC002DDE3C /* Frameworks */,
+				04DD3C502C117FBC002DDE3C /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = MacManageDose;
-			productName = MacManageDose;
-			productReference = 044737F12C10703E003C080E /* MacManageDose.app */;
+			name = ManageDoseMac;
+			productName = ManageDoseMac;
+			productReference = 04DD3C522C117FBC002DDE3C /* ManageDoseMac.app */;
 			productType = "com.apple.product-type.application";
 		};
 		7E0EDBAF2BF6F66E00C384B8 /* ManageDose */ = {
@@ -282,7 +285,7 @@
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
-					044737F02C10703E003C080E = {
+					04DD3C512C117FBC002DDE3C = {
 						CreatedOnToolsVersion = 15.3;
 					};
 					7E0EDBAF2BF6F66E00C384B8 = {
@@ -304,18 +307,18 @@
 			projectRoot = "";
 			targets = (
 				7E0EDBAF2BF6F66E00C384B8 /* ManageDose */,
-				044737F02C10703E003C080E /* MacManageDose */,
+				04DD3C512C117FBC002DDE3C /* ManageDoseMac */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		044737EF2C10703E003C080E /* Resources */ = {
+		04DD3C502C117FBC002DDE3C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				044737FB2C107040003C080E /* Preview Assets.xcassets in Resources */,
-				044737F82C107040003C080E /* Assets.xcassets in Resources */,
+				04DD3C5C2C117FBE002DDE3C /* Preview Assets.xcassets in Resources */,
+				04DD3C592C117FBE002DDE3C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,11 +334,12 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		044737ED2C10703E003C080E /* Sources */ = {
+		04DD3C4E2C117FBC002DDE3C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				044737F62C10703E003C080E /* ContentView.swift in Sources */,
+				04DD3C572C117FBC002DDE3C /* ContentView.swift in Sources */,
+				04DD3C552C117FBC002DDE3C /* ManageDoseMacApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,16 +391,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		044737FD2C107040003C080E /* Debug */ = {
+		04DD3C5F2C117FBE002DDE3C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = MacManageDose/MacManageDose.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ManageDoseMac/ManageDoseMac.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MacManageDose/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ManageDoseMac/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -406,7 +410,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = TimWillas.MacManageDose;
+				PRODUCT_BUNDLE_IDENTIFIER = TimWillas.ManageDoseMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -414,16 +418,16 @@
 			};
 			name = Debug;
 		};
-		044737FE2C107040003C080E /* Release */ = {
+		04DD3C602C117FBE002DDE3C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = MacManageDose/MacManageDose.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ManageDoseMac/ManageDoseMac.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MacManageDose/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"ManageDoseMac/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -433,7 +437,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.3;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = TimWillas.MacManageDose;
+				PRODUCT_BUNDLE_IDENTIFIER = TimWillas.ManageDoseMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -623,11 +627,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		044737FF2C107040003C080E /* Build configuration list for PBXNativeTarget "MacManageDose" */ = {
+		04DD3C5E2C117FBE002DDE3C /* Build configuration list for PBXNativeTarget "ManageDoseMac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				044737FD2C107040003C080E /* Debug */,
-				044737FE2C107040003C080E /* Release */,
+				04DD3C5F2C117FBE002DDE3C /* Debug */,
+				04DD3C602C117FBE002DDE3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
