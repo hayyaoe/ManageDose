@@ -1,8 +1,8 @@
 //
 //  BudgetProgressCard.swift
-//  ManageDose
+//  WatchManageDose Watch App
 //
-//  Created by MacBook Pro on 22/05/24.
+//  Created by MacBook Pro on 06/06/24.
 //
 
 import SwiftUI
@@ -90,36 +90,31 @@ struct BudgetProgressCard: View {
                     Image(icon)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(height:45)
+                        .frame(height:24)
                         .foregroundStyle(.blue)
-                    VStack(alignment: .leading){
+                    VStack(alignment: .leading){ // Align content to the leading edge
                         Text("\(self.name)")
-                            .font(.system(size: 18))
+                            .font(.system(size: 12))
                             .fontWeight(.medium)
                             .foregroundStyle(.black)
-                        Text("\(numberOfTransactions) Transaction")
-                            .fontWeight(.regular)
-                            .foregroundStyle(.gray)
-                            .font(.system(size: 14))
-                            .truncationMode(.tail)
-                            .lineLimit(1)
                     }
                     Spacer()
                     Text("Rp \(self.budget, format: .number)")
-                        .font(.system(size: 15))
+                        .font(.system(size: 12))
                         .fontWeight(.medium)
                         .foregroundStyle(.black)
+                        .multilineTextAlignment(.trailing)
                 }
                 ZStack(alignment: .leading){
                     Capsule()
-                        .frame(width: UIScreen.main.bounds.width - 80)
+                        .frame(width: WKInterfaceDevice.current().screenBounds.width - 20)
                         .foregroundColor(Color(red: 226 / 255, green: 226 / 255, blue: 226 / 255, opacity: 1))
                     Capsule()
                         .frame(width: {
                             if progressPercentage <= 1.0{
-                                return CGFloat(progressPercentage) * (UIScreen.main.bounds.width - 80)
+                                return CGFloat(progressPercentage) * (WKInterfaceDevice.current().screenBounds.width - 20)
                             } else {
-                                return CGFloat (UIScreen.main.bounds.width - 80)
+                                return CGFloat (WKInterfaceDevice.current().screenBounds.width - 20)
                             }
                         }())
                     
@@ -140,54 +135,53 @@ struct BudgetProgressCard: View {
                     Text("\(self.used, format: .number) used")
                         .fontWeight(.regular)
                         .foregroundStyle(.gray)
-                        .font(.system(size: 12))
+                        .font(.system(size: 10))
                         .truncationMode(.tail)
                         .lineLimit(1)
                     Spacer()
-                    Text("\(remaining, format: .number) Remaining")
+                    Text("\(remaining, format: .number) left")
                         .fontWeight(.regular)
                         .foregroundStyle(.gray)
-                        .font(.system(size: 12))
+                        .font(.system(size: 10))
                         .truncationMode(.tail)
                         .lineLimit(1)
                 }
                 .padding(.top, 4)
             }
-            .frame(height: 110)
-            .padding(15)
-            .padding(.top, 45)
+            .padding(10)
+            .padding(.top, 36)
             .background(Color(red: 246 / 255, green: 246 / 255, blue: 246 / 255))
             .cornerRadius(10)
             
             //reminder
-            VStack(){
+            VStack(alignment: .leading){ // Align content to the leading edge
                 HStack{
                     Image("check")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 20)
+                        .frame(width: 16)
                     if progressPercentage < 0.5 {
-                        Text("Your budget is healty!")
+                        Text("Your budget is healthy!")
                             .foregroundStyle(.white)
-                            .font(.system(size: 15))
+                            .font(.system(size: 11))
                     } else if progressPercentage < 0.8 {
                         Text("Watch your spending!")
                             .foregroundStyle(.white)
-                            .font(.system(size: 15))
+                            .font(.system(size: 11))
                     } else if progressPercentage < 1.0 {
                         Text("Your budget is almost full!")
                             .foregroundStyle(.white)
-                            .font(.system(size: 15))
+                            .font(.system(size: 11))
                     } else {
                         Text("You have exceeded your budget!")
                             .foregroundStyle(.white)
-                            .font(.system(size: 15))
+                            .font(.system(size: 11))
                     }
                     
                 }
             }
             .frame(maxWidth: 400, alignment: .leading)
-            .padding(15)
+            .padding(10)
             .background({
                 if progressPercentage <= 0.0 {
                     return Color(hex: "5339EE")
@@ -198,12 +192,12 @@ struct BudgetProgressCard: View {
                 } else {
                     return Color.red
                 }
-            }())            .clipShape(TopCornersRoundedShape(radius: 10))
+            }())
+            .clipShape(TopCornersRoundedShape(radius: 10))
         }
-        
     }
 }
 
 #Preview {
-    BudgetProgressCard(budget: 1000, used: 0, name: "Savings")
+    BudgetProgressCard(budget: 2000000, used: 0, name: "Savings")
 }
