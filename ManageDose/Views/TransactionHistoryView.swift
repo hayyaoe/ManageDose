@@ -20,9 +20,16 @@ struct TransactionHistoryView: View {
     var body: some View {
         VStack{
             HStack{
-                Text("Transaction History")
-                    .font(.title3)
-                    .fontWeight(.semibold)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    Text("Transaction History")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                }else{
+                    Text("Transaction History")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                }
+               
                 Spacer()
                 Text("Filter")
                     .font(.title3)

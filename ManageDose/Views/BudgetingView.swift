@@ -60,23 +60,27 @@ struct BudgetingView: View {
                             Spacer()
                         }
                         .padding(EdgeInsets(top: 5, leading: 15, bottom: 0, trailing: 20))
-                        if let basicNeeds = basicNeeds {
-                            NavigationLink(destination: DetailBudget(budgeting: Binding(get: { basicNeeds }, set: { _ in }))) {
-                                BudgetProgressCard(budget: basicNeeds.amount, used: basicNeeds.used, name: "Basic Needs")
+                        VStack{
+                            if let basicNeeds = basicNeeds {
+                                NavigationLink(destination: DetailBudget(budgeting: Binding(get: { basicNeeds }, set: { _ in }))) {
+                                    BudgetProgressCard(budget: basicNeeds.amount, used: basicNeeds.used, name: "Basic Needs")
+                                }
+                            }
+                            if let wants = wants {
+                                NavigationLink(destination: DetailBudget(budgeting: Binding(get: { wants }, set: { _ in }))) {
+                                    BudgetProgressCard(budget: wants.amount, used: wants.used, name: "Wants")
+                                }
+                            }
+                            if let savings = savings {
+                                NavigationLink(destination: DetailBudget(budgeting: Binding(get: { savings }, set: { _ in }))) {
+                                    BudgetProgressCard(budget: savings.amount, used: savings.used, name: "Savings")
+                                }
                             }
                         }
-                        if let wants = wants {
-                            NavigationLink(destination: DetailBudget(budgeting: Binding(get: { wants }, set: { _ in }))) {
-                                BudgetProgressCard(budget: wants.amount, used: wants.used, name: "Wants")
-                            }
-                        }
-                        if let savings = savings {
-                            NavigationLink(destination: DetailBudget(budgeting: Binding(get: { savings }, set: { _ in }))) {
-                                BudgetProgressCard(budget: savings.amount, used: savings.used, name: "Savings")
-                            }
-                        }
+                        
                     }
                     .padding(.horizontal)
+                    .padding(15)
                 }
             }
         }

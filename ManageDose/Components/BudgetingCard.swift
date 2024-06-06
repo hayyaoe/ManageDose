@@ -27,31 +27,60 @@ struct BudgetingCard: View {
     }
     
     var body: some View {
-        VStack(
-            alignment: .leading,
-            spacing: 4
-        ){
-            Image(icon)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height:60)
-                .padding(EdgeInsets(top:0, leading:0, bottom: 10, trailing: 0))
-            Text(budgetingData.name)
-                .font(.subheadline)
-                .fontWeight(.medium)
-                .foregroundStyle(.gray)
-            Text("Rp \(budgetingData.amount, format: .number)")
-                .fontWeight(.bold)
-                .font(.subheadline)
-                .truncationMode(.tail)
-                .lineLimit(1)
-                .foregroundColor(.black)
+        if UIDevice.current.userInterfaceIdiom == .pad{
+            VStack(
+                alignment: .leading,
+                spacing: 4
+            ){
+                Image(icon)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height:80)
+                    .padding(EdgeInsets(top:0, leading:0, bottom: 10, trailing: 0))
+                Text(budgetingData.name)
+                    .font(.system(size:15))
+                    .fontWeight(.medium)
+                    .foregroundStyle(.gray)
+                Text("Rp \(budgetingData.amount, format: .number)")
+                    .fontWeight(.bold)
+                    .font(.system(size:20))
+                    .truncationMode(.tail)
+                    .lineLimit(1)
+                    .foregroundColor(.black)
+            }
+            .frame(width: 150, height: 150)
+            .padding(15)
+            .background(Color.white)
+            .cornerRadius(18)
+            .shadow(color: Color.black.opacity(0.15), radius: 4, x: 0, y: 0)
+        }else{
+            VStack(
+                alignment: .leading,
+                spacing: 4
+            ){
+                Image(icon)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height:60)
+                    .padding(EdgeInsets(top:0, leading:0, bottom: 10, trailing: 0))
+                Text(budgetingData.name)
+                    .font(.subheadline)
+                    .fontWeight(.medium)
+                    .foregroundStyle(.gray)
+                Text("Rp \(budgetingData.amount, format: .number)")
+                    .fontWeight(.bold)
+                    .font(.subheadline)
+                    .truncationMode(.tail)
+                    .lineLimit(1)
+                    .foregroundColor(.black)
+            }
+            .frame(width: 110, height: 110)
+            .padding(15)
+            .background(Color.white)
+            .cornerRadius(18)
+            .shadow(color: Color.black.opacity(0.15), radius: 4, x: 0, y: 0)
         }
-        .frame(width: 110, height: 110)
-        .padding(15)
-        .background(Color.white)
-        .cornerRadius(18)
-        .shadow(color: Color.black.opacity(0.15), radius: 4, x: 0, y: 0)
+        
         
     }
     

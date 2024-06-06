@@ -28,42 +28,82 @@ struct ExpenseCard: View {
     
 
     var body: some View {
-        HStack {
+        if UIDevice.current.userInterfaceIdiom == .pad{
             HStack {
-                Image(icon)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(.yellow)
-                    .frame(height: 50)
-                
-                VStack(alignment: .leading) {
-                    Text(expenseName)
-                        .fontWeight(.bold)
-                        .font(.headline)
-                    Text(expenseCategory.rawValue)
-                        .font(.subheadline)
+                HStack {
+                    Image(icon)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(.yellow)
+                        .frame(height: 70)
+                    
+                    VStack(alignment: .leading) {
+                        Text(expenseName)
+                            .fontWeight(.bold)
+                            .font(.title2)
+                        Text(expenseCategory.rawValue)
+                            .font(.title3)
+                    }
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .trailing) {
+                        Text("- Rp. \(String(format: "%.2f", expenseAmount))")
+                            .fontWeight(.bold)
+                            .font(.title2)
+                            .foregroundStyle(.red)
+                        Text(expenseDate, style: .date)
+                            .font(.title3)
+                    }
                 }
-                
-                Spacer()
-                
-                VStack(alignment: .trailing) {
-                    Text("- Rp. \(String(format: "%.2f", expenseAmount))")
-                        .fontWeight(.bold)
-                        .font(.headline)
-                        .foregroundStyle(.red)
-                    Text(expenseDate, style: .date)
-                        .font(.subheadline)
-                }
+                .background(Color.white)
+                .padding(15)
+                .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color(red: 211/255, green: 209/255, blue: 209/255, opacity: 1), lineWidth: 1)
+                )
             }
-            .background(Color.white)
-            .padding(15)
-            .cornerRadius(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color(red: 211/255, green: 209/255, blue: 209/255, opacity: 1), lineWidth: 1)
-            )
+            .padding(.top, 10)
+        }else{
+            HStack {
+                HStack {
+                    Image(icon)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundStyle(.yellow)
+                        .frame(height: 50)
+                    
+                    VStack(alignment: .leading) {
+                        Text(expenseName)
+                            .fontWeight(.bold)
+                            .font(.headline)
+                        Text(expenseCategory.rawValue)
+                            .font(.subheadline)
+                    }
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .trailing) {
+                        Text("- Rp. \(String(format: "%.2f", expenseAmount))")
+                            .fontWeight(.bold)
+                            .font(.headline)
+                            .foregroundStyle(.red)
+                        Text(expenseDate, style: .date)
+                            .font(.subheadline)
+                    }
+                }
+                .background(Color.white)
+                .padding(15)
+                .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color(red: 211/255, green: 209/255, blue: 209/255, opacity: 1), lineWidth: 1)
+                )
+            }
+            .padding(.top, 10)
         }
-        .padding(.top, 10)
+        
     }
 }
 
