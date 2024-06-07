@@ -28,20 +28,6 @@ struct BudgetingView: View {
                     Text("Budgeting")
                         .font(.title3)
                         .fontWeight(.semibold)
-                        .overlay(
-                            Image(systemName: "bell.fill")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 24, height: 24)
-                                .foregroundColor(Color(red: 99 / 255.0, green: 97 / 255.0, blue: 148 / 255.0))
-                                .overlay(
-                                    Circle()
-                                        .fill(Color.red)
-                                        .frame(width: 12, height: 12)
-                                        .offset(x: 12, y: -12)
-                                )
-                                .offset(x: 150)
-                        )
                 }
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVStack(spacing: 20) {
@@ -91,15 +77,18 @@ struct BudgetingView: View {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: BudgetingData.self, configurations: config)
+
+        // Mock data for preview
         let example = [
             BudgetingData(name: "Basic Needs", percentage: 50, budget: .dailyneeds, totalBudget: 3000000, used: 500),
             BudgetingData(name: "Wants", percentage: 30, budget: .wants, totalBudget: 3000000, used: 100000),
             BudgetingData(name: "Savings", percentage: 20, budget: .saving, totalBudget: 3000000, used: 500000)
         ]
-        
+
+        // State variables for preview
         @State var budgetings = example
         @State var selectedTab = 1
-        
+
         return BudgetingView(budgetings: $budgetings, selectedTab: $selectedTab, budget: 3000000)
             .modelContainer(container)
     } catch {

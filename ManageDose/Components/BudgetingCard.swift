@@ -72,7 +72,13 @@ struct BudgetingCard: View {
                     .font(.subheadline)
                     .truncationMode(.tail)
                     .lineLimit(1)
-                    .foregroundColor(.black)
+                    .foregroundColor({
+                        if budgetingData.remaining <= 0.0 {
+                            return Color.red
+                        } else {
+                          return Color.black
+                        }
+                    }())
             }
             .frame(width: 110, height: 110)
             .padding(15)
@@ -82,13 +88,11 @@ struct BudgetingCard: View {
         }
         
         
+    }    
+    private func calculateUsage() -> Double {
+        expenseData.filter { $0.budget == budgetingData.budget }
+                    .reduce(0.0, { $0 + $1.amount }) 
     }
-    
-        
-        private func calculateUsage() -> Double {
-          expenseData.filter { $0.budget == budgetingData.budget }
-                    .reduce(0.0, { $0 + $1.amount })
-        }
         
 }
 
