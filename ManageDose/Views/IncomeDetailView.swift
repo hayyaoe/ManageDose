@@ -23,68 +23,140 @@ struct IncomeDetailView: View {
     }
     
     var body: some View {
+        
         let basicNeeds = budgets.first(where: { $0.budget == .dailyneeds })
         VStack {
-            VStack(alignment: .leading) {
-                Text("Insert Insertion Source")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                Text("Enter Your Income in one month")
-                    .font(.system(size: 14))
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.gray)
-            }
-            .padding(.horizontal, 15)
-            .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Rectangle()
-                .fill(Color(red: 220/255, green: 213/255, blue: 255/255, opacity: 1))
-                .frame(width: 400, height: 10)
-                .offset(y: 8)
-            
-            ScrollView(.vertical, showsIndicators: false) {
-                LazyVStack {
-                    ForEach(incomes) { income in
-                        IncomeCard(incomeName: income.name, incomeCategory: income.categoryTransaction, incomeAmount: income.amount, incomeDate: income.date)
-                    }
+            if  UIDevice.current.userInterfaceIdiom == .pad{
+                VStack(alignment: .leading) {
+                    Text("Insert Insertion Source")
+                        .font(.title)
+                        .fontWeight(.semibold)
+                    Text("Enter Your Income in one month")
+                        .font(.system(size: 18))
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.gray)
                 }
+                .padding(.horizontal, 15)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Rectangle()
+                    .fill(Color(red: 220/255, green: 213/255, blue: 255/255, opacity: 1))
+                    .frame(width: 900, height: 10)
+                    .offset(y: 8)
+                    .padding(.vertical, 10)
+            }else{
+                VStack(alignment: .leading) {
+                    Text("Insert Insertion Source")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                    Text("Enter Your Income in one month")
+                        .font(.system(size: 14))
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.gray)
+                }
+                .padding(.horizontal, 15)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                Rectangle()
+                    .fill(Color(red: 220/255, green: 213/255, blue: 255/255, opacity: 1))
+                    .frame(width: 400, height: 10)
+                    .offset(y: 8)
             }
-            .overlay(
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        showSheet.toggle()
-                    }) {
-                        ZStack {
-                            Circle()
-                                .fill(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
-                                .frame(width: 60, height: 60)
-                            Image(systemName: "plus")
-                                .font(.title)
-                                .foregroundColor(.white)
+            
+            if  UIDevice.current.userInterfaceIdiom == .pad{
+                ScrollView(.vertical, showsIndicators: false) {
+                    LazyVStack {
+                        ForEach(incomes) { income in
+                            IncomeCard(incomeName: income.name, incomeCategory: income.categoryTransaction, incomeAmount: income.amount, incomeDate: income.date)
                         }
                     }
                 }
-                .offset(x: -10, y: 230)
-            )
-            
-            Divider()
-                .background(Color.gray)
-                .frame(width: 400)
-                .offset(y: -8)
-            
-            HStack {
-                Text("Total Income")
-                    .font(.system(size: 18))
-                    .fontWeight(.regular)
-                    .foregroundStyle(.gray)
                 
-                Spacer()
-                Text("Rp. \(totalIncome, specifier: "%.2f")")
-                    .font(.title3)
-                    .fontWeight(.semibold)
+                .overlay(
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            showSheet.toggle()
+                        }) {
+                            ZStack {
+                                Circle()
+                                    .fill(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
+                                    .frame(width: 60, height: 60)
+                                Image(systemName: "plus")
+                                    .font(.title)
+                                    .foregroundColor(.white)
+                            }
+                        }
+                    }
+                    .offset(x: -10, y: 380)
+                )
+            }else{
+                ScrollView(.vertical, showsIndicators: false) {
+                    LazyVStack {
+                        ForEach(incomes) { income in
+                            IncomeCard(incomeName: income.name, incomeCategory: income.categoryTransaction, incomeAmount: income.amount, incomeDate: income.date)
+                        }
+                    }
+                }
+                
+                .overlay(
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            showSheet.toggle()
+                        }) {
+                            ZStack {
+                                Circle()
+                                    .fill(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
+                                    .frame(width: 60, height: 60)
+                                Image(systemName: "plus")
+                                    .font(.title)
+                                    .foregroundColor(.white)
+                            }
+                        }
+                    }
+                    .offset(x: -10, y: 230)
+                )
             }
-            .padding(.top, 0)
+            
+            if  UIDevice.current.userInterfaceIdiom == .pad{
+                Divider()
+                    .background(Color.gray)
+                    .frame(width: 900)
+                    .offset(y: -8)
+                
+                HStack {
+                    Text("Total Income")
+                        .font(.system(size: 24))
+                        .fontWeight(.regular)
+                        .foregroundStyle(.gray)
+                    
+                    Spacer()
+                    Text("Rp. \(totalIncome, specifier: "%.2f")")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                }
+                .padding(.top, 0)
+            }else{
+                Divider()
+                    .background(Color.gray)
+                    .frame(width: 400)
+                    .offset(y: -8)
+                
+                HStack {
+                    Text("Total Income")
+                        .font(.system(size: 18))
+                        .fontWeight(.regular)
+                        .foregroundStyle(.gray)
+                    
+                    Spacer()
+                    Text("Rp. \(totalIncome, specifier: "%.2f")")
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                }
+                .padding(.top, 0)
+            }
+            
             
             Button {
                 if budgets.isEmpty{
