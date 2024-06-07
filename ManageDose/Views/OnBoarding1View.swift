@@ -12,55 +12,60 @@ struct OnBoarding1View: View {
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
     
     var body: some View {
-        NavigationStack{
-            VStack{
-                ZStack{
-                    Image("Ellipse 6")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 420, height: 420)
-                        .offset(x: 100, y: -103)
-                    Image("mobile banking 1")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 420, height: 420)
-                        .offset(x: 0, y: -40)
+        GeometryReader { geometry in
+            let screenWidth = geometry.size.width
+            let isLargeScreen = screenWidth > 720
+            NavigationStack{
+                VStack{
+                    ZStack{
+                        Image("Ellipse 6")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: isLargeScreen ? 800: 420, height: isLargeScreen ? 800: 420)
+                            .offset(x: isLargeScreen ? 300: 100, y: isLargeScreen ? -300: -103)
+                        Image("mobile banking 1")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: isLargeScreen ? 600 :  420, height: isLargeScreen ? 600 : 420)
+                            .offset(x: 0, y: -40)
+                        
+                    }
+                    HStack{
+                        PageIndicatorFill()
+                        PageIndicatorBlank()
+                        PageIndicatorBlank()
+                    }
                     
+                    Text("Welcome To ManageDose!")
+                        .font(.system(size: isLargeScreen ? 36 : 20))
+                        .bold()
+                        .padding(.vertical, 20)
+                    Text("Manage your spendings on wants, needs, and savings!")
+                        .font(.system(size: isLargeScreen ? 26 : 16))
+                        .frame(maxWidth: isLargeScreen ? 500 : 360, alignment: .center)
+                        .multilineTextAlignment(.center)
+                    Button(action: {
+                        hasSeenOnboarding = true
+                    }) {
+                        Text("Skip")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .font(.system(size: isLargeScreen ? 26 : 16))
+                            .fontWeight(.semibold)
+                            .foregroundColor(.gray)
+                            .background(Color.clear)
+                            .cornerRadius(20)
+                    }
+                    
+                    NavigationLink(destination: OnBoarding2View(), label: {                Text("Next")
+                            .frame(maxWidth: isLargeScreen ? 800 : 320)
+                            .padding()
+                            .font(.system(size: isLargeScreen ? 26 : 16))
+                            .fontWeight(.semibold)
+                            .foregroundColor(.white)
+                            .background(Color(red: 83/255, green: 57/255, blue: 238/255))
+                        .cornerRadius( isLargeScreen ? 40 : 20)})
                 }
-                HStack{
-                    PageIndicatorFill()
-                    PageIndicatorBlank()
-                    PageIndicatorBlank()
-                }
-                Text("Welcome To ManageDose!")
-                    .font(.title2)
-                    .bold()
-                    .padding(.vertical, 20)
-                Text("Manage your spendings on wants, needs, and savings!")
-                    .font(.subheadline)
-                    .frame(maxWidth: 360, alignment: .center)
-                    .multilineTextAlignment(.center)
-                Button(action: {
-                    hasSeenOnboarding = true
-                }) {
-                    Text("Skip")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.gray)
-                        .background(Color.clear)
-                        .cornerRadius(20)
-                }
-                
-                NavigationLink(destination: OnBoarding2View(), label: {                Text("Next")
-                        .frame(maxWidth: 320)
-                        .padding()
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.white)
-                        .background(Color(red: 83/255, green: 57/255, blue: 238/255))
-                        .cornerRadius(20)})
             }
         }
     }
