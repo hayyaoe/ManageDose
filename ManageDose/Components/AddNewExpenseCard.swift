@@ -55,7 +55,7 @@ struct AddNewExpenseCard: View {
         case "Savings":
             return "savings"
         default:
-            return "basic needs"
+            return "income"
         }
     }
     
@@ -72,103 +72,206 @@ struct AddNewExpenseCard: View {
     }
     
     var body: some View {
-        VStack(
-            spacing: 8
-        ){
-            PopUpBar()
-                .padding(.bottom, 24)
-            
-            VStack(alignment: .leading){
-                Text(isIncome ? "Add Income" : "Add Expense")
-                    .bold()
-                    .font(.headline)
-                    .padding(.bottom, 12)
-                HStack(
-                    spacing: 24
-                ){
-                    Image(icon)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height:50)
-                        .foregroundStyle(.blue)
-                        .padding(EdgeInsets(top:0, leading:0, bottom: 10, trailing: 0))
-                    VStack(alignment: .leading){
-                        Text("\(isIncome ? "Income" : "Expense") Name")
-                            .font(.subheadline)
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            VStack(
+                spacing: 8
+            ){
+                PopUpBar()
+                    .padding(.bottom, 24)
+                
+                VStack(alignment: .leading){
+                    Text(isIncome ? "Add Income" : "Add Expense")
+                        .bold()
+                        .font(.title)
+                        .padding(.bottom, 12)
+                    HStack(
+                        spacing: 24
+                    ){
+                        Image(icon)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height:70)
+                            .foregroundStyle(.blue)
+                            .padding(EdgeInsets(top:0, leading:0, bottom: 10, trailing: 0))
+                        VStack(alignment: .leading){
+                            Text("\(isIncome ? "Income" : "Expense") Name")
+                                .font(.title2)
+                                .fontWeight(.medium)
+                                .padding(.bottom, 4)
+                            TextField("Food and Drink", text: $expenseName)
+                                .font(.title2)
+                                .foregroundStyle(.gray)
+                            SeparatorBar()
+                                .padding(.bottom, 8)
+                            
+                        }
+                    }
+                    
+                    Text("\(isIncome ? "Income" : "Expense") Category")
+                        .font(.title2)
+                        .fontWeight(.medium)
+                        .padding(.bottom, 4)
+                    
+                    Picker("Please choose an option", selection: $selectedOption) {
+                        ForEach(options, id: \.self) { option in
+                            Text(option.rawValue)
+                        }
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                    .frame(width: 650, height: 30)
+                    .background(Color.white.opacity(0.2))
+                    .cornerRadius(5)
+                    .shadow(color: .white, radius: 2, x: 0, y: 0.1)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.blue, lineWidth: 1)
+                        )
+                        .padding(.bottom, 5)
+                    
+                    Text("\(isIncome ? "Income" : "Expense") Amount")
+                        .font(.title2)
+                        .fontWeight(.medium)
+                        .padding(.bottom, 4)
+                    TextField("Rp 0", value: $expenseAmount, formatter: numberFormatter)
+                        .font(.title2)
+                        .foregroundStyle(.gray)
+                        .keyboardType(.numberPad)
+                    SeparatorBar()
+                        .padding(.bottom, 8)
+                    
+                    HStack {
+                        Text("\(isIncome ? "Income" : "Expense") Date")
+                            .font(.title2)
                             .fontWeight(.medium)
                             .padding(.bottom, 4)
-                        TextField("Food and Drink", text: $expenseName)
-                            .font(.subheadline)
-                            .foregroundStyle(.gray)
-                        SeparatorBar()
-                            .padding(.bottom, 8)
+                        DatePicker("", selection: $expenseDate, displayedComponents: .date)
+                            .font(.caption)
+                        Spacer()
+                    }
+                    Spacer()
+                    Button(action: {
+                        if isIncome{
+                            addIncome()
+                            
+                        }else{
+                            addExpense()
+                        }
+                    }) {
+                        Text("Add \(isIncome ? "Income" : "Expense")")
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
+                            .cornerRadius(24)
                         
                     }
+                    .padding(12)
                 }
                 
-                Text("\(isIncome ? "Income" : "Expense") Category")
-                    .font(.subheadline)
-                    .fontWeight(.medium)
-                    .padding(.bottom, 4)
+            }
+            .padding(15)
+            .background(Color.white)
+        }else{
+            VStack(
+                spacing: 8
+            ){
+                PopUpBar()
+                    .padding(.bottom, 24)
                 
-                Picker("Please choose an option", selection: $selectedOption) {
-                    ForEach(options, id: \.self) { option in
-                        Text(option.rawValue)
+                VStack(alignment: .leading){
+                    Text(isIncome ? "Add Income" : "Add Expense")
+                        .bold()
+                        .font(.headline)
+                        .padding(.bottom, 12)
+                    HStack(
+                        spacing: 24
+                    ){
+                        Image(icon)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height:50)
+                            .foregroundStyle(.blue)
+                            .padding(EdgeInsets(top:0, leading:0, bottom: 10, trailing: 0))
+                        VStack(alignment: .leading){
+                            Text("\(isIncome ? "Income" : "Expense") Name")
+                                .font(.subheadline)
+                                .fontWeight(.medium)
+                                .padding(.bottom, 4)
+                            TextField("Food and Drink", text: $expenseName)
+                                .font(.subheadline)
+                                .foregroundStyle(.gray)
+                            SeparatorBar()
+                                .padding(.bottom, 8)
+                            
+                        }
                     }
-                }
-                .pickerStyle(MenuPickerStyle())
-                .frame(width: 360, height: 30)
-                .background(Color.white.opacity(0.2))
-                .cornerRadius(5)
-                .shadow(color: .white, radius: 2, x: 0, y: 0.1)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(Color.blue, lineWidth: 1)
-                    )
-                    .padding(.bottom, 5)
-                
-                Text("\(isIncome ? "Income" : "Expense") Amount")
-                    .font(.subheadline)
-                    .fontWeight(.medium)
-                    .padding(.bottom, 4)
-                TextField("Rp 0", value: $expenseAmount, formatter: numberFormatter)
-                    .font(.subheadline)
-                    .foregroundStyle(.gray)
-                    .keyboardType(.numberPad)
-                SeparatorBar()
-                    .padding(.bottom, 8)
-                
-                HStack {
-                    Text("\(isIncome ? "Income" : "Expense") Date")
+                    
+                    Text("\(isIncome ? "Income" : "Expense") Category")
                         .font(.subheadline)
                         .fontWeight(.medium)
                         .padding(.bottom, 4)
-                    DatePicker("", selection: $expenseDate, displayedComponents: .date)
-                        .font(.caption)
-                    Spacer()
-                }
-                Button(action: {
-                    if isIncome{
-                        addIncome()
-                        
-                    }else{
-                        addExpense()
-                    }
-                }) {
-                    Text("Add Expense")
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
-                        .cornerRadius(24)
                     
+                    Picker("Please choose an option", selection: $selectedOption) {
+                        ForEach(options, id: \.self) { option in
+                            Text(option.rawValue)
+                        }
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                    .frame(width: 360, height: 30)
+                    .background(Color.white.opacity(0.2))
+                    .cornerRadius(5)
+                    .shadow(color: .white, radius: 2, x: 0, y: 0.1)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.blue, lineWidth: 1)
+                        )
+                        .padding(.bottom, 5)
+                    
+                    Text("\(isIncome ? "Income" : "Expense") Amount")
+                        .font(.subheadline)
+                        .fontWeight(.medium)
+                        .padding(.bottom, 4)
+                    TextField("Rp 0", value: $expenseAmount, formatter: numberFormatter)
+                        .font(.subheadline)
+                        .foregroundStyle(.gray)
+                        .keyboardType(.numberPad)
+                    SeparatorBar()
+                        .padding(.bottom, 8)
+                    
+                    HStack {
+                        Text("\(isIncome ? "Income" : "Expense") Date")
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                            .padding(.bottom, 4)
+                        DatePicker("", selection: $expenseDate, displayedComponents: .date)
+                            .font(.caption)
+                        Spacer()
+                    }
+                    Button(action: {
+                        if isIncome{
+                            addIncome()
+                            
+                        }else{
+                            addExpense()
+                        }
+                    }) {
+                        Text("Add Expense")
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
+                            .cornerRadius(24)
+                        
+                    }
+                    .padding(12)
                 }
-                .padding(12)
+                
             }
-            
+            .padding(15)
+            .background(Color.white)
         }
-        .padding(15)
-        .background(Color.white)
+        
     }
     
     func addIncome(){
