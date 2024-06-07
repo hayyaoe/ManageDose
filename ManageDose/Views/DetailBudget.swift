@@ -22,7 +22,7 @@ struct DetailBudget: View {
                     .padding(.top, 10)
                 Rectangle()
                     .fill(Color(red: 220/255, green: 213/255, blue: 255/255, opacity: 1))
-                    .frame(width: 900, height: 20)
+                    .frame(width: 1200, height: 20)
                     .padding(10)
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVStack {
