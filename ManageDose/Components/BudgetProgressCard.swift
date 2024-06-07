@@ -81,126 +81,242 @@ struct BudgetProgressCard: View {
     
         
     var body: some View {
-        let remaining = budget - used
-        let progressPercentage = used / budget
-        ZStack(alignment: .topLeading){
-            //logo and progress
-            VStack{
-                HStack{
-                    Image(icon)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(height:45)
-                        .foregroundStyle(.blue)
-                    VStack(alignment: .leading){
-                        Text("\(self.name)")
-                            .font(.system(size: 18))
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            let remaining = budget - used
+            let progressPercentage = used / budget
+            ZStack(alignment: .topLeading){
+                //logo and progress
+                VStack{
+                    HStack{
+                        Image(icon)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height:55)
+                            .foregroundStyle(.blue)
+                        VStack(alignment: .leading){
+                            Text("\(self.name)")
+                                .font(.system(size: 22))
+                                .fontWeight(.medium)
+                                .foregroundStyle(.black)
+                            Text("\(numberOfTransactions) Transaction")
+                                .fontWeight(.regular)
+                                .foregroundStyle(.gray)
+                                .font(.system(size: 16))
+                                .truncationMode(.tail)
+                                .lineLimit(1)
+                        }
+                        Spacer()
+                        Text("Rp \(self.budget, format: .number)")
+                            .font(.system(size: 22))
                             .fontWeight(.medium)
                             .foregroundStyle(.black)
-                        Text("\(numberOfTransactions) Transaction")
+                    }
+                    ZStack(alignment: .leading){
+                        Capsule()
+                            .frame(width: UIScreen.main.bounds.width - 30)
+                            .foregroundColor(Color(red: 226 / 255, green: 226 / 255, blue: 226 / 255, opacity: 1))
+                        Capsule()
+                            .frame(width: {
+                                if progressPercentage <= 1.0{
+                                    return CGFloat(progressPercentage) * (UIScreen.main.bounds.width - 80)
+                                } else {
+                                    return 1.0
+                                }
+                            }())
+                        
+                            .foregroundColor({
+                                if progressPercentage < 0.5 {
+                                    return Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1)
+                                } else if progressPercentage < 0.8 {
+                                    return Color.yellow
+                                } else {
+                                    return Color.red
+                                }
+                            }())
+
+                    }
+                    .frame(height: 6)
+                    .padding(.top, 8)
+                    HStack{
+                        Text("\(self.used, format: .number) used")
                             .fontWeight(.regular)
                             .foregroundStyle(.gray)
-                            .font(.system(size: 14))
+                            .font(.system(size: 15))
+                            .truncationMode(.tail)
+                            .lineLimit(1)
+                        Spacer()
+                        Text("\(remaining, format: .number) Remaining")
+                            .fontWeight(.regular)
+                            .foregroundStyle(.gray)
+                            .font(.system(size: 15))
                             .truncationMode(.tail)
                             .lineLimit(1)
                     }
-                    Spacer()
-                    Text("Rp \(self.budget, format: .number)")
-                        .font(.system(size: 15))
-                        .fontWeight(.medium)
-                        .foregroundStyle(.black)
+                    .padding(.top, 4)
                 }
-                ZStack(alignment: .leading){
-                    Capsule()
-                        .frame(width: UIScreen.main.bounds.width - 80)
-                        .foregroundColor(Color(red: 226 / 255, green: 226 / 255, blue: 226 / 255, opacity: 1))
-                    Capsule()
-                        .frame(width: {
-                            if progressPercentage <= 1.0{
-                                return CGFloat(progressPercentage) * (UIScreen.main.bounds.width - 80)
-                            } else {
-                                return CGFloat (UIScreen.main.bounds.width - 80)
-                            }
-                        }())
-                    
-                        .foregroundColor({
-                            if progressPercentage < 0.5 {
-                                return Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1)
-                            } else if progressPercentage < 0.8 {
-                                return Color.yellow
-                            } else {
-                                return Color.red
-                            }
-                        }())
-
-                }
-                .frame(height: 6)
-                .padding(.top, 8)
-                HStack{
-                    Text("\(self.used, format: .number) used")
-                        .fontWeight(.regular)
-                        .foregroundStyle(.gray)
-                        .font(.system(size: 12))
-                        .truncationMode(.tail)
-                        .lineLimit(1)
-                    Spacer()
-                    Text("\(remaining, format: .number) Remaining")
-                        .fontWeight(.regular)
-                        .foregroundStyle(.gray)
-                        .font(.system(size: 12))
-                        .truncationMode(.tail)
-                        .lineLimit(1)
-                }
-                .padding(.top, 4)
-            }
-            .frame(height: 110)
-            .padding(15)
-            .padding(.top, 45)
-            .background(Color(red: 246 / 255, green: 246 / 255, blue: 246 / 255))
-            .cornerRadius(10)
-            
-            //reminder
-            VStack(){
-                HStack{
-                    Image("check")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20)
-                    if progressPercentage < 0.5 {
-                        Text("Your budget is healty!")
-                            .foregroundStyle(.white)
-                            .font(.system(size: 15))
-                    } else if progressPercentage < 0.8 {
-                        Text("Watch your spending!")
-                            .foregroundStyle(.white)
-                            .font(.system(size: 15))
-                    } else if progressPercentage < 1.0 {
-                        Text("Your budget is almost full!")
-                            .foregroundStyle(.white)
-                            .font(.system(size: 15))
-                    } else {
-                        Text("You have exceeded your budget!")
-                            .foregroundStyle(.white)
-                            .font(.system(size: 15))
+                .frame(height: 110)
+                .padding(15)
+                .padding(.top, 45)
+                .background(Color(red: 246 / 255, green: 246 / 255, blue: 246 / 255))
+                .cornerRadius(10)
+                
+                //reminder
+                VStack(){
+                    HStack{
+                        Image("check")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20)
+                        if progressPercentage < 0.5 {
+                            Text("Your budget is healty!")
+                                .foregroundStyle(.white)
+                                .font(.system(size: 15))
+                        } else if progressPercentage < 0.8 {
+                            Text("Watch your spending!")
+                                .foregroundStyle(.white)
+                                .font(.system(size: 15))
+                        } else if progressPercentage < 1.0 {
+                            Text("Your budget is almost full!")
+                                .foregroundStyle(.white)
+                                .font(.system(size: 15))
+                        } else {
+                            Text("You have exceeded your budget!")
+                        }
+                        
                     }
-                    
                 }
+                .frame(maxWidth: 900, alignment: .leading)
+                .padding(15)
+                .background({
+                    if progressPercentage < 0.5 {
+                        return Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1)
+                    } else if progressPercentage < 0.8 {
+                        return Color.yellow
+                    } else {
+                        return Color.red
+                    }
+                }())            
+                .clipShape(TopCornersRoundedShape(radius: 10))
             }
-            .frame(maxWidth: 400, alignment: .leading)
-            .padding(15)
-            .background({
-                if progressPercentage <= 0.0 {
-                    return Color(hex: "5339EE")
-                } else if progressPercentage < 0.5 {
-                    return Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1)
-                } else if progressPercentage < 0.8 {
-                    return Color.yellow
-                } else {
-                    return Color.red
+        } else {
+            let remaining = budget - used
+            let progressPercentage = used / budget
+            ZStack(alignment: .topLeading){
+                //logo and progress
+                VStack{
+                    HStack{
+                        Image(icon)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height:45)
+                            .foregroundStyle(.blue)
+                        VStack(alignment: .leading){
+                            Text("\(self.name)")
+                                .font(.system(size: 18))
+                                .fontWeight(.medium)
+                                .foregroundStyle(.black)
+                            Text("\(numberOfTransactions) Transaction")
+                                .fontWeight(.regular)
+                                .foregroundStyle(.gray)
+                                .font(.system(size: 14))
+                                .truncationMode(.tail)
+                                .lineLimit(1)
+                        }
+                        Spacer()
+                        Text("Rp \(self.budget, format: .number)")
+                            .font(.system(size: 15))
+                            .fontWeight(.medium)
+                            .foregroundStyle(.black)
+                    }
+                    ZStack(alignment: .leading){
+                        Capsule()
+                            .frame(width: UIScreen.main.bounds.width - 80)
+                            .foregroundColor(Color(red: 226 / 255, green: 226 / 255, blue: 226 / 255, opacity: 1))
+                        Capsule()
+                            .frame(width: {
+                                if progressPercentage <= 1.0{
+                                    return CGFloat(progressPercentage) * (UIScreen.main.bounds.width - 80)
+                                } else {
+                                    return 1.0
+                                }
+                            }())
+                        
+                            .foregroundColor({
+                                if progressPercentage < 0.5 {
+                                    return Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1)
+                                } else if progressPercentage < 0.8 {
+                                    return Color.yellow
+                                } else {
+                                    return Color.red
+                                }
+                            }())
+                    }
+                    .frame(height: 6)
+                    .padding(.top, 8)
+                    HStack{
+                        Text("\(self.used, format: .number) used")
+                            .fontWeight(.regular)
+                            .foregroundStyle(.gray)
+                            .font(.system(size: 12))
+                            .truncationMode(.tail)
+                            .lineLimit(1)
+                        Spacer()
+                        Text("\(remaining, format: .number) Remaining")
+                            .fontWeight(.regular)
+                            .foregroundStyle(.gray)
+                            .font(.system(size: 12))
+                            .truncationMode(.tail)
+                            .lineLimit(1)
+                    }
+                    .padding(.top, 4)
                 }
-            }())            .clipShape(TopCornersRoundedShape(radius: 10))
+                .frame(height: 110)
+                .padding(15)
+                .padding(.top, 45)
+                .background(Color(red: 246 / 255, green: 246 / 255, blue: 246 / 255))
+                .cornerRadius(10)
+                
+                //reminder
+                VStack(){
+                    HStack{
+                        Image("check")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 20)
+                        if progressPercentage < 0.5 {
+                            Text("Your budget is healty!")
+                                .foregroundStyle(.white)
+                                .font(.system(size: 15))
+                        } else if progressPercentage < 0.8 {
+                            Text("Watch your spending!")
+                                .foregroundStyle(.white)
+                                .font(.system(size: 15))
+                        } else if progressPercentage < 1.0 {
+                            Text("Your budget is almost full!")
+                                .foregroundStyle(.white)
+                                .font(.system(size: 15))
+                        } else {
+                            Text("You have exceeded your budget!")
+                        }
+                        
+                    }
+                }
+                .frame(maxWidth: 400, alignment: .leading)
+                .padding(15)
+                .background({
+                    if progressPercentage <= 0.0 {
+                        return Color(hex: "5339EE")
+                    } else if progressPercentage < 0.5 {
+                        return Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1)
+                    } else if progressPercentage < 0.8 {
+                        return Color.yellow
+                    } else {
+                        return Color.red
+                    }
+                }())            
+                .clipShape(TopCornersRoundedShape(radius: 10))
+            }
         }
-        
     }
 }
 

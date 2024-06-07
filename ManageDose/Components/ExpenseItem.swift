@@ -25,44 +25,49 @@ struct ExpenseItem: View {
 
     
     var body: some View {
-        HStack{
-            Image(icon)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .foregroundStyle(.yellow)
-                .frame(height: 50)
+        if UIDevice.current.userInterfaceIdiom == .pad{
+            HStack{
+                Image(icon)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(.yellow)
+                    .frame(height: 70)
+                
+                VStack(
+                    alignment: .leading
+                ){
+                    Text(expenseData.name)
+                        .fontWeight(.bold)
+                        .font(.title2)
+                        .foregroundColor(.black)
+                    Text(expenseData.categoryTransaction.rawValue)
+                        .font(.title3)
+                        .foregroundColor(.black)
+              
+                }
+                
+                Spacer()
+                
+                VStack(
+                    alignment: .trailing
+                ){
             
-            VStack(
-                alignment: .leading
-            ){
-                Text(expenseData.name)
-                    .fontWeight(.bold)
-                    .font(.headline)
-                    .foregroundColor(.black)
-                Text(expenseData.categoryTransaction.rawValue)
-                    .font(.subheadline)
-                    .foregroundColor(.black)
-          
-            }
-            
-            Spacer()
-            
-            VStack(
-                alignment: .trailing
-            ){
-        
-                Text("- Rp \(expenseData.amount,format: .number)")
-                    .fontWeight(.bold)
-                    .font(.headline)
-                    .foregroundStyle(.red)
-            
+                    Text("- Rp \(expenseData.amount,format: .number)")
+                        .fontWeight(.bold)
+                        .font(.title2)
+                        .foregroundStyle(.red)
+                
 
-                Text(expenseData.date, style: .date)
-                    .font(.subheadline)
-                    .foregroundColor(.black)
+                    Text(expenseData.date, style: .date)
+                        .font(.title3)
+                        .foregroundColor(.black)
+                }
             }
+            .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+        }else{
+            
         }
-        .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+        
     }
 }
 
