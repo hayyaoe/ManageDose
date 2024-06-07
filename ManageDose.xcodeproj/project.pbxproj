@@ -16,10 +16,6 @@
 		04A6ED522C11D13200C0A522 /* ExpenseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A6ED512C11D13200C0A522 /* ExpenseCard.swift */; };
 		04A6ED532C11D5DD00C0A522 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0A45962C086D6800818A13 /* SplashScreenView.swift */; };
 		04A6ED552C11DA0E00C0A522 /* DetailBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A6ED542C11DA0E00C0A522 /* DetailBudget.swift */; };
-		04DD3C552C117FBC002DDE3C /* ManageDoseMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD3C542C117FBC002DDE3C /* ManageDoseMacApp.swift */; };
-		04DD3C572C117FBC002DDE3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD3C562C117FBC002DDE3C /* ContentView.swift */; };
-		04DD3C592C117FBE002DDE3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DD3C582C117FBE002DDE3C /* Assets.xcassets */; };
-		04DD3C5C2C117FBE002DDE3C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DD3C5B2C117FBE002DDE3C /* Preview Assets.xcassets */; };
 		04E6A9312C11B79700023DBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E6A9302C11B79700023DBE /* Assets.xcassets */; };
 		04E6A9342C11B79700023DBE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E6A9332C11B79700023DBE /* Preview Assets.xcassets */; };
 		04E6A9372C11B79700023DBE /* WatchManageDose Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 04E6A92A2C11B79500023DBE /* WatchManageDose Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -105,12 +101,6 @@
 		04CCBDE42C121A3C0066E7AD /* WatchManageDose Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WatchManageDose Watch App.entitlements"; sourceTree = "<group>"; };
 		04CCBDE52C121A5D0066E7AD /* ManageDose.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ManageDose.entitlements; sourceTree = "<group>"; };
 		04CF6E7F2C0DBCA200B1133B /* ManageDose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManageDose.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		04DD3C522C117FBC002DDE3C /* ManageDoseMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManageDoseMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		04DD3C542C117FBC002DDE3C /* ManageDoseMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDoseMacApp.swift; sourceTree = "<group>"; };
-		04DD3C562C117FBC002DDE3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		04DD3C582C117FBE002DDE3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		04DD3C5B2C117FBE002DDE3C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		04DD3C5D2C117FBE002DDE3C /* ManageDoseMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ManageDoseMac.entitlements; sourceTree = "<group>"; };
 		04E6A92A2C11B79500023DBE /* WatchManageDose Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WatchManageDose Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E6A9302C11B79700023DBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04E6A9332C11B79700023DBE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -157,13 +147,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		04DD3C4F2C117FBC002DDE3C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		04E6A9272C11B79500023DBE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -189,26 +172,6 @@
 				04A6ED512C11D13200C0A522 /* ExpenseCard.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		04DD3C532C117FBC002DDE3C /* ManageDoseMac */ = {
-			isa = PBXGroup;
-			children = (
-				04DD3C542C117FBC002DDE3C /* ManageDoseMacApp.swift */,
-				04DD3C562C117FBC002DDE3C /* ContentView.swift */,
-				04DD3C582C117FBE002DDE3C /* Assets.xcassets */,
-				04DD3C5D2C117FBE002DDE3C /* ManageDoseMac.entitlements */,
-				04DD3C5A2C117FBE002DDE3C /* Preview Content */,
-			);
-			path = ManageDoseMac;
-			sourceTree = "<group>";
-		};
-		04DD3C5A2C117FBE002DDE3C /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				04DD3C5B2C117FBE002DDE3C /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		04E6A92B2C11B79500023DBE /* WatchManageDose Watch App */ = {
@@ -245,8 +208,6 @@
 			children = (
 				7E0EDBB22BF6F66E00C384B8 /* ManageDose */,
 				04CF6E7F2C0DBCA200B1133B /* ManageDose.app */,
-				04DD3C522C117FBC002DDE3C /* ManageDoseMac.app */,
-				04DD3C532C117FBC002DDE3C /* ManageDoseMac */,
 				04E6A92A2C11B79500023DBE /* WatchManageDose Watch App.app */,
 				04E6A92B2C11B79500023DBE /* WatchManageDose Watch App */,
 			);
@@ -343,23 +304,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		04DD3C512C117FBC002DDE3C /* ManageDoseMac */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 04DD3C5E2C117FBE002DDE3C /* Build configuration list for PBXNativeTarget "ManageDoseMac" */;
-			buildPhases = (
-				04DD3C4E2C117FBC002DDE3C /* Sources */,
-				04DD3C4F2C117FBC002DDE3C /* Frameworks */,
-				04DD3C502C117FBC002DDE3C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ManageDoseMac;
-			productName = ManageDoseMac;
-			productReference = 04DD3C522C117FBC002DDE3C /* ManageDoseMac.app */;
-			productType = "com.apple.product-type.application";
-		};
 		04E6A9292C11B79500023DBE /* WatchManageDose Watch App */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04E6A93B2C11B79700023DBE /* Build configuration list for PBXNativeTarget "WatchManageDose Watch App" */;
@@ -406,9 +350,6 @@
 				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
-					04DD3C512C117FBC002DDE3C = {
-						CreatedOnToolsVersion = 15.3;
-					};
 					04E6A9292C11B79500023DBE = {
 						CreatedOnToolsVersion = 15.3;
 					};
@@ -431,22 +372,12 @@
 			projectRoot = "";
 			targets = (
 				7E0EDBAF2BF6F66E00C384B8 /* ManageDose */,
-				04DD3C512C117FBC002DDE3C /* ManageDoseMac */,
 				04E6A9292C11B79500023DBE /* WatchManageDose Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		04DD3C502C117FBC002DDE3C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04DD3C5C2C117FBE002DDE3C /* Preview Assets.xcassets in Resources */,
-				04DD3C592C117FBE002DDE3C /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		04E6A9282C11B79500023DBE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -469,15 +400,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		04DD3C4E2C117FBC002DDE3C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				04DD3C572C117FBC002DDE3C /* ContentView.swift in Sources */,
-				04DD3C552C117FBC002DDE3C /* ManageDoseMacApp.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		04E6A9262C11B79500023DBE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -556,60 +478,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		04DD3C5F2C117FBE002DDE3C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ManageDoseMac/ManageDoseMac.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ManageDoseMac/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 14.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = TimWillas.ManageDoseMac;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		04DD3C602C117FBE002DDE3C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = ManageDoseMac/ManageDoseMac.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ManageDoseMac/Preview Content\"";
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 14.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = TimWillas.ManageDoseMac;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		04E6A9392C11B79700023DBE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -860,15 +728,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		04DD3C5E2C117FBE002DDE3C /* Build configuration list for PBXNativeTarget "ManageDoseMac" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				04DD3C5F2C117FBE002DDE3C /* Debug */,
-				04DD3C602C117FBE002DDE3C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		04E6A93B2C11B79700023DBE /* Build configuration list for PBXNativeTarget "WatchManageDose Watch App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

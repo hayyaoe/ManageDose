@@ -25,31 +25,30 @@ struct ExpendAllocationView: View {
             Color.white
                 .ignoresSafeArea()
             ScrollView(.vertical, showsIndicators: false) {
-                HStack {
+                VStack{
                     Text("Expend Allocation")
                         .fontWeight(.semibold)
                         .foregroundStyle(.black)
-                        .font(.system(size: 16))
+                        .font(.system(size: 18))
+                    
+                    LazyVStack(spacing: -10) {
+                        if let basicNeeds = basicNeeds {
+                            NavigationLink(destination: DetailBudget(expenses: $expenses, budgeting: Binding(get: { basicNeeds }, set: { _ in }))) {
+                                BudgetProgressCard(budget: basicNeeds.amount, used: basicNeeds.used, name: "Basic Needs")
+                            }
+                        }
+                        if let wants = wants {
+                            NavigationLink(destination: DetailBudget(expenses: $expenses, budgeting: Binding(get: { wants }, set: { _ in }))) {
+                                BudgetProgressCard(budget: wants.amount, used: wants.used, name: "Wants")
+                            }
+                        }
+                        if let savings = savings {
+                            NavigationLink(destination: DetailBudget(expenses: $expenses, budgeting: Binding(get: { savings }, set: { _ in }))) {
+                                BudgetProgressCard(budget: savings.amount, used: savings.used, name: "Savings")
+                            }
+                        }
+                    }
                 }
-                LazyVStack(spacing: -10) {
-                    if let basicNeeds = basicNeeds {
-                        NavigationLink(destination: DetailBudget(expenses: $expenses, budgeting: Binding(get: { basicNeeds }, set: { _ in }))) {
-                            BudgetProgressCard(budget: basicNeeds.amount, used: basicNeeds.used, name: "Basic Needs")
-                        }
-                    }
-                    if let wants = wants {
-                        NavigationLink(destination: DetailBudget(expenses: $expenses, budgeting: Binding(get: { wants }, set: { _ in }))) {
-                            BudgetProgressCard(budget: wants.amount, used: wants.used, name: "Wants")
-                        }
-                    }
-                    if let savings = savings {
-                        NavigationLink(destination: DetailBudget(expenses: $expenses, budgeting: Binding(get: { savings }, set: { _ in }))) {
-                            BudgetProgressCard(budget: savings.amount, used: savings.used, name: "Savings")
-                        }
-                    }
-                }
-//                .padding(.top, -35)
-                
             }
         }
     }

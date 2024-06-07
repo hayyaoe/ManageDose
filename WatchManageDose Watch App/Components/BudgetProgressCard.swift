@@ -84,26 +84,27 @@ struct BudgetProgressCard: View {
         let remaining = budget - used
         let progressPercentage = used / budget
         ZStack(alignment: .topLeading){
-            //logo and progress
             VStack{
                 HStack{
                     Image(icon)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(height:24)
+                        .frame(height:22)
                         .foregroundStyle(.blue)
-                    VStack(alignment: .leading){ // Align content to the leading edge
+                    VStack(alignment: .leading){
                         Text("\(self.name)")
-                            .font(.system(size: 12))
+                            .font(.system(size: 14))
                             .fontWeight(.medium)
                             .foregroundStyle(.black)
+                            .lineLimit(1)
                     }
                     Spacer()
                     Text("Rp \(self.budget, format: .number)")
                         .font(.system(size: 12))
                         .fontWeight(.medium)
-                        .foregroundStyle(.black)
+                        .foregroundStyle(Color(hex: "555555"))
                         .multilineTextAlignment(.trailing)
+                        .lineLimit(1)
                 }
                 ZStack(alignment: .leading){
                     Capsule()
@@ -134,28 +135,26 @@ struct BudgetProgressCard: View {
                 HStack{
                     Text("\(self.used, format: .number) used")
                         .fontWeight(.regular)
-                        .foregroundStyle(.gray)
-                        .font(.system(size: 10))
+                        .foregroundStyle(Color(hex: "555555"))
+                        .font(.system(size: 12))
                         .truncationMode(.tail)
                         .lineLimit(1)
                     Spacer()
                     Text("\(remaining, format: .number) left")
                         .fontWeight(.regular)
-                        .foregroundStyle(.gray)
-                        .font(.system(size: 10))
+                        .foregroundStyle(Color(hex: "555555"))
+                        .font(.system(size: 12))
                         .truncationMode(.tail)
                         .lineLimit(1)
                 }
                 .padding(.top, 4)
             }
             .padding(10)
-            .padding(.top, 36)
+            .padding(.top, 40)
             .background(Color(red: 246 / 255, green: 246 / 255, blue: 246 / 255))
             .cornerRadius(10)
             
-            //reminder
-            VStack(alignment: .leading){ // Align content to the leading edge
-                HStack{
+            VStack(alignment: .leading){                HStack{
                     Image("check")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -164,18 +163,22 @@ struct BudgetProgressCard: View {
                         Text("Your budget is healthy!")
                             .foregroundStyle(.white)
                             .font(.system(size: 11))
+                            .lineLimit(1)
                     } else if progressPercentage < 0.8 {
                         Text("Watch your spending!")
                             .foregroundStyle(.white)
                             .font(.system(size: 11))
+                            .lineLimit(1)
                     } else if progressPercentage < 1.0 {
                         Text("Your budget is almost full!")
                             .foregroundStyle(.white)
                             .font(.system(size: 11))
+                            .lineLimit(1)
                     } else {
                         Text("You have exceeded your budget!")
                             .foregroundStyle(.white)
                             .font(.system(size: 11))
+                            .lineLimit(1)
                     }
                     
                 }
