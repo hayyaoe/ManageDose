@@ -154,7 +154,7 @@ struct BudgetProgressCard: View {
                     }
                     .padding(.top, 4)
                 }
-                .frame(width: 750,height: 140)
+                .frame(width: .infinity ,height: 140)
                 .padding(15)
                 .padding(.top, 45)
                 .background(Color(red: 246 / 255, green: 246 / 255, blue: 246 / 255))
@@ -185,7 +185,7 @@ struct BudgetProgressCard: View {
                         
                     }
                 }
-                .frame(maxWidth: 750, alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(15)
                 .background({
                     if progressPercentage < 0.5 {

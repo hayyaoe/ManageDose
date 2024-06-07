@@ -118,7 +118,7 @@ struct AddNewExpenseCard: View {
                         }
                     }
                     .pickerStyle(MenuPickerStyle())
-                    .frame(width: 650, height: 30)
+                    .frame(width: 680, height: 30)
                     .background(Color.white.opacity(0.2))
                     .cornerRadius(5)
                     .shadow(color: .white, radius: 2, x: 0, y: 0.1)

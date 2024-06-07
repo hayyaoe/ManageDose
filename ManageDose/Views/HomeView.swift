@@ -98,7 +98,7 @@ struct Home: View {
                                                     .lineLimit(1)
                                             }
                                         }
-                                        .frame(width: 350)
+                                        .frame(width: 450)
                                         .padding(12)
                                         .background(Color(red: 0.192, green: 0.106, blue: 0.702).cornerRadius(16))
                                         
@@ -121,7 +121,7 @@ struct Home: View {
                                                     .lineLimit(1)
                                             }
                                         }
-                                        .frame(width: 350)
+                                        .frame(width: 450)
                                         .padding(12)
                                         .background(Color(red: 0.192, green: 0.106, blue: 0.702).cornerRadius(16))
                                         

@@ -41,7 +41,7 @@ struct IncomeDetailView: View {
                 
                 Rectangle()
                     .fill(Color(red: 220/255, green: 213/255, blue: 255/255, opacity: 1))
-                    .frame(width: 900, height: 10)
+                    .frame(width: 1200, height: 10)
                     .offset(y: 8)
                     .padding(.vertical, 10)
             }else{
@@ -81,14 +81,14 @@ struct IncomeDetailView: View {
                             ZStack {
                                 Circle()
                                     .fill(Color(red: 83/255, green: 57/255, blue: 238/255, opacity: 1))
-                                    .frame(width: 60, height: 60)
+                                    .frame(width: 60, height: 140)
                                 Image(systemName: "plus")
                                     .font(.title)
                                     .foregroundColor(.white)
                             }
                         }
                     }
-                    .offset(x: -10, y: 380)
+                    .offset(x: -10, y: 400)
                 )
             }else{
                 ScrollView(.vertical, showsIndicators: false) {
@@ -122,7 +122,7 @@ struct IncomeDetailView: View {
             if  UIDevice.current.userInterfaceIdiom == .pad{
                 Divider()
                     .background(Color.gray)
-                    .frame(width: 900)
+                    .frame(width: 1200)
                     .offset(y: -8)
                 
                 HStack {
