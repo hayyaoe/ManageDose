@@ -15,16 +15,25 @@ struct SettingBudgetRow: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            HStack (spacing: 15){
-                SettingBudgetItem(percentage: Int(basicNeedsPercentage), name: "Basic Needs", amount: Int(budget)*Int(basicNeedsPercentage)/100)
-                SettingBudgetItem(percentage: Int(savingsPercentage), name: "Savings", amount: Int(budget)*Int(savingsPercentage)/100)
+            if UIDevice.current.userInterfaceIdiom == .pad{
+                VStack (spacing: 15){
+                    SettingBudgetItem(percentage: Int(basicNeedsPercentage), name: "Basic Needs", amount: Int(budget)*Int(basicNeedsPercentage)/100)
+                    SettingBudgetItem(percentage: Int(savingsPercentage), name: "Savings", amount: Int(budget)*Int(savingsPercentage)/100)
+                    SettingBudgetItem(percentage: Int(wantsPercentage), name: "Wants", amount: Int(budget)*Int(wantsPercentage)/100)
+                }
+            }else{
+                HStack (spacing: 15){
+                    SettingBudgetItem(percentage: Int(basicNeedsPercentage), name: "Basic Needs", amount: Int(budget)*Int(basicNeedsPercentage)/100)
+                    SettingBudgetItem(percentage: Int(savingsPercentage), name: "Savings", amount: Int(budget)*Int(savingsPercentage)/100)
+                }
+                .frame(width: .infinity)
+                
+                Spacer().frame(height: 14)
+                
+                
+                SettingBudgetItem(percentage: Int(wantsPercentage), name: "Wants", amount: Int(budget)*Int(wantsPercentage)/100)
             }
-            .frame(width: .infinity)
             
-            Spacer().frame(height: 14)
-            
-            
-            SettingBudgetItem(percentage: Int(wantsPercentage), name: "Wants", amount: Int(budget)*Int(wantsPercentage)/100)
         }
     }
 }

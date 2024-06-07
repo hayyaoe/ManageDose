@@ -35,44 +35,86 @@ struct IncomeItem: View {
 
     
     var body: some View {
-        HStack{
-            Image("income")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .foregroundStyle(.yellow)
-                .frame(height: 50)
+        if UIDevice.current.userInterfaceIdiom == .pad{
+            HStack{
+                Image("income")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(.yellow)
+                    .frame(height: 70)
+                
+                VStack(
+                    alignment: .leading
+                ){
+                    Text("\(incomeData.name)")
+                        .fontWeight(.bold)
+                        .font(.title2)
+                        .foregroundColor(.black)
+                    Text("\(incomeData.categoryTransaction.rawValue)")
+                        .font(.title3)
+                        .foregroundColor(.black)
+              
+                }
+                
+                Spacer()
+                
+                VStack(
+                    alignment: .trailing
+                ){
             
-            VStack(
-                alignment: .leading
-            ){
-                Text("\(incomeData.name)")
-                    .fontWeight(.bold)
-                    .font(.headline)
-                    .foregroundColor(.black)
-                Text("\(incomeData.categoryTransaction.rawValue)")
-                    .font(.subheadline)
-                    .foregroundColor(.black)
-          
-            }
-            
-            Spacer()
-            
-            VStack(
-                alignment: .trailing
-            ){
-        
-                Text("+ Rp \(incomeData.amount,format: .number)")
-                    .fontWeight(.bold)
-                    .font(.headline)
-                    .foregroundStyle(.green)
-            
+                    Text("+ Rp \(incomeData.amount,format: .number)")
+                        .fontWeight(.bold)
+                        .font(.title2)
+                        .foregroundStyle(.green)
+                
 
-                Text(incomeData.date, style: .date)
-                    .font(.subheadline)
-                    .foregroundColor(.black)
+                    Text(incomeData.date, style: .date)
+                        .font(.title3)
+                        .foregroundColor(.black)
+                }
             }
+            .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+        }else{
+            HStack{
+                Image("income")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(.yellow)
+                    .frame(height: 50)
+                
+                VStack(
+                    alignment: .leading
+                ){
+                    Text("\(incomeData.name)")
+                        .fontWeight(.bold)
+                        .font(.headline)
+                        .foregroundColor(.black)
+                    Text("\(incomeData.categoryTransaction.rawValue)")
+                        .font(.subheadline)
+                        .foregroundColor(.black)
+              
+                }
+                
+                Spacer()
+                
+                VStack(
+                    alignment: .trailing
+                ){
+            
+                    Text("+ Rp \(incomeData.amount,format: .number)")
+                        .fontWeight(.bold)
+                        .font(.headline)
+                        .foregroundStyle(.green)
+                
+
+                    Text(incomeData.date, style: .date)
+                        .font(.subheadline)
+                        .foregroundColor(.black)
+                }
+            }
+            .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
         }
-        .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
+        
     }
 }
 

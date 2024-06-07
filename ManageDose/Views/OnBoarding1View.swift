@@ -12,7 +12,7 @@ struct OnBoarding1View: View {
     @AppStorage("hasSeenOnboarding") var hasSeenOnboarding: Bool = false
     
     var body: some View {
-        NavigationView(content: {
+        NavigationStack{
             VStack{
                 ZStack{
                     Image("Ellipse 6")
@@ -62,7 +62,7 @@ struct OnBoarding1View: View {
                         .background(Color(red: 83/255, green: 57/255, blue: 238/255))
                         .cornerRadius(20)})
             }
-        })
+        }
     }
 }
 
