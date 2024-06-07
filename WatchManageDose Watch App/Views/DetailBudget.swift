@@ -18,10 +18,10 @@ struct DetailBudget: View {
             Color.white
                 .ignoresSafeArea()
             VStack {
-                Text("Expend Allocation")
+                Text("Budget Detail")
                     .fontWeight(.semibold)
                     .foregroundStyle(.black)
-                    .font(.system(size: 16))
+                    .font(.system(size: 18))
                 ScrollView(.vertical, showsIndicators: false) {
                     if expenses.filter({ $0.budget.rawValue == budgeting.budget.rawValue }).isEmpty {
                             Text("No expenses found")
@@ -44,12 +44,6 @@ struct DetailBudget: View {
                 }
             }
         }
-        .navigationTitle(
-            Text("Detail Budget")
-                .font(.title3)
-                .fontWeight(.semibold)
-                .foregroundStyle(.blue)
-        )
     }
 }
 
