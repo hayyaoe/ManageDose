@@ -9,8 +9,10 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>ManageDoseMac.xcscheme_^#shared#^_</key>
+		<key>ManageDoseMac.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
@@ -28,6 +30,16 @@
 			<true/>
 		</dict>
 		<key>04533A072C1096E900E969E1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>04E6A9292C11B79500023DBE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7E0EDBAF2BF6F66E00C384B8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

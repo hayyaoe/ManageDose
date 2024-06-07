@@ -22,7 +22,7 @@ struct OnBoarding1View: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: isLargeScreen ? 800: 420, height: isLargeScreen ? 800: 420)
-                            .offset(x: isLargeScreen ? 300: 100, y: isLargeScreen ? -300: -103)
+                            .offset(x: isLargeScreen ? 300: 100, y: isLargeScreen ? -300: -130)
                         Image("mobile banking 1")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
@@ -49,7 +49,7 @@ struct OnBoarding1View: View {
                     }) {
                         Text("Skip")
                             .frame(maxWidth: .infinity)
-                            .padding()
+                            .padding(6)
                             .font(.system(size: isLargeScreen ? 26 : 16))
                             .fontWeight(.semibold)
                             .foregroundColor(.gray)

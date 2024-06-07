@@ -65,7 +65,44 @@ struct ExpenseItem: View {
             }
             .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
         }else{
+            HStack{
+                Image(icon)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(.yellow)
+                    .frame(height: 50)
+                
+                VStack(
+                    alignment: .leading
+                ){
+                    Text(expenseData.name)
+                        .fontWeight(.bold)
+                        .font(.headline)
+                        .foregroundColor(.black)
+                    Text(expenseData.categoryTransaction.rawValue)
+                        .font(.subheadline)
+                        .foregroundColor(.black)
+              
+                }
+                
+                Spacer()
+                
+                VStack(
+                    alignment: .trailing
+                ){
             
+                    Text("- Rp \(expenseData.amount,format: .number)")
+                        .fontWeight(.bold)
+                        .font(.headline)
+                        .foregroundStyle(.red)
+                
+
+                    Text(expenseData.date, style: .date)
+                        .font(.subheadline)
+                        .foregroundColor(.black)
+                }
+            }
+            .padding(EdgeInsets(top: 4, leading: 0, bottom: 4, trailing: 0))
         }
         
     }

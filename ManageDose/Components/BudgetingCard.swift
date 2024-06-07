@@ -46,7 +46,13 @@ struct BudgetingCard: View {
                     .font(.system(size:20))
                     .truncationMode(.tail)
                     .lineLimit(1)
-                    .foregroundColor(.black)
+                    .foregroundColor({
+                        if budgetingData.remaining < 0.0 {
+                            return Color.red
+                        } else {
+                          return Color.black
+                        }
+                    }())
             }
             .frame(width: 150, height: 150)
             .padding(15)
@@ -73,7 +79,7 @@ struct BudgetingCard: View {
                     .truncationMode(.tail)
                     .lineLimit(1)
                     .foregroundColor({
-                        if budgetingData.remaining <= 0.0 {
+                        if budgetingData.remaining < 0.0 {
                             return Color.red
                         } else {
                           return Color.black

@@ -62,11 +62,11 @@ struct PieChart: View {
                 
                 VStack{
                     Text("Budgeting Precentage")
-                        .font(.system(size: 12))
+                        .font(.system(size: 14))
                         .fontWeight(.semibold)
                         .foregroundStyle(.gray)
                     Text("Rp \(self.budget, format: .number)")
-                        .font(.system(size: 15))
+                        .font(.system(size: 18))
                         .fontWeight(.medium)
                         .foregroundStyle(.black)
                 }
@@ -76,9 +76,9 @@ struct PieChart: View {
                     HStack {
                         Circle()
                             .foregroundColor(stream.color)
-                            .frame(width: 8, height: 8)
+                            .frame(width: 10, height: 10)
                         Text(stream.name)
-                            .font(.system(size: 12))
+                            .font(.system(size: 16))
                     }
                 }
             }

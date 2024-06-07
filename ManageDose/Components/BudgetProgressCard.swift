@@ -117,10 +117,16 @@ struct BudgetProgressCard: View {
                             .foregroundColor(Color(red: 226 / 255, green: 226 / 255, blue: 226 / 255, opacity: 1))
                         Capsule()
                             .frame(width: {
-                                if progressPercentage <= 1.0{
-                                    return CGFloat(progressPercentage) * (UIScreen.main.bounds.width - 80)
+                                if budget == 0.0 {
+                                    return CGFloat(0.0)
                                 } else {
-                                    return 1.0
+                                    if progressPercentage <= 1.0{
+                                        return CGFloat(progressPercentage) * (UIScreen.main.bounds.width - 80)
+                                    } else if progressPercentage == 0 {
+                                        return CGFloat(0)
+                                    } else {
+                                        return CGFloat(UIScreen.main.bounds.width - 80)
+                                    }
                                 }
                             }())
                         
@@ -167,20 +173,28 @@ struct BudgetProgressCard: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 25)
-                        if progressPercentage < 0.5 {
-                            Text("Your budget is healty!")
-                                .foregroundStyle(.white)
-                                .font(.system(size: 20))
-                        } else if progressPercentage < 0.8 {
-                            Text("Watch your spending!")
-                                .foregroundStyle(.white)
-                                .font(.system(size: 20))
-                        } else if progressPercentage < 1.0 {
-                            Text("Your budget is almost full!")
+                        if budget == 0.0{
+                            Text("Start inserting your spendings!")
                                 .foregroundStyle(.white)
                                 .font(.system(size: 20))
                         } else {
-                            Text("You have exceeded your budget!")
+                            if progressPercentage < 0.5 {
+                                Text("Your budget is healthy!")
+                                    .foregroundStyle(.white)
+                                    .font(.system(size: 20))
+                            } else if progressPercentage < 0.8 {
+                                Text("Watch your spending!")
+                                    .foregroundStyle(.white)
+                                    .font(.system(size: 20))
+                            } else if progressPercentage < 1.0 {
+                                Text("Your budget is almost full!")
+                                    .foregroundStyle(.white)
+                                    .font(.system(size: 20))
+                            } else {
+                                Text("You have exceeded your budget!")
+                                    .foregroundStyle(.white)
+                                    .font(.system(size: 20))
+                            }
                         }
                         
                     }
@@ -188,14 +202,18 @@ struct BudgetProgressCard: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(15)
                 .background({
-                    if progressPercentage < 0.5 {
-                        return Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1)
-                    } else if progressPercentage < 0.8 {
-                        return Color.yellow
+                    if budget == 0 {
+                        return Color(hex: "5339EE")
                     } else {
-                        return Color.red
+                        if progressPercentage < 0.5 {
+                            return Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1)
+                        } else if progressPercentage < 0.8 {
+                            return Color.yellow
+                        } else {
+                            return Color.red
+                        }
                     }
-                }())            
+                }())
                 .clipShape(TopCornersRoundedShape(radius: 10))
                 .offset(CGSize(width: 0, height: -80))
             }
@@ -235,10 +253,16 @@ struct BudgetProgressCard: View {
                             .foregroundColor(Color(red: 226 / 255, green: 226 / 255, blue: 226 / 255, opacity: 1))
                         Capsule()
                             .frame(width: {
-                                if progressPercentage <= 1.0{
-                                    return CGFloat(progressPercentage) * (UIScreen.main.bounds.width - 80)
+                                if budget == 0.0 {
+                                    return CGFloat(0.0)
                                 } else {
-                                    return 1.0
+                                    if progressPercentage <= 1.0{
+                                        return CGFloat(progressPercentage) * (UIScreen.main.bounds.width - 80)
+                                    } else if progressPercentage == 0 {
+                                        return CGFloat(0)
+                                    } else {
+                                        return CGFloat(UIScreen.main.bounds.width - 80)
+                                    }
                                 }
                             }())
                         
@@ -284,20 +308,28 @@ struct BudgetProgressCard: View {
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 20)
-                        if progressPercentage < 0.5 {
-                            Text("Your budget is healty!")
-                                .foregroundStyle(.white)
-                                .font(.system(size: 15))
-                        } else if progressPercentage < 0.8 {
-                            Text("Watch your spending!")
-                                .foregroundStyle(.white)
-                                .font(.system(size: 15))
-                        } else if progressPercentage < 1.0 {
-                            Text("Your budget is almost full!")
+                        if budget == 0.0{
+                            Text("Start inserting your spendings!")
                                 .foregroundStyle(.white)
                                 .font(.system(size: 15))
                         } else {
-                            Text("You have exceeded your budget!")
+                            if progressPercentage < 0.5 {
+                                Text("Your budget is healthy!")
+                                    .foregroundStyle(.white)
+                                    .font(.system(size: 15))
+                            } else if progressPercentage < 0.8 {
+                                Text("Watch your spending!")
+                                    .foregroundStyle(.white)
+                                    .font(.system(size: 15))
+                            } else if progressPercentage < 1.0 {
+                                Text("Your budget is almost full!")
+                                    .foregroundStyle(.white)
+                                    .font(.system(size: 15))
+                            } else {
+                                Text("You have exceeded your budget!")
+                                    .font(.system(size: 15))
+                                    .foregroundStyle(.white)
+                            }
                         }
                         
                     }
@@ -305,16 +337,20 @@ struct BudgetProgressCard: View {
                 .frame(maxWidth: 400, alignment: .leading)
                 .padding(15)
                 .background({
-                    if progressPercentage <= 0.0 {
+                    if budget == 0 {
                         return Color(hex: "5339EE")
-                    } else if progressPercentage < 0.5 {
-                        return Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1)
-                    } else if progressPercentage < 0.8 {
-                        return Color.yellow
                     } else {
-                        return Color.red
+                        if progressPercentage <= 0.0 {
+                            return Color(hex: "5339EE")
+                        } else if progressPercentage < 0.5 {
+                            return Color(red: 31 / 255, green: 202 / 255, blue: 157 / 255, opacity: 1)
+                        } else if progressPercentage < 0.8 {
+                            return Color.yellow
+                        } else {
+                            return Color.red
+                        }
                     }
-                }())            
+                }())
                 .clipShape(TopCornersRoundedShape(radius: 10))
             }
         }
