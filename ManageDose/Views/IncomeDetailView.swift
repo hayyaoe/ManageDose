@@ -161,6 +161,8 @@ struct IncomeDetailView: View {
             Button {
                 if budgets.isEmpty{
                     saveBudgeting(basicNeedsPercentage: 50, savingsPercentage: 20, wantsPercentage: 30, totalBudget: totalIncome)
+                } else {
+                    saveBudgeting(basicNeedsPercentage: budgets.first(where: { $0.budget == .dailyneeds })!.percentage, savingsPercentage: budgets.first(where: { $0.budget == .saving })!.percentage, wantsPercentage: budgets.first(where: { $0.budget == .wants })!.percentage, totalBudget: totalIncome)
                 }
                 
                 selectedTab = 2
