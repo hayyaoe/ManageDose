@@ -53,29 +53,35 @@ struct SplashScreen: View {
         }else{
             GeometryReader { geometry in
                 let screenWidth = geometry.size.width
+                let screenHeight = geometry.size.height
                 let isLargeScreen = screenWidth > 720
                 
-                ZStack{
+                ZStack {
                     if !isLargeScreen {
                         Image("splash_screen")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 720, height: 720)
                     }
-                    VStack (alignment: .center){
+                    
+                    VStack {
                         Spacer()
+                        
                         Image("managedose_logo")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: isLargeScreen ? 1000 : 390, height: isLargeScreen ? 600 : 390)
+                            .frame(width: isLargeScreen ? 500 : 420, height: isLargeScreen ? 500 : 420)
                         
                         Text("ManageDose")
-                            .font(.system(size: isLargeScreen ? 40: 24))
-                            .fontWeight(.bold).foregroundStyle(Color(.blue))
-                            .offset(y:-50)
+                            .font(.system(size: isLargeScreen ? 40 : 24))
+                            .fontWeight(.bold)
+                            .foregroundColor(Color(hex: "5339EE"))
+                            .padding(.top, -40)
+                        
                         Spacer()
                     }
-                }.onAppear {
+                    .frame(width: screenWidth)
+                    .offset(x: isLargeScreen ? 0 : -20, y: isLargeScreen ? -40: -60)
+                }
+                .ignoresSafeArea()
+                .onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                         withAnimation {
                             self.isActive = true

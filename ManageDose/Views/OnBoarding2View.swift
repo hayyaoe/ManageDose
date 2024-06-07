@@ -56,7 +56,7 @@ struct OnBoarding2View: View {
                     }) {
                         Text("Skip")
                             .frame(maxWidth: .infinity)
-                            .padding()
+                            .padding(6)
                             .font(.system(size: isLargeScreen ? 26 : 16))
                             .fontWeight(.semibold)
                             .foregroundColor(.gray)

@@ -168,6 +168,7 @@ struct AddNewExpenseCard: View {
                     }
                     .padding(12)
                 }
+                .padding(50)
                 
             }
             .padding(15)

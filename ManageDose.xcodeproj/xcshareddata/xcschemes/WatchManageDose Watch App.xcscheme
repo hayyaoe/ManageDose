@@ -15,9 +15,23 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "04DD3C512C117FBC002DDE3C"
-               BuildableName = "ManageDoseMac.app"
-               BlueprintName = "ManageDoseMac"
+               BlueprintIdentifier = "04E6A9292C11B79500023DBE"
+               BuildableName = "WatchManageDose Watch App.app"
+               BlueprintName = "WatchManageDose Watch App"
+               ReferencedContainer = "container:ManageDose.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "7E0EDBAF2BF6F66E00C384B8"
+               BuildableName = "ManageDose.app"
+               BlueprintName = "ManageDose"
                ReferencedContainer = "container:ManageDose.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,8 +46,8 @@
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = ""
-      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -44,9 +58,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "04DD3C512C117FBC002DDE3C"
-            BuildableName = "ManageDoseMac.app"
-            BlueprintName = "ManageDoseMac"
+            BlueprintIdentifier = "04E6A9292C11B79500023DBE"
+            BuildableName = "WatchManageDose Watch App.app"
+            BlueprintName = "WatchManageDose Watch App"
             ReferencedContainer = "container:ManageDose.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -61,9 +75,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "04DD3C512C117FBC002DDE3C"
-            BuildableName = "ManageDoseMac.app"
-            BlueprintName = "ManageDoseMac"
+            BlueprintIdentifier = "04E6A9292C11B79500023DBE"
+            BuildableName = "WatchManageDose Watch App.app"
+            BlueprintName = "WatchManageDose Watch App"
             ReferencedContainer = "container:ManageDose.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

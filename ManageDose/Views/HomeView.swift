@@ -206,9 +206,9 @@ struct Home: View {
                                             .aspectRatio(contentMode: .fit)
                                             .frame(height: 30)
                                             .foregroundColor(.gray)
-                                            .padding(4)
+                                            .padding(12)
                                         Text("Add Transactions to see list")
-                                            .font(.caption)
+                                            .font(.system(size: 18))
                                             .foregroundColor(.gray)
                                     }
                                 }
@@ -270,7 +270,7 @@ struct Home: View {
                                         Spacer()
                                         
                                         NavigationLink(destination: IncomeDetailView(incomes: $incomes, budgets: $budgets, selectedTab: $selectedTab).toolbar(.hidden, for: .tabBar)) {
-                                            Text("Atur Ulang")
+                                            Text("Set Target")
                                                 .foregroundColor(.white)
                                                 .font(.caption)
                                                 .padding(8)
