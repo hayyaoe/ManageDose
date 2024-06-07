@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04DD3C552C117FBC002DDE3C /* ManageDoseMacApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD3C542C117FBC002DDE3C /* ManageDoseMacApp.swift */; };
-		04DD3C572C117FBC002DDE3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD3C562C117FBC002DDE3C /* ContentView.swift */; };
-		04DD3C592C117FBE002DDE3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DD3C582C117FBE002DDE3C /* Assets.xcassets */; };
-		04DD3C5C2C117FBE002DDE3C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DD3C5B2C117FBE002DDE3C /* Preview Assets.xcassets */; };
 		3F7695982C00238600FEE52D /* AddNewExpenseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7695972C00238600FEE52D /* AddNewExpenseCard.swift */; };
 		3F76959A2C00252400FEE52D /* PopUpBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7695992C00252400FEE52D /* PopUpBar.swift */; };
 		3F76959C2C0037EF00FEE52D /* AddNewExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F76959B2C0037EF00FEE52D /* AddNewExpenseView.swift */; };
@@ -55,12 +51,6 @@
 
 /* Begin PBXFileReference section */
 		04CF6E7F2C0DBCA200B1133B /* ManageDose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManageDose.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		04DD3C522C117FBC002DDE3C /* ManageDoseMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManageDoseMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		04DD3C542C117FBC002DDE3C /* ManageDoseMacApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDoseMacApp.swift; sourceTree = "<group>"; };
-		04DD3C562C117FBC002DDE3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		04DD3C582C117FBE002DDE3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		04DD3C5B2C117FBE002DDE3C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		04DD3C5D2C117FBE002DDE3C /* ManageDoseMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ManageDoseMac.entitlements; sourceTree = "<group>"; };
 		3F7695972C00238600FEE52D /* AddNewExpenseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewExpenseCard.swift; sourceTree = "<group>"; };
 		3F7695992C00252400FEE52D /* PopUpBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpBar.swift; sourceTree = "<group>"; };
 		3F76959B2C0037EF00FEE52D /* AddNewExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewExpenseView.swift; sourceTree = "<group>"; };
@@ -83,6 +73,7 @@
 		7E71FC382BFAEC2500F58890 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7E71FC3A2BFB193200F58890 /* TransactionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionItem.swift; sourceTree = "<group>"; };
 		7E71FC3C2BFB1E3500F58890 /* BudgetingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetingCard.swift; sourceTree = "<group>"; };
+		7E73F20B2C1309730032098E /* ManageDoseMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ManageDoseMac.app; path = /Users/rabirabichannel/Desktop/Codes/MAD/managedosemac/managedose/build/Debug/ManageDoseMac.app; sourceTree = "<absolute>"; };
 		7E9282E52C09689A00E61487 /* IncomeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeData.swift; sourceTree = "<group>"; };
 		7E9282E72C0968A500E61487 /* ExpenseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseData.swift; sourceTree = "<group>"; };
 		7E9282EA2C09A59100E61487 /* IncomeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeItem.swift; sourceTree = "<group>"; };
@@ -111,7 +102,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-
 		7E0EDBAD2BF6F66E00C384B8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -122,33 +112,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04DD3C532C117FBC002DDE3C /* ManageDoseMac */ = {
-			isa = PBXGroup;
-			children = (
-				04DD3C542C117FBC002DDE3C /* ManageDoseMacApp.swift */,
-				04DD3C562C117FBC002DDE3C /* ContentView.swift */,
-				04DD3C582C117FBE002DDE3C /* Assets.xcassets */,
-				04DD3C5D2C117FBE002DDE3C /* ManageDoseMac.entitlements */,
-				04DD3C5A2C117FBE002DDE3C /* Preview Content */,
-			);
-			path = ManageDoseMac;
-			sourceTree = "<group>";
-		};
-		04DD3C5A2C117FBE002DDE3C /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				04DD3C5B2C117FBE002DDE3C /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 		7E0EDBA72BF6F66E00C384B8 = {
 			isa = PBXGroup;
 			children = (
 				7E0EDBB22BF6F66E00C384B8 /* ManageDose */,
 				04CF6E7F2C0DBCA200B1133B /* ManageDose.app */,
-				04DD3C522C117FBC002DDE3C /* ManageDoseMac.app */,
-				04DD3C532C117FBC002DDE3C /* ManageDoseMac */,
 			);
 			sourceTree = "<group>";
 		};
@@ -256,7 +224,7 @@
 			);
 			name = ManageDoseMac;
 			productName = ManageDoseMac;
-			productReference = 04DD3C522C117FBC002DDE3C /* ManageDoseMac.app */;
+			productReference = 7E73F20B2C1309730032098E /* ManageDoseMac.app */;
 			productType = "com.apple.product-type.application";
 		};
 		7E0EDBAF2BF6F66E00C384B8 /* ManageDose */ = {
@@ -318,8 +286,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04DD3C5C2C117FBE002DDE3C /* Preview Assets.xcassets in Resources */,
-				04DD3C592C117FBE002DDE3C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,8 +305,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04DD3C572C117FBC002DDE3C /* ContentView.swift in Sources */,
-				04DD3C552C117FBC002DDE3C /* ManageDoseMacApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
